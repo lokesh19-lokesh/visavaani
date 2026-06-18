@@ -48,9 +48,9 @@ const MainLayout = () => {
       {/* Footer */}
       <footer className="bg-primary text-white pt-16 pb-8 border-t border-gray-800">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-x-4 gap-y-8 md:gap-8 mb-12">
             {/* Brand */}
-            <div className="md:col-span-2 pr-8">
+            <div className="col-span-2 md:col-span-2 pr-0 md:pr-8">
               <div className="mb-6 inline-block">
                 <span className="font-extrabold text-[28px] tracking-wider text-white leading-none mb-1 block">
                   VISAVAANI
@@ -99,26 +99,26 @@ const MainLayout = () => {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-800/50">
-             <div className="text-[14px] text-gray-400 mb-4 md:mb-0">
+          <div className="flex flex-col lg:flex-row justify-between items-center pt-8 border-t border-gray-800/50 gap-6">
+             <div className="text-[14px] text-gray-400 text-center lg:text-left order-3 lg:order-1">
                &copy; {new Date().getFullYear()} VisaVaani. All rights reserved.
              </div>
              
-             {/* Social and Made for Indians */}
-             <div className="flex items-center space-x-12">
-               {/* Stay Connected */}
-                <div className="flex items-center space-x-4">
-                  <span className="text-[14px] text-gray-300 font-medium mr-2">Stay Connected</span>
+             {/* Stay Connected */}
+             <div className="flex flex-col sm:flex-row items-center gap-4 order-1 lg:order-2">
+                <span className="text-[14px] text-gray-300 font-medium sm:mr-2">Stay Connected</span>
+                <div className="flex space-x-4">
                   <a href="#" className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white hover:opacity-90 transition-opacity"><Facebook size={16} fill="currentColor" strokeWidth={0}/></a>
                   <a href="#" className="w-8 h-8 rounded-full bg-pink-600 flex items-center justify-center text-white hover:opacity-90 transition-opacity"><Instagram size={16} /></a>
                   <a href="#" className="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center text-white hover:opacity-90 transition-opacity"><Youtube size={16} /></a>
                   <a href="#" className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white hover:opacity-90 transition-opacity"><Linkedin size={16} /></a>
                   <a href="#" className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white hover:opacity-90 transition-opacity border border-gray-700"><Twitter size={16} /></a>
                 </div>
+             </div>
 
-                <div className="hidden lg:flex items-center text-[14px] text-gray-400">
-                  Made for Indians. Around the World. <img src="https://flagcdn.com/w20/in.png" alt="India Flag" className="ml-2 inline-block rounded-sm" />
-                </div>
+             {/* Powered By */}
+             <div className="text-[14px] text-gray-400 text-center lg:text-right order-2 lg:order-3">
+               Powered by <a href="https://thepatternscompany.com/" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-white transition-colors">Patterns Infotech Private Limited</a>
              </div>
           </div>
         </div>

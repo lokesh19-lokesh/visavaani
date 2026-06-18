@@ -15,8 +15,8 @@ const Home = () => {
   return (
     <div className="bg-[#F8FAFC]">
       {/* Hero Section */}
-      <section className="relative bg-primary overflow-hidden pt-3 pb-32">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center justify-between h-full min-h-[500px]">
+      <section className="relative bg-primary overflow-hidden pt-12 pb-28">
+        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center justify-between">
 
           {/* Left Content */}
           <div className="w-full lg:w-1/2 pr-0 lg:pr-12 text-center lg:text-left z-20">
@@ -44,7 +44,7 @@ const Home = () => {
           </div>
 
           {/* Right Content - Map Illustration */}
-          <div className="hidden lg:block w-1/2 relative h-[600px] mt-10">
+          <div className="hidden lg:block w-1/2 relative h-[500px]">
             {/* Perfect Dotted World Map Background (using CSS Mask to color dots white) */}
             <div
               className="absolute inset-0 z-0 opacity-30 bg-white"

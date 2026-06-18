@@ -44,8 +44,8 @@ const Home = () => {
           </div>
 
           {/* Right Content - Map Illustration */}
-          <div className="hidden lg:flex w-1/2 items-center justify-center mt-6 lg:mt-0">
-            <div className="relative w-full max-w-[650px] aspect-[1.6] xl:aspect-[1.3]">
+          <div className="flex w-full lg:w-1/2 items-center justify-center mt-12 lg:mt-0 opacity-90 lg:opacity-100">
+            <div className="relative w-full max-w-[650px] aspect-[1.2] sm:aspect-[1.4] xl:aspect-[1.3]">
               {/* Perfect Dotted World Map Background */}
               <div
                 className="absolute inset-0 z-0 opacity-30 bg-white"

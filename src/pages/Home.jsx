@@ -267,7 +267,7 @@ const Home = () => {
             <div className="lg:w-2/3">
               <h2 className="text-[28px] font-bold text-primary mb-12">How VisaVaani Works</h2>
 
-              <div className="grid grid-cols-1 sm:grid-cols-4 gap-8 relative">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-10 sm:gap-8 relative">
                 {/* Connecting Line */}
                 <div className="hidden sm:block absolute top-[28px] left-[10%] right-[10%] h-[1px] bg-gray-200 z-0"></div>
 

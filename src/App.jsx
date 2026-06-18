@@ -7,6 +7,7 @@ import VisaTypes from './pages/VisaTypes';
 import AIAdvisor from './pages/AIAdvisor';
 import Auth from './pages/Auth';
 import PlaceholderPage from './pages/PlaceholderPage';
+import Eligibility from './pages/Eligibility';
 
 function App() {
   return (
@@ -19,8 +20,10 @@ function App() {
         <Route path="advisor" element={<AIAdvisor />} />
         <Route path="auth" element={<Auth />} />
         
+        {/* Active Routes */}
+        <Route path="eligibility" element={<Eligibility />} />
+
         {/* Placeholder Routes for Footer & Nav Links */}
-        <Route path="eligibility" element={<PlaceholderPage title="Eligibility Checker" />} />
         <Route path="guides" element={<PlaceholderPage title="Visa Guides" />} />
         <Route path="news" element={<PlaceholderPage title="News & Updates" />} />
         <Route path="checklists" element={<PlaceholderPage title="Document Checklists" />} />

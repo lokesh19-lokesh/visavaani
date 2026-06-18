@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #021430;
+  --color-primary-hover: #04204A;
+  --color-secondary: #FF8C1A;
+  --color-secondary-hover: #E67A12;
+  --color-accent: #FFFFFF;
+}
+
+@layer base {
+  body {
+    @apply antialiased text-gray-800 bg-[#F8FAFC];
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+.indian-flag-underline {
+  height: 3px;
+  background: linear-gradient(to right, #FF9933 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #138808 66.66%);
+  width: 100%;
+  display: block;
+  border-radius: 2px;
+}

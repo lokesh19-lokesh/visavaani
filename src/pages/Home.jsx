@@ -34,12 +34,12 @@ const Home = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4 lg:scale-95 xl:scale-100 origin-left">
-              <button className="w-full sm:w-auto px-8 py-3.5 bg-secondary hover:bg-secondary-hover text-white rounded-lg text-[16px] font-semibold transition-colors flex items-center justify-center">
+              <Link to="/eligibility" className="w-full sm:w-auto px-8 py-3.5 bg-secondary hover:bg-secondary-hover text-white rounded-lg text-[16px] font-semibold transition-colors flex items-center justify-center">
                 Check Eligibility <ArrowRight className="ml-2 w-5 h-5" />
-              </button>
-              <button className="w-full sm:w-auto px-8 py-3.5 bg-transparent border-2 border-white/30 hover:bg-white/10 text-white rounded-lg text-[16px] font-semibold transition-colors">
+              </Link>
+              <Link to="/countries" className="w-full sm:w-auto px-8 py-3.5 bg-transparent border-2 border-white/30 hover:bg-white/10 text-white rounded-lg text-[16px] font-semibold transition-colors flex items-center justify-center">
                 Explore Countries
-              </button>
+              </Link>
             </div>
           </div>
 

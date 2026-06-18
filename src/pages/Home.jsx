@@ -174,27 +174,27 @@ const Home = () => {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative -mt-16 z-30 mb-20">
         <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] py-4 lg:py-8 px-4 lg:px-6 border border-gray-100 flex flex-row justify-between items-center gap-2 lg:gap-8">
 
-          <div className="group flex items-center bg-white max-w-[56px] hover:max-w-[200px] lg:max-w-none lg:hover:max-w-none lg:w-auto lg:flex-1 overflow-hidden cursor-pointer lg:cursor-default lg:border-r border-gray-100 lg:pr-6">
+          <div tabIndex="0" className="group flex flex-col lg:flex-row items-center bg-white lg:w-auto lg:flex-1 cursor-pointer lg:cursor-default lg:border-r border-gray-100 lg:pr-6 outline-none relative">
             <div className="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
               <Bot className="w-7 h-7 text-[#0B2D6B]" />
             </div>
-            <div className="flex flex-col justify-center min-w-[120px] pl-3 lg:pl-4 opacity-0 group-hover:opacity-100 lg:opacity-100 lg:min-w-0">
-              <h3 className="font-bold text-gray-900 text-[14px] lg:text-[16px] mb-0 lg:mb-1 truncate lg:whitespace-normal">AI Advisor</h3>
+            <div className="hidden group-hover:flex group-focus:flex lg:flex flex-col justify-center absolute lg:static top-[64px] left-1/2 -translate-x-1/2 lg:translate-x-0 lg:pl-4 bg-white lg:bg-transparent shadow-xl lg:shadow-none px-3 py-2 lg:p-0 rounded-xl lg:rounded-none z-50 lg:z-auto min-w-max text-center lg:text-left border border-gray-100 lg:border-none">
+              <h3 className="font-bold text-gray-900 text-[13px] lg:text-[16px] mb-0 lg:mb-1">AI Advisor</h3>
               <p className="text-gray-500 text-[14px] hidden lg:block">Instant answers to your<br/>immigration questions</p>
             </div>
           </div>
 
-          <div className="group flex items-center bg-white max-w-[56px] hover:max-w-[200px] lg:max-w-none lg:hover:max-w-none lg:w-auto lg:flex-1 overflow-hidden cursor-pointer lg:cursor-default lg:border-r border-gray-100 lg:pr-6">
+          <div tabIndex="0" className="group flex flex-col lg:flex-row items-center bg-white lg:w-auto lg:flex-1 cursor-pointer lg:cursor-default lg:border-r border-gray-100 lg:pr-6 outline-none relative">
             <div className="w-14 h-14 rounded-full bg-orange-50 flex items-center justify-center shrink-0">
               <MapIcon className="w-7 h-7 text-secondary" />
             </div>
-            <div className="flex flex-col justify-center min-w-[120px] pl-3 lg:pl-4 opacity-0 group-hover:opacity-100 lg:opacity-100 lg:min-w-0">
-              <h3 className="font-bold text-gray-900 text-[14px] lg:text-[16px] mb-0 lg:mb-1 truncate lg:whitespace-normal">Visa Roadmap</h3>
+            <div className="hidden group-hover:flex group-focus:flex lg:flex flex-col justify-center absolute lg:static top-[64px] left-1/2 -translate-x-1/2 lg:translate-x-0 lg:pl-4 bg-white lg:bg-transparent shadow-xl lg:shadow-none px-3 py-2 lg:p-0 rounded-xl lg:rounded-none z-50 lg:z-auto min-w-max text-center lg:text-left border border-gray-100 lg:border-none">
+              <h3 className="font-bold text-gray-900 text-[13px] lg:text-[16px] mb-0 lg:mb-1">Visa Roadmap</h3>
               <p className="text-gray-500 text-[14px] hidden lg:block">Personalized roadmap<br/>for your goals</p>
             </div>
           </div>
 
-          <div className="group flex items-center bg-white max-w-[56px] hover:max-w-[200px] lg:max-w-none lg:hover:max-w-none lg:w-auto lg:flex-1 overflow-hidden cursor-pointer lg:cursor-default lg:border-r border-gray-100 lg:pr-6">
+          <div tabIndex="0" className="group flex flex-col lg:flex-row items-center bg-white lg:w-auto lg:flex-1 cursor-pointer lg:cursor-default lg:border-r border-gray-100 lg:pr-6 outline-none relative">
             <div className="w-14 h-14 rounded-full bg-orange-50/50 flex items-center justify-center shrink-0">
               <div className="relative">
                 <FileCheck className="w-7 h-7 text-orange-500" />
@@ -203,18 +203,18 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col justify-center min-w-[120px] pl-3 lg:pl-4 opacity-0 group-hover:opacity-100 lg:opacity-100 lg:min-w-0">
-              <h3 className="font-bold text-gray-900 text-[14px] lg:text-[16px] mb-0 lg:mb-1 truncate lg:whitespace-normal">Doc Check</h3>
+            <div className="hidden group-hover:flex group-focus:flex lg:flex flex-col justify-center absolute lg:static top-[64px] left-1/2 -translate-x-1/2 lg:translate-x-0 lg:pl-4 bg-white lg:bg-transparent shadow-xl lg:shadow-none px-3 py-2 lg:p-0 rounded-xl lg:rounded-none z-50 lg:z-auto min-w-max text-center lg:text-left border border-gray-100 lg:border-none">
+              <h3 className="font-bold text-gray-900 text-[13px] lg:text-[16px] mb-0 lg:mb-1">Doc Check</h3>
               <p className="text-gray-500 text-[14px] hidden lg:block">AI-powered document<br/>review and verification</p>
             </div>
           </div>
 
-          <div className="group flex items-center bg-white max-w-[56px] hover:max-w-[200px] lg:max-w-none lg:hover:max-w-none lg:w-auto lg:flex-1 overflow-hidden cursor-pointer lg:cursor-default">
+          <div tabIndex="0" className="group flex flex-col lg:flex-row items-center bg-white lg:w-auto lg:flex-1 cursor-pointer lg:cursor-default outline-none relative">
             <div className="w-14 h-14 rounded-full bg-red-50 flex items-center justify-center shrink-0 overflow-hidden">
               <UserCheck className="w-7 h-7 text-red-600" />
             </div>
-            <div className="flex flex-col justify-center min-w-[130px] pl-3 lg:pl-4 opacity-0 group-hover:opacity-100 lg:opacity-100 lg:min-w-0">
-              <h3 className="font-bold text-gray-900 text-[14px] lg:text-[16px] mb-0 lg:mb-1 truncate lg:whitespace-normal">Consultation</h3>
+            <div className="hidden group-hover:flex group-focus:flex lg:flex flex-col justify-center absolute lg:static top-[64px] left-1/2 -translate-x-1/2 lg:translate-x-0 lg:pl-4 bg-white lg:bg-transparent shadow-xl lg:shadow-none px-3 py-2 lg:p-0 rounded-xl lg:rounded-none z-50 lg:z-auto min-w-max text-center lg:text-left border border-gray-100 lg:border-none">
+              <h3 className="font-bold text-gray-900 text-[13px] lg:text-[16px] mb-0 lg:mb-1">Consultation</h3>
               <p className="text-gray-500 text-[14px] hidden lg:block">Connect with verified<br/>immigration experts</p>
             </div>
           </div>

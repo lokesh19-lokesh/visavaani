@@ -1,16 +1,24 @@
+import React, { useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { Facebook, Instagram, YouTube as Youtube, LinkedIn as Linkedin, Twitter } from '@mui/icons-material';
+import { Menu, X } from 'lucide-react';
 
 const MainLayout = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <div className="min-h-screen flex flex-col font-sans">
       {/* Navbar */}
-      <header className="bg-primary text-white border-b border-gray-800/50">
+      <header className="bg-primary text-white border-b border-gray-800/50 relative z-50">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-[72px]">
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center pt-2">
-              <Link to="/" className="flex flex-col">
+              <Link to="/" className="flex flex-col" onClick={() => setIsMobileMenuOpen(false)}>
                 <span className="font-extrabold text-[22px] tracking-wider text-white leading-none mb-1">
                   VISAVAANI
                 </span>
@@ -18,7 +26,7 @@ const MainLayout = () => {
               </Link>
             </div>
 
-            {/* Navigation */}
+            {/* Desktop Navigation */}
             <nav className="hidden lg:flex space-x-8 items-center">
               <Link to="/" className="text-white font-medium text-sm hover:text-secondary transition-colors">Home</Link>
               <Link to="/countries" className="text-gray-300 font-medium text-sm hover:text-white transition-colors">Countries</Link>
@@ -28,16 +36,44 @@ const MainLayout = () => {
               <Link to="/about" className="text-gray-300 font-medium text-sm hover:text-white transition-colors">About Us</Link>
             </nav>
 
-            {/* CTA */}
-            <div className="flex items-center">
-              <Link to="/auth">
+            {/* CTA & Mobile Toggle */}
+            <div className="flex items-center gap-4">
+              <Link to="/auth" className="hidden sm:block">
                 <button className="bg-white text-primary hover:bg-gray-100 px-5 py-2 rounded-lg font-semibold text-sm shadow-sm transition-colors">
                   Login / Sign Up
                 </button>
               </Link>
+              
+              {/* Mobile Menu Button */}
+              <button 
+                className="lg:hidden p-2 text-gray-300 hover:text-white transition-colors"
+                onClick={toggleMobileMenu}
+              >
+                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
             </div>
           </div>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden absolute top-[72px] left-0 w-full bg-primary border-b border-gray-800/50 shadow-xl">
+            <nav className="flex flex-col px-4 pt-2 pb-6 space-y-4">
+              <Link to="/" onClick={toggleMobileMenu} className="text-white font-medium text-base hover:text-secondary transition-colors block py-2 border-b border-gray-800/50">Home</Link>
+              <Link to="/countries" onClick={toggleMobileMenu} className="text-gray-300 font-medium text-base hover:text-white transition-colors block py-2 border-b border-gray-800/50">Countries</Link>
+              <Link to="/visas" onClick={toggleMobileMenu} className="text-gray-300 font-medium text-base hover:text-white transition-colors block py-2 border-b border-gray-800/50">Visa Types</Link>
+              <Link to="/advisor" onClick={toggleMobileMenu} className="text-gray-300 font-medium text-base hover:text-white transition-colors block py-2 border-b border-gray-800/50">AI Advisor</Link>
+              <Link to="/resources" onClick={toggleMobileMenu} className="text-gray-300 font-medium text-base hover:text-white transition-colors block py-2 border-b border-gray-800/50">Resources</Link>
+              <Link to="/about" onClick={toggleMobileMenu} className="text-gray-300 font-medium text-base hover:text-white transition-colors block py-2 border-b border-gray-800/50">About Us</Link>
+              
+              <Link to="/auth" onClick={toggleMobileMenu} className="block sm:hidden pt-4">
+                <button className="w-full bg-white text-primary hover:bg-gray-100 px-5 py-3 rounded-lg font-semibold text-base shadow-sm transition-colors">
+                  Login / Sign Up
+                </button>
+              </Link>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* Main Content */}

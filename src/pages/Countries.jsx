@@ -1,17 +1,7 @@
 import { motion } from 'framer-motion';
 import { Search, MapPin, Briefcase, GraduationCap, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-const countries = [
-  { id: 'ca', name: 'Canada', region: 'North America', image: '/destinations/canada.png', tags: ['Express Entry', 'Study', 'High PR Chance'] },
-  { id: 'us', name: 'United States', region: 'North America', image: '/destinations/usa.png', tags: ['H1B', 'F1', 'O1'] },
-  { id: 'gb', name: 'United Kingdom', region: 'Europe', image: '/destinations/uk.png', tags: ['Skilled Worker', 'Student', 'Global Talent'] },
-  { id: 'au', name: 'Australia', region: 'Oceania', image: '/destinations/australia.png', tags: ['Subclass 189', 'Student', 'Working Holiday'] },
-  { id: 'de', name: 'Germany', region: 'Europe', image: '/destinations/germany.png', tags: ['EU Blue Card', 'Job Seeker', 'Study'] },
-  { id: 'sg', name: 'Singapore', region: 'Asia', image: '/destinations/singapore.png', tags: ['Employment Pass', 'S Pass', 'EntrePass'] },
-  { id: 'nz', name: 'New Zealand', region: 'Oceania', image: '/destinations/nz.png', tags: ['Skilled Migrant', 'Student', 'Work'] },
-  { id: 'ie', name: 'Ireland', region: 'Europe', image: '/destinations/ireland.png', tags: ['Critical Skills', 'Student', 'General Work'] },
-];
+import { countriesData as countries } from '../data/countriesData';
 
 const Countries = () => {
   return (

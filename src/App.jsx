@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home';
 import Countries from './pages/Countries';
+import CountryDetail from './pages/CountryDetail';
 import VisaTypes from './pages/VisaTypes';
 import AIAdvisor from './pages/AIAdvisor';
 import Auth from './pages/Auth';
@@ -12,6 +13,7 @@ function App() {
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
         <Route path="countries" element={<Countries />} />
+        <Route path="countries/:id" element={<CountryDetail />} />
         <Route path="visas" element={<VisaTypes />} />
         <Route path="advisor" element={<AIAdvisor />} />
         <Route path="auth" element={<Auth />} />

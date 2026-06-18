@@ -111,22 +111,22 @@ const AIAdvisor = () => {
   };
 
   return (
-    <div className="bg-[#F8FAFC] min-h-[calc(100vh-72px)] flex items-center justify-center p-4 py-12">
-      <div className="w-full max-w-4xl bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col h-[800px] border border-gray-100">
+    <div className="bg-[#F8FAFC] min-h-[calc(100vh-72px)] flex flex-col items-center justify-center md:p-4 md:py-8">
+      <div className="w-full max-w-4xl bg-white md:rounded-3xl shadow-xl overflow-hidden flex flex-col h-[calc(100vh-72px)] md:h-[calc(100vh-140px)] md:max-h-[800px] border border-gray-100">
         
         {/* Header */}
-        <div className="bg-primary p-6 flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md border border-white/20">
-              <Bot className="text-white w-7 h-7" />
+        <div className="bg-primary p-4 md:p-6 flex items-center justify-between">
+          <div className="flex items-center space-x-3 md:space-x-4">
+            <div className="w-10 h-10 md:w-12 md:h-12 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md border border-white/20">
+              <Bot className="text-white w-6 h-6 md:w-7 md:h-7" />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-white flex items-center">VisaVaani AI <Sparkles className="w-4 h-4 ml-2 text-secondary" /></h2>
-              <p className="text-sm text-gray-300">Powered by Gemini &bull; Ready to guide</p>
+              <h2 className="text-lg md:text-xl font-bold text-white flex items-center">VisaVaani AI <Sparkles className="w-3 h-3 md:w-4 md:h-4 ml-2 text-secondary" /></h2>
+              {/* Removed Powered by Gemini text per user request */}
             </div>
           </div>
-          <button onClick={handleClearChat} className="text-sm bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg transition-colors border border-white/10">
-            Clear Chat
+          <button onClick={handleClearChat} className="text-xs md:text-sm bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-lg transition-colors border border-white/10">
+            Clear
           </button>
         </div>
 

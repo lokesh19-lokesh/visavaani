@@ -44,93 +44,99 @@ const Home = () => {
           </div>
 
           {/* Right Content - Map Illustration */}
-          <div className="hidden lg:block w-1/2 relative h-[550px]">
-            {/* Real Dotted World Map Background */}
+          <div className="hidden lg:block w-1/2 relative h-[600px] mt-10">
+            {/* Perfect Dotted World Map Background (using CSS Mask to color dots white) */}
             <div 
-              className="absolute inset-0 z-0 opacity-15 bg-no-repeat bg-center" 
-              style={{ 
-                backgroundImage: "url('https://upload.wikimedia.org/wikipedia/commons/c/c4/World_map_%28dots%29.svg')",
-                backgroundSize: '110%',
-                backgroundPosition: 'center 40%'
+              className="absolute inset-0 z-0 opacity-30 bg-white" 
+              style={{
+                WebkitMaskImage: "url('/world.svg')",
+                WebkitMaskSize: "95% auto",
+                WebkitMaskPosition: "center 45%",
+                WebkitMaskRepeat: "no-repeat",
+                maskImage: "url('/world.svg')",
+                maskSize: "95% auto",
+                maskPosition: "center 45%",
+                maskRepeat: "no-repeat"
               }}
             ></div>
 
-            <div className="absolute inset-0 z-10">
-               {/* Central India Node */}
-               <div className="absolute top-[65%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
-                 <div className="w-20 h-20 rounded-full border-4 border-white overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.3)] bg-white mb-2">
+            <div className="absolute inset-0 z-10 w-full h-full max-w-[650px] mx-auto relative">
+               {/* Nodes using geographic-like coordinates relative to the background container */}
+               {/* India */}
+               <div className="absolute top-[68%] left-[60%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-20">
+                 <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-[3px] border-white overflow-hidden shadow-[0_0_25px_rgba(255,255,255,0.4)] bg-white mb-2">
                    <img src="https://flagcdn.com/w160/in.png" alt="India" className="w-full h-full object-cover" />
                  </div>
-                 <span className="text-white font-bold text-lg">India</span>
+                 <span className="text-white font-bold text-lg sm:text-xl">India</span>
                </div>
 
                {/* Canada */}
-               <div className="absolute top-[20%] left-[30%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
-                 <div className="w-12 h-12 rounded-full border-2 border-white overflow-hidden mb-1 bg-white">
+               <div className="absolute top-[28%] left-[32%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-20">
+                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white overflow-hidden mb-1.5 bg-white shadow-lg">
                    <img src="https://flagcdn.com/w80/ca.png" alt="Canada" className="w-full h-full object-cover" />
                  </div>
-                 <span className="text-white text-sm font-medium">Canada</span>
+                 <span className="text-white text-[13px] font-medium tracking-wide">Canada</span>
                </div>
                
                {/* USA */}
-               <div className="absolute top-[45%] left-[20%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
-                 <div className="w-12 h-12 rounded-full border-2 border-white overflow-hidden mb-1 bg-white">
+               <div className="absolute top-[46%] left-[26%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-20">
+                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white overflow-hidden mb-1.5 bg-white shadow-lg">
                    <img src="https://flagcdn.com/w80/us.png" alt="USA" className="w-full h-full object-cover" />
                  </div>
-                 <span className="text-white text-sm font-medium">USA</span>
+                 <span className="text-white text-[13px] font-medium tracking-wide">USA</span>
                </div>
                
                {/* UK */}
-               <div className="absolute top-[25%] left-[65%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
-                 <div className="w-12 h-12 rounded-full border-2 border-white overflow-hidden mb-1 bg-white">
+               <div className="absolute top-[30%] left-[55%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-20">
+                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white overflow-hidden mb-1.5 bg-white shadow-lg">
                    <img src="https://flagcdn.com/w80/gb.png" alt="UK" className="w-full h-full object-cover" />
                  </div>
-                 <span className="text-white text-sm font-medium">UK</span>
+                 <span className="text-white text-[13px] font-medium tracking-wide">UK</span>
                </div>
                
                {/* Germany */}
-               <div className="absolute top-[45%] left-[80%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
-                 <div className="w-12 h-12 rounded-full border-2 border-white overflow-hidden mb-1 bg-white">
+               <div className="absolute top-[44%] left-[64%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-20">
+                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white overflow-hidden mb-1.5 bg-white shadow-lg">
                    <img src="https://flagcdn.com/w80/de.png" alt="Germany" className="w-full h-full object-cover" />
                  </div>
-                 <span className="text-white text-sm font-medium">Germany</span>
+                 <span className="text-white text-[13px] font-medium tracking-wide">Germany</span>
                </div>
                
                {/* Australia */}
-               <div className="absolute top-[75%] left-[85%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
-                 <div className="w-12 h-12 rounded-full border-2 border-white overflow-hidden mb-1 bg-white">
+               <div className="absolute top-[75%] left-[82%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-20">
+                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white overflow-hidden mb-1.5 bg-white shadow-lg">
                    <img src="https://flagcdn.com/w80/au.png" alt="Australia" className="w-full h-full object-cover" />
                  </div>
-                 <span className="text-white text-sm font-medium">Australia</span>
+                 <span className="text-white text-[13px] font-medium tracking-wide">Australia</span>
                </div>
 
                {/* Connecting Dashed Curves with Arrows */}
                <svg 
-                 className="absolute inset-0 w-full h-full pointer-events-none" 
+                 className="absolute inset-0 w-full h-full pointer-events-none z-10" 
                  viewBox="0 0 100 100" 
                  preserveAspectRatio="none"
-                 style={{ filter: 'drop-shadow(0 0 3px rgba(255,255,255,0.4))' }}
+                 style={{ filter: 'drop-shadow(0px 0px 4px rgba(255,255,255,0.4))' }}
                >
                  <defs>
-                   <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                     <polygon points="0 0, 6 3, 0 6" fill="#ffffff" />
+                   <marker id="arrowhead" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+                     <polygon points="0 0, 7 3.5, 0 7" fill="#ffffff" />
                    </marker>
                  </defs>
                  
-                 {/* India (50,65) to Canada (30,20) */}
-                 <path d="M 48 60 Q 38 40 32 25" fill="none" stroke="#ffffff" strokeWidth="0.2" strokeDasharray="1 1" markerEnd="url(#arrowhead)" opacity="0.7"/>
+                 {/* India (60,68) to Canada (32,28) */}
+                 <path d="M 58 64 Q 45 42 34 32" fill="none" stroke="#ffffff" strokeWidth="0.25" strokeDasharray="1.5 1.5" markerEnd="url(#arrowhead)" opacity="0.8"/>
                  
-                 {/* India (50,65) to USA (20,45) */}
-                 <path d="M 45 62 Q 30 55 23 48" fill="none" stroke="#ffffff" strokeWidth="0.2" strokeDasharray="1 1" markerEnd="url(#arrowhead)" opacity="0.7"/>
+                 {/* India (60,68) to USA (26,46) */}
+                 <path d="M 56 66 Q 40 55 29 48" fill="none" stroke="#ffffff" strokeWidth="0.25" strokeDasharray="1.5 1.5" markerEnd="url(#arrowhead)" opacity="0.8"/>
                  
-                 {/* India (50,65) to UK (65,25) */}
-                 <path d="M 52 60 Q 58 45 63 28" fill="none" stroke="#ffffff" strokeWidth="0.2" strokeDasharray="1 1" markerEnd="url(#arrowhead)" opacity="0.7"/>
+                 {/* India (60,68) to UK (55,30) */}
+                 <path d="M 59 63 Q 56 45 55.5 34" fill="none" stroke="#ffffff" strokeWidth="0.25" strokeDasharray="1.5 1.5" markerEnd="url(#arrowhead)" opacity="0.8"/>
                  
-                 {/* India (50,65) to Germany (80,45) */}
-                 <path d="M 55 64 Q 68 55 77 48" fill="none" stroke="#ffffff" strokeWidth="0.2" strokeDasharray="1 1" markerEnd="url(#arrowhead)" opacity="0.7"/>
+                 {/* India (60,68) to Germany (64,44) */}
+                 <path d="M 61 63 Q 62 55 63 48" fill="none" stroke="#ffffff" strokeWidth="0.25" strokeDasharray="1.5 1.5" markerEnd="url(#arrowhead)" opacity="0.8"/>
                  
-                 {/* India (50,65) to Australia (85,75) */}
-                 <path d="M 55 68 Q 70 72 82 74" fill="none" stroke="#ffffff" strokeWidth="0.2" strokeDasharray="1 1" markerEnd="url(#arrowhead)" opacity="0.7"/>
+                 {/* India (60,68) to Australia (82,75) */}
+                 <path d="M 64 70 Q 75 73 78 74" fill="none" stroke="#ffffff" strokeWidth="0.25" strokeDasharray="1.5 1.5" markerEnd="url(#arrowhead)" opacity="0.8"/>
                </svg>
             </div>
           </div>

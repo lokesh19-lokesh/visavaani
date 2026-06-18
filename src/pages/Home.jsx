@@ -15,25 +15,25 @@ const Home = () => {
   return (
     <div className="bg-[#F8FAFC]">
       {/* Hero Section */}
-      <section className="relative bg-primary overflow-hidden pt-12 pb-28">
+      <section className="relative bg-primary overflow-hidden pt-6 pb-16 lg:pt-4 lg:pb-16 xl:pt-10 xl:pb-24">
         <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center justify-between">
 
           {/* Left Content */}
           <div className="w-full lg:w-1/2 pr-0 lg:pr-12 text-center lg:text-left z-20">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-8 text-sm font-medium text-white">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-4 lg:mb-3 xl:mb-6 text-sm font-medium text-white">
               Trusted by Millions of Indians
             </div>
 
-            <h1 className="text-5xl md:text-[64px] font-bold text-white tracking-tight leading-[1.1] mb-6">
+            <h1 className="text-5xl lg:text-[44px] xl:text-[64px] font-bold text-white tracking-tight leading-[1.1] mb-4 lg:mb-4 xl:mb-6">
               Immigration Clarity. <br />
               <span className="text-secondary block mt-2">For Every Indian.</span>
             </h1>
 
-            <p className="text-xl text-gray-300 mb-10 max-w-xl mx-auto lg:mx-0">
+            <p className="text-lg lg:text-[18px] xl:text-xl text-gray-300 mb-6 lg:mb-5 xl:mb-8 max-w-xl mx-auto lg:mx-0">
               AI-powered guidance on visas, PR, work permits<br className="hidden md:block" /> and study opportunities worldwide.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4 lg:scale-95 xl:scale-100 origin-left">
               <button className="w-full sm:w-auto px-8 py-3.5 bg-secondary hover:bg-secondary-hover text-white rounded-lg text-[16px] font-semibold transition-colors flex items-center justify-center">
                 Check Eligibility <ArrowRight className="ml-2 w-5 h-5" />
               </button>
@@ -44,23 +44,24 @@ const Home = () => {
           </div>
 
           {/* Right Content - Map Illustration */}
-          <div className="hidden lg:block w-1/2 relative h-[500px]">
-            {/* Perfect Dotted World Map Background (using CSS Mask to color dots white) */}
-            <div
-              className="absolute inset-0 z-0 opacity-30 bg-white"
-              style={{
-                WebkitMaskImage: "url('/world.svg')",
-                WebkitMaskSize: "100% auto",
-                WebkitMaskPosition: "center",
-                WebkitMaskRepeat: "no-repeat",
-                maskImage: "url('/world.svg')",
-                maskSize: "100% auto",
-                maskPosition: "center",
-                maskRepeat: "no-repeat"
-              }}
-            ></div>
+          <div className="hidden lg:flex w-1/2 items-center justify-center mt-6 lg:mt-0">
+            <div className="relative w-full max-w-[650px] aspect-[1.6] xl:aspect-[1.3]">
+              {/* Perfect Dotted World Map Background */}
+              <div
+                className="absolute inset-0 z-0 opacity-30 bg-white"
+                style={{
+                  WebkitMaskImage: "url('/world.svg')",
+                  WebkitMaskSize: "100% 100%",
+                  WebkitMaskPosition: "center",
+                  WebkitMaskRepeat: "no-repeat",
+                  maskImage: "url('/world.svg')",
+                  maskSize: "100% 100%",
+                  maskPosition: "center",
+                  maskRepeat: "no-repeat"
+                }}
+              ></div>
 
-            <div className="absolute inset-0 z-10 w-full h-full max-w-[700px] mx-auto relative">
+              <div className="absolute inset-0 z-10 w-full h-full">
               {/* Nodes using precise geographic coordinates on the dotted map */}
               {/* India */}
               <div className="absolute top-[55%] left-[69%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-20">
@@ -164,6 +165,7 @@ const Home = () => {
                 </g>
               </svg>
             </div>
+          </div>
           </div>
         </div>
       </section>

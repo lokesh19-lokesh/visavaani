@@ -3,14 +3,14 @@ import { Search, MapPin, Briefcase, GraduationCap, ArrowRight } from 'lucide-rea
 import { Link } from 'react-router-dom';
 
 const countries = [
-  { id: 'ca', name: 'Canada', region: 'North America', image: 'https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=800', tags: ['Express Entry', 'Study', 'High PR Chance'] },
-  { id: 'us', name: 'United States', region: 'North America', image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800', tags: ['H1B', 'F1', 'O1'] },
-  { id: 'gb', name: 'United Kingdom', region: 'Europe', image: 'https://images.unsplash.com/photo-1513635269975-5969336cb1f3?w=800', tags: ['Skilled Worker', 'Student', 'Global Talent'] },
-  { id: 'au', name: 'Australia', region: 'Oceania', image: 'https://images.unsplash.com/photo-1624138784614-87fd1b6528f8?w=800', tags: ['Subclass 189', 'Student', 'Working Holiday'] },
-  { id: 'de', name: 'Germany', region: 'Europe', image: 'https://images.unsplash.com/photo-1599946347371-68eb71b16afc?w=800', tags: ['EU Blue Card', 'Job Seeker', 'Study'] },
-  { id: 'sg', name: 'Singapore', region: 'Asia', image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800', tags: ['Employment Pass', 'S Pass', 'EntrePass'] },
-  { id: 'nz', name: 'New Zealand', region: 'Oceania', image: 'https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=800', tags: ['Skilled Migrant', 'Student', 'Work'] },
-  { id: 'ie', name: 'Ireland', region: 'Europe', image: 'https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?w=800', tags: ['Critical Skills', 'Student', 'General Work'] },
+  { id: 'ca', name: 'Canada', region: 'North America', image: '/destinations/canada.png', tags: ['Express Entry', 'Study', 'High PR Chance'] },
+  { id: 'us', name: 'United States', region: 'North America', image: '/destinations/usa.png', tags: ['H1B', 'F1', 'O1'] },
+  { id: 'gb', name: 'United Kingdom', region: 'Europe', image: '/destinations/uk.png', tags: ['Skilled Worker', 'Student', 'Global Talent'] },
+  { id: 'au', name: 'Australia', region: 'Oceania', image: '/destinations/australia.png', tags: ['Subclass 189', 'Student', 'Working Holiday'] },
+  { id: 'de', name: 'Germany', region: 'Europe', image: '/destinations/germany.png', tags: ['EU Blue Card', 'Job Seeker', 'Study'] },
+  { id: 'sg', name: 'Singapore', region: 'Asia', image: '/destinations/singapore.png', tags: ['Employment Pass', 'S Pass', 'EntrePass'] },
+  { id: 'nz', name: 'New Zealand', region: 'Oceania', image: '/destinations/nz.png', tags: ['Skilled Migrant', 'Student', 'Work'] },
+  { id: 'ie', name: 'Ireland', region: 'Europe', image: '/destinations/ireland.png', tags: ['Critical Skills', 'Student', 'General Work'] },
 ];
 
 const Countries = () => {

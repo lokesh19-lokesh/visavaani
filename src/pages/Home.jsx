@@ -3,12 +3,12 @@ import { ArrowRight, Bot, Map as MapIcon, FileCheck, UserCheck, User, Cpu, Compa
 import { Link } from 'react-router-dom';
 
 const destinations = [
-  { name: 'United States', code: 'us', image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&q=80&w=600' },
-  { name: 'Canada', code: 'ca', image: 'https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&q=80&w=600' },
-  { name: 'United Kingdom', code: 'gb', image: 'https://images.unsplash.com/photo-1513635269975-5969336cb1f3?auto=format&fit=crop&q=80&w=600' },
-  { name: 'Australia', code: 'au', image: 'https://images.unsplash.com/photo-1624138784614-87fd1b6528f8?auto=format&fit=crop&q=80&w=600' },
-  { name: 'Germany', code: 'de', image: 'https://images.unsplash.com/photo-1599946347371-68eb71b16afc?auto=format&fit=crop&q=80&w=600' },
-  { name: 'Singapore', code: 'sg', image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&q=80&w=600' },
+  { name: 'United States', code: 'us', image: '/destinations/usa.png' },
+  { name: 'Canada', code: 'ca', image: '/destinations/canada.png' },
+  { name: 'United Kingdom', code: 'gb', image: '/destinations/uk.png' },
+  { name: 'Australia', code: 'au', image: '/destinations/australia.png' },
+  { name: 'Germany', code: 'de', image: '/destinations/germany.png' },
+  { name: 'Singapore', code: 'sg', image: '/destinations/singapore.png' },
 ];
 
 const Home = () => {

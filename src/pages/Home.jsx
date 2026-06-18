@@ -110,7 +110,7 @@ const Home = () => {
                 <span className="text-white text-[11px] font-medium tracking-wide">Australia</span>
               </div>
 
-              {/* Connecting Dashed Curves with Arrows */}
+              {/* Connecting Dashed Curves with Arrows and Animated Planes */}
               <svg
                 className="absolute inset-0 w-full h-full pointer-events-none z-10"
                 viewBox="0 0 100 100"
@@ -125,18 +125,43 @@ const Home = () => {
 
                 {/* India (69,55) to Canada (25,28) */}
                 <path d="M 69 55 L 26 28.5" fill="none" stroke="#ffffff" strokeWidth="0.3" strokeDasharray="1.5 2" markerEnd="url(#arrowhead)" opacity="0.8" />
+                <g opacity="0">
+                  <path d="M 1.5 0 L -1.5 -1 L -0.5 0 L -1.5 1 Z" fill="#F97316" />
+                  <animateMotion dur="4s" repeatCount="indefinite" path="M 69 55 L 26 28.5" rotate="auto" begin="0s" />
+                  <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="4s" repeatCount="indefinite" begin="0s" />
+                </g>
 
                 {/* India (69,55) to USA (21,45) */}
                 <path d="M 69 55 L 22 45.1" fill="none" stroke="#ffffff" strokeWidth="0.3" strokeDasharray="1.5 2" markerEnd="url(#arrowhead)" opacity="0.8" />
+                <g opacity="0">
+                  <path d="M 1.5 0 L -1.5 -1 L -0.5 0 L -1.5 1 Z" fill="#F97316" />
+                  <animateMotion dur="4.5s" repeatCount="indefinite" path="M 69 55 L 22 45.1" rotate="auto" begin="1.2s" />
+                  <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="4.5s" repeatCount="indefinite" begin="1.2s" />
+                </g>
 
                 {/* India (69,55) to UK (47,28) */}
                 <path d="M 69 55 L 48 29" fill="none" stroke="#ffffff" strokeWidth="0.3" strokeDasharray="1.5 2" markerEnd="url(#arrowhead)" opacity="0.8" />
+                <g opacity="0">
+                  <path d="M 1.5 0 L -1.5 -1 L -0.5 0 L -1.5 1 Z" fill="#F97316" />
+                  <animateMotion dur="3s" repeatCount="indefinite" path="M 69 55 L 48 29" rotate="auto" begin="0.5s" />
+                  <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="3s" repeatCount="indefinite" begin="0.5s" />
+                </g>
 
                 {/* India (69,55) to Germany (52,35) */}
                 <path d="M 69 55 L 53 36" fill="none" stroke="#ffffff" strokeWidth="0.3" strokeDasharray="1.5 2" markerEnd="url(#arrowhead)" opacity="0.8" />
+                <g opacity="0">
+                  <path d="M 1.5 0 L -1.5 -1 L -0.5 0 L -1.5 1 Z" fill="#F97316" />
+                  <animateMotion dur="2.5s" repeatCount="indefinite" path="M 69 55 L 53 36" rotate="auto" begin="2s" />
+                  <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="2.5s" repeatCount="indefinite" begin="2s" />
+                </g>
 
                 {/* India (69,55) to Australia (85,78) */}
                 <path d="M 69 55 L 84 77" fill="none" stroke="#ffffff" strokeWidth="0.3" strokeDasharray="1.5 2" markerEnd="url(#arrowhead)" opacity="0.8" />
+                <g opacity="0">
+                  <path d="M 1.5 0 L -1.5 -1 L -0.5 0 L -1.5 1 Z" fill="#F97316" />
+                  <animateMotion dur="3.5s" repeatCount="indefinite" path="M 69 55 L 84 77" rotate="auto" begin="0.8s" />
+                  <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="3.5s" repeatCount="indefinite" begin="0.8s" />
+                </g>
               </svg>
             </div>
           </div>

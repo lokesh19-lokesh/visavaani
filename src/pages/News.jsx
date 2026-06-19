@@ -7,21 +7,21 @@ const newsItems = [
     date: 'June 18, 2026',
     excerpt: 'The Home Office has released new guidelines regarding the duration and eligibility criteria for international students wishing to stay and work after graduation.',
     tag: 'Policy Update',
-    image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=800'
+    image: '/news/uk_news.png'
   },
   {
     title: 'Canada Express Entry Draw: Lowest CRS Score in 6 Months',
     date: 'June 15, 2026',
     excerpt: 'IRCC invited 4,500 candidates in the latest all-program draw, with the cutoff score dropping to 481, providing new hope for many applicants.',
     tag: 'Draw Results',
-    image: 'https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&q=80&w=800'
+    image: '/news/canada_news.png'
   },
   {
     title: 'USCIS Speeds Up Premium Processing for H-1B Petitions',
     date: 'June 10, 2026',
     excerpt: 'In a bid to clear backlogs, USCIS has expanded its premium processing categories and reduced the maximum processing time to just 15 days.',
     tag: 'Processing Times',
-    image: 'https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&q=80&w=800'
+    image: '/news/us_news.png'
   }
 ];
 

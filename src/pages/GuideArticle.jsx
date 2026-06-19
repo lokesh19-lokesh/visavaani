@@ -7,6 +7,210 @@ const GuideArticle = () => {
   const { id } = useParams();
   const guide = guides.find(item => item.id === id);
 
+  const renderContent = () => {
+    switch(id) {
+      case 'us-h1b-visa':
+        return (
+          <>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Introduction</h2>
+            <p className="mb-6 leading-relaxed">
+              The H-1B is a non-immigrant visa that allows US companies to employ graduate level workers in specialty occupations that require theoretical or technical expertise in specialized fields such as in IT, finance, accounting, architecture, engineering, mathematics, science, medicine, etc.
+            </p>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Eligibility Requirements</h2>
+            <p className="mb-6 leading-relaxed">
+              To qualify for the H-1B visa, you must hold a bachelor's degree or higher (or equivalent) in a field related to the specialty occupation. You also need an employer sponsor who will file a Labor Condition Application (LCA) on your behalf.
+            </p>
+            <div className="bg-gray-50 p-6 rounded-2xl mb-8 border border-gray-100">
+               <ul className="space-y-4">
+                 <li className="flex items-start">
+                   <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
+                   <span>Job offer from a US employer in a specialty occupation.</span>
+                 </li>
+                 <li className="flex items-start">
+                   <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
+                   <span>Bachelor's degree or higher in a relevant field.</span>
+                 </li>
+                 <li className="flex items-start">
+                   <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
+                   <span>Employer must demonstrate a lack of qualified US applicants for the role.</span>
+                 </li>
+               </ul>
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Step-by-Step Application Process</h2>
+            <div className="space-y-8 mt-6">
+               <div className="flex">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl mr-6">1</div>
+                  <div>
+                     <h3 className="text-xl font-bold text-gray-900 mb-2">Employer Submits LCA</h3>
+                     <p>Your prospective employer must file a Labor Condition Application with the Department of Labor, certifying they will pay the prevailing wage.</p>
+                  </div>
+               </div>
+               <div className="flex">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl mr-6">2</div>
+                  <div>
+                     <h3 className="text-xl font-bold text-gray-900 mb-2">H-1B Lottery Registration</h3>
+                     <p>Enter the electronic registration process in March. If selected in the lottery, your employer can proceed to file the full petition.</p>
+                  </div>
+               </div>
+               <div className="flex">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl mr-6">3</div>
+                  <div>
+                     <h3 className="text-xl font-bold text-gray-900 mb-2">File Form I-129</h3>
+                     <p>The employer files Form I-129 (Petition for a Nonimmigrant Worker) with USCIS. Once approved, you can apply for the visa stamp at a US embassy.</p>
+                  </div>
+               </div>
+            </div>
+          </>
+        );
+      case 'canada-express-entry':
+        return (
+          <>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Introduction</h2>
+            <p className="mb-6 leading-relaxed">
+              Express Entry is an online system that Canada uses to manage immigration applications from skilled workers. It's designed to facilitate fast processing for candidates who fill labor market shortages.
+            </p>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Eligibility Requirements</h2>
+            <p className="mb-6 leading-relaxed">
+              You must qualify for one of three programs: the Federal Skilled Worker Program, the Federal Skilled Trades Program, or the Canadian Experience Class. Points are awarded via the Comprehensive Ranking System (CRS).
+            </p>
+            <div className="bg-gray-50 p-6 rounded-2xl mb-8 border border-gray-100">
+               <ul className="space-y-4">
+                 <li className="flex items-start">
+                   <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
+                   <span>Minimum language proficiency in English or French.</span>
+                 </li>
+                 <li className="flex items-start">
+                   <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
+                   <span>Educational Credential Assessment (ECA) for foreign degrees.</span>
+                 </li>
+                 <li className="flex items-start">
+                   <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
+                   <span>At least one year of continuous full-time skilled work experience.</span>
+                 </li>
+               </ul>
+            </div>
+          </>
+        );
+      case 'uk-tier-4-checklist':
+        return (
+          <>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Introduction</h2>
+            <p className="mb-6 leading-relaxed">
+              The UK Student Visa (formerly Tier 4) allows international students aged 16 or over to study in the UK. This comprehensive checklist covers everything you need.
+            </p>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Document Checklist</h2>
+            <div className="bg-gray-50 p-6 rounded-2xl mb-8 border border-gray-100">
+               <ul className="space-y-4">
+                 <li className="flex items-start">
+                   <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
+                   <span>Confirmation of Acceptance for Studies (CAS) reference number.</span>
+                 </li>
+                 <li className="flex items-start">
+                   <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
+                   <span>Valid passport or travel documentation.</span>
+                 </li>
+                 <li className="flex items-start">
+                   <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
+                   <span>Proof of funds (bank statements showing tuition and living costs).</span>
+                 </li>
+               </ul>
+            </div>
+          </>
+        );
+      case 'australia-skilled-migration':
+        return (
+          <>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Introduction</h2>
+            <p className="mb-6 leading-relaxed">
+              Australia's General Skilled Migration (GSM) program targets skilled workers whose professions are in demand. The most popular visas are Subclasses 189, 190, and 491.
+            </p>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Eligibility Requirements</h2>
+            <p className="mb-6 leading-relaxed">
+              You must pass a points test based on age, English language ability, skilled employment, and educational qualifications. Your occupation must be on the relevant skilled occupation list.
+            </p>
+            <div className="bg-gray-50 p-6 rounded-2xl mb-8 border border-gray-100">
+               <ul className="space-y-4">
+                 <li className="flex items-start">
+                   <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
+                   <span>Positive skills assessment for your nominated occupation.</span>
+                 </li>
+                 <li className="flex items-start">
+                   <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
+                   <span>Competent English (e.g., IELTS 6.0 in each band).</span>
+                 </li>
+                 <li className="flex items-start">
+                   <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
+                   <span>Score at least 65 points on the points test.</span>
+                 </li>
+               </ul>
+            </div>
+          </>
+        );
+      case 'schengen-visa-apply':
+        return (
+          <>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Introduction</h2>
+            <p className="mb-6 leading-relaxed">
+              A Schengen visa is a short-stay visa that allows a person to travel to any member of the Schengen Area, per stays up to 90 days for tourism or business purposes.
+            </p>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Eligibility Requirements</h2>
+            <p className="mb-6 leading-relaxed">
+              You must apply at the embassy/consulate of the country you will be spending the most days in.
+            </p>
+            <div className="bg-gray-50 p-6 rounded-2xl mb-8 border border-gray-100">
+               <ul className="space-y-4">
+                 <li className="flex items-start">
+                   <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
+                   <span>Completed visa application form and two recent passport photos.</span>
+                 </li>
+                 <li className="flex items-start">
+                   <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
+                   <span>Travel medical insurance covering €30,000 minimum.</span>
+                 </li>
+                 <li className="flex items-start">
+                   <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
+                   <span>Proof of accommodation and flight itinerary.</span>
+                 </li>
+               </ul>
+            </div>
+          </>
+        );
+      case 'dubai-golden-visa':
+        return (
+          <>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Introduction</h2>
+            <p className="mb-6 leading-relaxed">
+              The UAE Golden Visa is a long-term residency visa (5 or 10 years) that enables foreign talents to live, work or study in the UAE while enjoying exclusive benefits.
+            </p>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Eligibility Requirements</h2>
+            <p className="mb-6 leading-relaxed">
+              Investors, entrepreneurs, specialized talents, researchers, and outstanding students are eligible.
+            </p>
+            <div className="bg-gray-50 p-6 rounded-2xl mb-8 border border-gray-100">
+               <ul className="space-y-4">
+                 <li className="flex items-start">
+                   <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
+                   <span>Real estate investment of at least AED 2 million (for investors).</span>
+                 </li>
+                 <li className="flex items-start">
+                   <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
+                   <span>Approval from relevant UAE ministries (for talents/professionals).</span>
+                 </li>
+                 <li className="flex items-start">
+                   <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
+                   <span>Comprehensive health insurance coverage.</span>
+                 </li>
+               </ul>
+            </div>
+          </>
+        );
+      default:
+        return (
+          <p>Guide information not found.</p>
+        );
+    }
+  };
+
   if (!guide) {
     return (
       <div className="bg-gray-50 min-h-screen pt-32 pb-20 font-sans flex flex-col items-center justify-center text-center px-4">
@@ -51,57 +255,7 @@ const GuideArticle = () => {
             </div>
             
             <div className="prose prose-lg text-gray-700 max-w-none">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Introduction</h2>
-              <p className="mb-6 leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.
-              </p>
-              
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Eligibility Requirements</h2>
-              <p className="mb-6 leading-relaxed">
-                Before you begin your application, it's crucial to ensure you meet all the baseline eligibility criteria. Failure to do so will result in an immediate rejection and loss of application fees.
-              </p>
-              
-              <div className="bg-gray-50 p-6 rounded-2xl mb-8 border border-gray-100">
-                 <ul className="space-y-4">
-                   <li className="flex items-start">
-                     <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
-                     <span>Valid passport with at least 6 months validity remaining.</span>
-                   </li>
-                   <li className="flex items-start">
-                     <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
-                     <span>Clean criminal record and clear security background check.</span>
-                   </li>
-                   <li className="flex items-start">
-                     <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
-                     <span>Proof of sufficient financial funds to support yourself during your stay.</span>
-                   </li>
-                 </ul>
-              </div>
-              
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Step-by-Step Application Process</h2>
-              <div className="space-y-8 mt-6">
-                 <div className="flex">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl mr-6">1</div>
-                    <div>
-                       <h3 className="text-xl font-bold text-gray-900 mb-2">Gather Your Documents</h3>
-                       <p>Start by compiling all necessary documentation, including birth certificates, educational transcripts, and bank statements. Ensure all documents are translated if not in the official language.</p>
-                    </div>
-                 </div>
-                 <div className="flex">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl mr-6">2</div>
-                    <div>
-                       <h3 className="text-xl font-bold text-gray-900 mb-2">Submit Online Application</h3>
-                       <p>Create an account on the official immigration portal, fill out the extensive application forms meticulously, and upload your digitized documents.</p>
-                    </div>
-                 </div>
-                 <div className="flex">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl mr-6">3</div>
-                    <div>
-                       <h3 className="text-xl font-bold text-gray-900 mb-2">Attend Biometrics Appointment</h3>
-                       <p>Schedule and attend an appointment at your local visa application center to provide your fingerprints and a digital photograph.</p>
-                    </div>
-                 </div>
-              </div>
+              {renderContent()}
             </div>
         </div>
         

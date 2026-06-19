@@ -17,7 +17,7 @@ const AIAdvisor = () => {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [chatSession, setChatSession] = useState(null);
-  
+
   const messagesEndRef = useRef(null);
 
   // Initialize chat session once
@@ -51,7 +51,7 @@ const AIAdvisor = () => {
     if (!input.trim() || !chatSession || isLoading) return;
 
     const userMessage = input;
-    
+
     // Add user message to UI
     setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
     setInput('');
@@ -61,14 +61,14 @@ const AIAdvisor = () => {
       // Send message to Gemini
       const result = await chatSession.sendMessage(userMessage);
       const responseText = result.response.text();
-      
+
       // Add AI response to UI
       setMessages(prev => [...prev, { role: 'assistant', content: responseText }]);
     } catch (error) {
       console.error("Chat API Error:", error);
-      setMessages(prev => [...prev, { 
-        role: 'assistant', 
-        content: "I'm sorry, I'm having trouble connecting to my knowledge base right now. Please check your API key or try again later." 
+      setMessages(prev => [...prev, {
+        role: 'assistant',
+        content: "I'm sorry, I'm having trouble connecting to my knowledge base right now. try again later."
       }]);
     } finally {
       setIsLoading(false);
@@ -94,7 +94,7 @@ const AIAdvisor = () => {
     // A very simple markdown parser for bold (**) and newlines
     return text.split('\n').map((line, i) => {
       if (line.trim() === '') return <br key={i} />;
-      
+
       // Handle bold tags
       const parts = line.split(/(\*\*.*?\*\*)/g);
       return (
@@ -113,7 +113,7 @@ const AIAdvisor = () => {
   return (
     <div className="bg-[#F8FAFC] min-h-[calc(100vh-72px)] flex flex-col items-center justify-center md:p-4 md:py-8">
       <div className="w-full max-w-4xl bg-white md:rounded-3xl shadow-xl overflow-hidden flex flex-col h-[calc(100vh-72px)] md:h-[calc(100vh-140px)] md:max-h-[800px] border border-gray-100">
-        
+
         {/* Header */}
         <div className="bg-primary p-4 md:p-6 flex items-center justify-between">
           <div className="flex items-center space-x-3 md:space-x-4">
@@ -133,10 +133,10 @@ const AIAdvisor = () => {
         {/* Chat Area */}
         <div className="flex-grow p-6 overflow-y-auto space-y-6 bg-gray-50/50">
           {messages.map((msg, idx) => (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              key={idx} 
+              key={idx}
               className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div className={`flex max-w-[80%] ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
@@ -151,9 +151,9 @@ const AIAdvisor = () => {
               </div>
             </motion.div>
           ))}
-          
+
           {isLoading && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className="flex justify-start"
@@ -170,44 +170,44 @@ const AIAdvisor = () => {
               </div>
             </motion.div>
           )}
-          
+
           <div ref={messagesEndRef} />
         </div>
 
         {/* Input Area */}
         <div className="p-6 bg-white border-t border-gray-100">
-           {/* Suggested Prompts */}
-           <div className="flex flex-wrap gap-2 mb-4">
-             {['What is the CRS score for Canada?', 'How to get a UK student visa?', 'Best PR options for IT professionals'].map(prompt => (
-               <button 
-                 key={prompt}
-                 onClick={() => {
-                   setInput(prompt);
-                 }}
-                 className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1.5 rounded-full transition-colors"
-               >
-                 {prompt}
-               </button>
-             ))}
-           </div>
-           
-           <form onSubmit={handleSend} className="relative">
-             <input 
-               type="text" 
-               value={input}
-               onChange={(e) => setInput(e.target.value)}
-               placeholder="Ask anything about immigration..."
-               disabled={isLoading}
-               className="w-full pl-6 pr-16 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
-             />
-             <button 
-               type="submit"
-               disabled={!input.trim() || isLoading}
-               className="absolute right-2 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-primary hover:bg-primary-hover disabled:bg-gray-300 text-white rounded-xl flex items-center justify-center transition-colors disabled:cursor-not-allowed"
-             >
-               <Send className="w-5 h-5 ml-1" />
-             </button>
-           </form>
+          {/* Suggested Prompts */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {['What is the CRS score for Canada?', 'How to get a UK student visa?', 'Best PR options for IT professionals'].map(prompt => (
+              <button
+                key={prompt}
+                onClick={() => {
+                  setInput(prompt);
+                }}
+                className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1.5 rounded-full transition-colors"
+              >
+                {prompt}
+              </button>
+            ))}
+          </div>
+
+          <form onSubmit={handleSend} className="relative">
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Ask anything about immigration..."
+              disabled={isLoading}
+              className="w-full pl-6 pr-16 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
+            />
+            <button
+              type="submit"
+              disabled={!input.trim() || isLoading}
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-primary hover:bg-primary-hover disabled:bg-gray-300 text-white rounded-xl flex items-center justify-center transition-colors disabled:cursor-not-allowed"
+            >
+              <Send className="w-5 h-5 ml-1" />
+            </button>
+          </form>
         </div>
       </div>
     </div>

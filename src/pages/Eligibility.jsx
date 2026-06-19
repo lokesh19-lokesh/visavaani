@@ -43,7 +43,7 @@ export default function Eligibility() {
     setTimeout(() => {
       setIsCalculating(false);
       // Mock calculation logic
-      let score = 40; // Base score
+      let score = 10; // Base score
       
       // Age points (younger gets more)
       if (answers.age === '18-24') score += 20;

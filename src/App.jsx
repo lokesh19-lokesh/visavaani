@@ -5,6 +5,7 @@ import Countries from './pages/Countries';
 import CountryDetail from './pages/CountryDetail';
 import VisaTypes from './pages/VisaTypes';
 import VisaCategory from './pages/VisaCategory';
+import Expert from './pages/Expert';
 import AIAdvisor from './pages/AIAdvisor';
 import Auth from './pages/Auth';
 import PlaceholderPage from './pages/PlaceholderPage';
@@ -32,7 +33,7 @@ function App() {
         <Route path="faqs" element={<PlaceholderPage title="Frequently Asked Questions" />} />
         <Route path="blog" element={<PlaceholderPage title="VisaVaani Blog" />} />
         <Route path="contact" element={<PlaceholderPage title="Contact Us" />} />
-        <Route path="expert" element={<PlaceholderPage title="Talk to an Expert" />} />
+        <Route path="expert" element={<Expert />} />
         <Route path="feedback" element={<PlaceholderPage title="Provide Feedback" />} />
         <Route path="privacy" element={<PlaceholderPage title="Privacy Policy" />} />
         <Route path="terms" element={<PlaceholderPage title="Terms of Use" />} />

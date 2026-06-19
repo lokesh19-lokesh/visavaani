@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { User, Clock, ArrowRight } from 'lucide-react';
 
-const blogPosts = [
+export const blogPosts = [
   {
+    id: 'top-5-tech-hubs',
     title: 'Top 5 Tech Hubs in Europe for Expats in 2026',
     excerpt: 'Looking to relocate? We analyze the best cities in Europe based on tech salaries, visa ease, and quality of life.',
     author: 'Sarah Jenkins',
@@ -11,6 +13,7 @@ const blogPosts = [
     image: '/blog/tech_hubs.png'
   },
   {
+    id: 'strong-sop',
     title: 'How to Build a Strong Statement of Purpose',
     excerpt: 'Your SOP can make or break your student visa application. Here are 7 expert tips to make yours stand out.',
     author: 'David Chen',
@@ -19,6 +22,7 @@ const blogPosts = [
     image: '/blog/sop.png'
   },
   {
+    id: 'digital-nomad-visas',
     title: 'The Rise of Digital Nomad Visas: A Complete List',
     excerpt: 'Over 50 countries now offer visas specifically for remote workers. Find out which ones offer the best tax benefits.',
     author: 'Elena Rodriguez',
@@ -27,6 +31,7 @@ const blogPosts = [
     image: '/blog/digital_nomad.png'
   },
   {
+    id: 'uk-points-system',
     title: 'Understanding the UK Points-Based Immigration System',
     excerpt: 'A deep dive into how points are calculated for the Skilled Worker visa and how you can boost your score.',
     author: 'James Wilson',
@@ -35,6 +40,7 @@ const blogPosts = [
     image: '/blog/uk.png'
   },
   {
+    id: 'pet-relocation',
     title: 'Moving with Pets: International Pet Relocation Guide',
     excerpt: 'Relocating with your furry friends requires intense preparation. Learn about quarantine rules, microchips, and travel crates.',
     author: 'Sarah Jenkins',
@@ -43,6 +49,7 @@ const blogPosts = [
     image: '/blog/pets.png'
   },
   {
+    id: 'visa-rejections',
     title: 'Common Reasons for Visa Rejections (And How to Avoid Them)',
     excerpt: 'Don\'t let a simple mistake ruin your immigration dreams. We break down the most frequent reasons for visa denials.',
     author: 'David Chen',
@@ -64,8 +71,8 @@ const Blog = () => {
 
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 mt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
-            <div key={index} className="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all group flex flex-col">
+          {blogPosts.map((post) => (
+            <Link to={`/blog/${post.id}`} key={post.id} className="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all group flex flex-col">
               <div className="h-48 overflow-hidden relative">
                 <img src={post.image} alt={post.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-primary uppercase tracking-wider">
@@ -85,7 +92,7 @@ const Blog = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         

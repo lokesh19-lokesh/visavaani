@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Calendar, ArrowRight, TrendingUp } from 'lucide-react';
 
-const newsItems = [
+export const newsItems = [
   {
+    id: 'uk-post-study-2026',
     title: 'UK Announces New Post-Study Work Visa Rules for 2026',
     date: 'June 18, 2026',
     excerpt: 'The Home Office has released new guidelines regarding the duration and eligibility criteria for international students wishing to stay and work after graduation.',
@@ -10,6 +12,7 @@ const newsItems = [
     image: '/news/uk_news.png'
   },
   {
+    id: 'canada-express-entry-481',
     title: 'Canada Express Entry Draw: Lowest CRS Score in 6 Months',
     date: 'June 15, 2026',
     excerpt: 'IRCC invited 4,500 candidates in the latest all-program draw, with the cutoff score dropping to 481, providing new hope for many applicants.',
@@ -17,6 +20,7 @@ const newsItems = [
     image: '/news/canada_news.png'
   },
   {
+    id: 'uscis-h1b-premium',
     title: 'USCIS Speeds Up Premium Processing for H-1B Petitions',
     date: 'June 10, 2026',
     excerpt: 'In a bid to clear backlogs, USCIS has expanded its premium processing categories and reduced the maximum processing time to just 15 days.',
@@ -56,9 +60,9 @@ const News = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-primary transition-colors">{news.title}</h3>
                 <p className="text-gray-600 mb-6 leading-relaxed">{news.excerpt}</p>
-                <button className="inline-flex items-center text-primary font-bold hover:text-secondary transition-colors w-max">
+                <Link to={`/news/${news.id}`} className="inline-flex items-center text-primary font-bold hover:text-secondary transition-colors w-max">
                   Read Full Article <ArrowRight className="w-4 h-4 ml-2" />
-                </button>
+                </Link>
               </div>
             </div>
           ))}

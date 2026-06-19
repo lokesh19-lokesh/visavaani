@@ -12,6 +12,7 @@ import PlaceholderPage from './pages/PlaceholderPage';
 import Eligibility from './pages/Eligibility';
 import Guides from './pages/Guides';
 import News from './pages/News';
+import NewsArticle from './pages/NewsArticle';
 import Checklists from './pages/Checklists';
 import Faqs from './pages/Faqs';
 import Blog from './pages/Blog';
@@ -34,6 +35,7 @@ function App() {
         {/* Resource Routes */}
         <Route path="guides" element={<Guides />} />
         <Route path="news" element={<News />} />
+        <Route path="news/:id" element={<NewsArticle />} />
         <Route path="checklists" element={<Checklists />} />
         <Route path="faqs" element={<Faqs />} />
         <Route path="blog" element={<Blog />} />

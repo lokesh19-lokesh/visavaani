@@ -21,6 +21,8 @@ import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
 import Feedback from './pages/Feedback';
 import Contact from './pages/Contact';
+import About from './pages/About';
+import Resources from './pages/Resources';
 
 function App() {
   return (
@@ -51,10 +53,10 @@ function App() {
         <Route path="feedback" element={<Feedback />} />
         <Route path="privacy" element={<Privacy />} />
         <Route path="terms" element={<Terms />} />
-        <Route path="about" element={<PlaceholderPage title="About Us" />} />
-        <Route path="resources" element={<PlaceholderPage title="Immigration Resources" />} />
+        <Route path="about" element={<About />} />
+        <Route path="resources" element={<Resources />} />
         
-        {/* Catch-all for any other unmatched routes */}
+        {/* 404 Route */}
         <Route path="*" element={<PlaceholderPage title="Page Not Found" />} />
       </Route>
     </Routes>

@@ -10,6 +10,11 @@ import AIAdvisor from './pages/AIAdvisor';
 import Auth from './pages/Auth';
 import PlaceholderPage from './pages/PlaceholderPage';
 import Eligibility from './pages/Eligibility';
+import Guides from './pages/Guides';
+import News from './pages/News';
+import Checklists from './pages/Checklists';
+import Faqs from './pages/Faqs';
+import Blog from './pages/Blog';
 
 function App() {
   return (
@@ -26,12 +31,12 @@ function App() {
         {/* Active Routes */}
         <Route path="eligibility" element={<Eligibility />} />
 
-        {/* Placeholder Routes for Footer & Nav Links */}
-        <Route path="guides" element={<PlaceholderPage title="Visa Guides" />} />
-        <Route path="news" element={<PlaceholderPage title="News & Updates" />} />
-        <Route path="checklists" element={<PlaceholderPage title="Document Checklists" />} />
-        <Route path="faqs" element={<PlaceholderPage title="Frequently Asked Questions" />} />
-        <Route path="blog" element={<PlaceholderPage title="VisaVaani Blog" />} />
+        {/* Resource Routes */}
+        <Route path="guides" element={<Guides />} />
+        <Route path="news" element={<News />} />
+        <Route path="checklists" element={<Checklists />} />
+        <Route path="faqs" element={<Faqs />} />
+        <Route path="blog" element={<Blog />} />
         <Route path="contact" element={<PlaceholderPage title="Contact Us" />} />
         <Route path="expert" element={<Expert />} />
         <Route path="feedback" element={<PlaceholderPage title="Provide Feedback" />} />

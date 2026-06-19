@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Countries from './pages/Countries';
 import CountryDetail from './pages/CountryDetail';
 import VisaTypes from './pages/VisaTypes';
+import VisaCategory from './pages/VisaCategory';
 import AIAdvisor from './pages/AIAdvisor';
 import Auth from './pages/Auth';
 import PlaceholderPage from './pages/PlaceholderPage';
@@ -17,6 +18,7 @@ function App() {
         <Route path="countries" element={<Countries />} />
         <Route path="countries/:id" element={<CountryDetail />} />
         <Route path="visas" element={<VisaTypes />} />
+        <Route path="visas/:id" element={<VisaCategory />} />
         <Route path="advisor" element={<AIAdvisor />} />
         <Route path="auth" element={<Auth />} />
         

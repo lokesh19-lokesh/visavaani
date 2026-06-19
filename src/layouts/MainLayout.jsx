@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import { Facebook, Instagram, YouTube as Youtube, LinkedIn as Linkedin, Twitter } from '@mui/icons-material';
+import { Facebook, Instagram, YouTube as Youtube, LinkedIn as Linkedin, X as XIcon } from '@mui/icons-material';
 import { Menu, X } from 'lucide-react';
 
 const MainLayout = () => {
@@ -143,12 +143,23 @@ const MainLayout = () => {
              {/* Stay Connected */}
              <div className="flex flex-col sm:flex-row items-center gap-4 order-1 lg:order-2">
                 <span className="text-[14px] text-gray-300 font-medium sm:mr-2">Stay Connected</span>
-                <div className="flex space-x-4">
-                  <a href="#" className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white hover:opacity-90 transition-opacity"><Facebook size={16} fill="currentColor" strokeWidth={0}/></a>
-                  <a href="#" className="w-8 h-8 rounded-full bg-pink-600 flex items-center justify-center text-white hover:opacity-90 transition-opacity"><Instagram size={16} /></a>
-                  <a href="#" className="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center text-white hover:opacity-90 transition-opacity"><Youtube size={16} /></a>
-                  <a href="#" className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white hover:opacity-90 transition-opacity"><Linkedin size={16} /></a>
-                  <a href="#" className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white hover:opacity-90 transition-opacity border border-gray-700"><Twitter size={16} /></a>
+                <div className="flex space-x-3">
+                  {[
+                    { Icon: Facebook, href: '#', label: 'Facebook' },
+                    { Icon: Instagram, href: '#', label: 'Instagram' },
+                    { Icon: Youtube, href: '#', label: 'YouTube' },
+                    { Icon: Linkedin, href: '#', label: 'LinkedIn' },
+                    { Icon: XIcon, href: '#', label: 'X' },
+                  ].map((social, index) => (
+                    <a 
+                      key={index} 
+                      href={social.href} 
+                      aria-label={social.label}
+                      className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_4px_12px_rgba(255,255,255,0.1)]"
+                    >
+                      <social.Icon size={16} strokeWidth={2} />
+                    </a>
+                  ))}
                 </div>
              </div>
 

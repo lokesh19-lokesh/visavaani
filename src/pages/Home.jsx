@@ -9,6 +9,7 @@ const destinations = [
   { name: 'United Kingdom', code: 'gb', image: '/destinations/uk.png' },
   { name: 'Australia', code: 'au', image: '/destinations/australia.png' },
   { name: 'Germany', code: 'de', image: '/destinations/germany.png' },
+  { name: 'Dubai', code: 'ae', image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80' },
   { name: 'Singapore', code: 'sg', image: '/destinations/singapore.png' },
 ];
 
@@ -145,6 +146,14 @@ const Home = () => {
                 <span className="text-white text-[11px] font-medium tracking-wide">Australia</span>
               </div>
 
+              {/* Dubai */}
+              <div className="absolute top-[48%] left-[61%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-20">
+                <div className="w-8 h-8 sm:w-[32px] sm:h-[32px] rounded-full border-2 border-white overflow-hidden mb-1 bg-white shadow-md">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_United_Arab_Emirates.svg" alt="Dubai" className="w-full h-full object-cover" />
+                </div>
+                <span className="text-white text-[11px] font-medium tracking-wide">Dubai</span>
+              </div>
+
               {/* Connecting Dashed Curves with Arrows and Animated Planes */}
               <svg
                 className="absolute inset-0 w-full h-full pointer-events-none z-10"
@@ -196,6 +205,14 @@ const Home = () => {
                   <path d="M 1.5,0 L 0.5,-0.25 L 0,-1.25 L -0.25,-1.25 L 0,-0.25 L -0.75,-0.25 L -1.25,-0.75 L -1.5,-0.75 L -1,-0.25 L -1,0.25 L -1.5,0.75 L -1.25,0.75 L -0.75,0.25 L 0,0.25 L -0.25,1.25 L 0,1.25 L 0.5,0.25 Z" fill="#F97316" />
                   <animateMotion dur="3.5s" repeatCount="indefinite" path="M 69 55 L 84 77" rotate="auto" begin="0.8s" />
                   <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="3.5s" repeatCount="indefinite" begin="0.8s" />
+                </g>
+
+                {/* India (69,55) to Dubai (61,48) */}
+                <path d="M 69 55 L 61.5 48.5" fill="none" stroke="#ffffff" strokeWidth="0.3" strokeDasharray="1.5 2" markerEnd="url(#arrowhead)" opacity="0.8" />
+                <g opacity="0">
+                  <path d="M 1.5,0 L 0.5,-0.25 L 0,-1.25 L -0.25,-1.25 L 0,-0.25 L -0.75,-0.25 L -1.25,-0.75 L -1.5,-0.75 L -1,-0.25 L -1,0.25 L -1.5,0.75 L -1.25,0.75 L -0.75,0.25 L 0,0.25 L -0.25,1.25 L 0,1.25 L 0.5,0.25 Z" fill="#F97316" />
+                  <animateMotion dur="1.5s" repeatCount="indefinite" path="M 69 55 L 61.5 48.5" rotate="auto" begin="1.5s" />
+                  <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="1.5s" repeatCount="indefinite" begin="1.5s" />
                 </g>
               </svg>
             </div>

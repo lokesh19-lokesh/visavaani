@@ -2,8 +2,9 @@ import React from 'react';
 import { BookOpen, ArrowRight, Download, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const guides = [
+export const guides = [
   {
+    id: 'us-h1b-visa',
     title: 'The Ultimate Guide to US H-1B Visa',
     description: 'Everything you need to know about the lottery, requirements, and application process for the US H-1B work visa.',
     category: 'Work Visas',
@@ -12,6 +13,7 @@ const guides = [
     color: 'bg-blue-50 text-blue-700',
   },
   {
+    id: 'canada-express-entry',
     title: 'Canada Express Entry: Step-by-Step',
     description: 'Master the CRS points system and learn how to secure your Canadian Permanent Residency efficiently.',
     category: 'Permanent Residency',
@@ -20,6 +22,7 @@ const guides = [
     color: 'bg-red-50 text-red-700',
   },
   {
+    id: 'uk-tier-4-checklist',
     title: 'UK Student Visa (Tier 4) Checklist',
     description: 'A comprehensive walkthrough of the financial, academic, and language requirements for UK study.',
     category: 'Student Visas',
@@ -28,6 +31,7 @@ const guides = [
     color: 'bg-indigo-50 text-indigo-700',
   },
   {
+    id: 'australia-skilled-migration',
     title: 'Australia General Skilled Migration',
     description: 'Understanding subclasses 189, 190, and 491. Discover your eligibility for Australian PR.',
     category: 'Skilled Migration',
@@ -36,6 +40,7 @@ const guides = [
     color: 'bg-green-50 text-green-700',
   },
   {
+    id: 'schengen-visa-apply',
     title: 'Schengen Visa: How to Apply',
     description: 'Tips for a successful tourist visa application to travel across 27 European countries hassle-free.',
     category: 'Tourist Visas',
@@ -44,6 +49,7 @@ const guides = [
     color: 'bg-yellow-50 text-yellow-700',
   },
   {
+    id: 'dubai-golden-visa',
     title: 'Dubai Golden Visa Requirements',
     description: 'Learn about the investment thresholds, specialist categories, and benefits of UAE long-term residency.',
     category: 'Investor Visas',
@@ -85,9 +91,9 @@ const Guides = () => {
                 <span className="text-sm text-gray-500 font-medium flex items-center">
                   <BookOpen className="w-4 h-4 mr-2" /> {guide.readTime}
                 </span>
-                <button className="w-10 h-10 rounded-full bg-gray-50 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+                <Link to={`/guides/${guide.id}`} className="w-10 h-10 rounded-full bg-gray-50 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
                   <ArrowRight className="w-5 h-5" />
-                </button>
+                </Link>
               </div>
             </div>
           ))}

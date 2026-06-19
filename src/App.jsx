@@ -11,6 +11,7 @@ import Auth from './pages/Auth';
 import PlaceholderPage from './pages/PlaceholderPage';
 import Eligibility from './pages/Eligibility';
 import Guides from './pages/Guides';
+import GuideArticle from './pages/GuideArticle';
 import News from './pages/News';
 import NewsArticle from './pages/NewsArticle';
 import Checklists from './pages/Checklists';
@@ -34,6 +35,7 @@ function App() {
 
         {/* Resource Routes */}
         <Route path="guides" element={<Guides />} />
+        <Route path="guides/:id" element={<GuideArticle />} />
         <Route path="news" element={<News />} />
         <Route path="news/:id" element={<NewsArticle />} />
         <Route path="checklists" element={<Checklists />} />

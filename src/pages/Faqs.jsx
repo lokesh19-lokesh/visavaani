@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { HelpCircle, ChevronDown, ChevronUp, MessageCircle } from 'lucide-react';
+import SEO from '../components/SEO';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const faqs = [
@@ -30,6 +31,11 @@ const Faqs = () => {
 
   return (
     <div className="bg-gray-50 min-h-screen pb-20 font-sans">
+      <SEO 
+        title="Frequently Asked Questions (FAQs)"
+        description="Find answers to common immigration and visa questions."
+        url="/faqs"
+      />
       <div className="bg-primary pt-20 pb-24 text-white text-center px-4">
          <h1 className="text-4xl md:text-5xl font-extrabold mb-6">Frequently Asked Questions</h1>
          <p className="text-xl text-gray-300 max-w-2xl mx-auto">

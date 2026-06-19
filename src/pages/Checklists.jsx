@@ -1,5 +1,6 @@
-import React from 'react';
-import { FileText, Download, CheckSquare, Search } from 'lucide-react';
+import React, { useState } from 'react';
+import { FileText, Download, CheckSquare, Search, ChevronDown, ChevronUp } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const checklists = [
   { title: 'Schengen Tourist Visa Full Checklist', category: 'Tourist', size: '2.4 MB PDF', downloads: '12k+' },
@@ -11,8 +12,15 @@ const checklists = [
 ];
 
 const Checklists = () => {
+  const [openCategory, setOpenCategory] = useState(0);
+
   return (
     <div className="bg-gray-50 min-h-screen pb-20 font-sans">
+      <SEO 
+        title="Immigration Document Checklists"
+        description="Download comprehensive document checklists for your visa application process."
+        url="/checklists"
+      />
       <div className="bg-primary pt-20 pb-24 text-white text-center px-4 relative overflow-hidden">
          <div className="relative z-10">
             <h1 className="text-4xl md:text-5xl font-extrabold mb-6">Document Checklists</h1>

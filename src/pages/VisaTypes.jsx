@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Briefcase, GraduationCap, Plane, UserCheck, Heart, Home, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const categories = [
   { icon: Briefcase, title: 'Work Visas', desc: 'Pathways for skilled professionals, intra-company transfers, and temporary workers.', color: 'text-blue-600', bg: 'bg-blue-50' },
@@ -14,6 +15,11 @@ const categories = [
 const VisaTypes = () => {
   return (
     <div className="bg-gray-50 min-h-screen pb-20">
+      <SEO 
+        title="Visa Categories & Types"
+        description="Explore different visa types including Skilled Worker, Student, Family, and Business visas for top immigration destinations."
+        url="/visas"
+      />
       {/* Header */}
       <div className="bg-primary pt-16 pb-20 text-white text-center px-4">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">Visa Types & Pathways</h1>

@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, ChevronRight, ChevronLeft, ArrowRight, Award, GraduationCap, Briefcase, Languages, Globe2, Calculator, Sparkles } from 'lucide-react';
+import { CheckCircle2, ChevronRight, ChevronLeft, ArrowRight, Award, GraduationCap, Briefcase, Languages, Globe2, Calculator, Sparkles, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const STEPS = [
   { id: 'destination', title: 'Destination', icon: Globe2 },
-  { id: 'age', title: 'Age Profile', icon: User }, // Need to import User, or just use UserCircle or another imported one. Let's use Award instead for now, or just add it to imports.
+  { id: 'age', title: 'Age Profile', icon: User },
   { id: 'education', title: 'Education', icon: GraduationCap },
   { id: 'experience', title: 'Work Exp.', icon: Briefcase },
   { id: 'english', title: 'Language', icon: Languages },
 ];
-
-import { User } from 'lucide-react';
 
 export default function Eligibility() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -263,6 +262,11 @@ export default function Eligibility() {
 
   return (
     <div className="bg-[#F8FAFC] min-h-[calc(100vh-72px)] py-8 md:py-16 px-4">
+      <SEO 
+        title="Check Your Eligibility"
+        description="Calculate your CRS score and check your eligibility for immigration to Canada, UK, and Australia."
+        url="/eligibility"
+      />
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10">

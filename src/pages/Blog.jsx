@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { User, Clock, ArrowRight } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export const blogPosts = [
   {
@@ -62,6 +63,11 @@ export const blogPosts = [
 const Blog = () => {
   return (
     <div className="bg-gray-50 min-h-screen pb-20 font-sans">
+      <SEO 
+        title="Immigration Blog"
+        description="Insights, stories, and expert advice on global mobility and immigration."
+        url="/blog"
+      />
       <div className="bg-primary pt-20 pb-20 text-white text-center px-4">
          <h1 className="text-4xl md:text-5xl font-extrabold mb-6">VisaVaani Blog</h1>
          <p className="text-xl text-gray-300 max-w-2xl mx-auto">

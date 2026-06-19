@@ -1,6 +1,7 @@
 import React from 'react';
 import { BookOpen, ArrowRight, Download, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 export const guides = [
   {
@@ -61,7 +62,12 @@ export const guides = [
 
 const Guides = () => {
   return (
-    <div className="bg-gray-50 min-h-screen pb-20 font-sans">
+    <div className="bg-[#F8FAFC] min-h-screen pb-20 font-sans">
+      <SEO 
+        title="Immigration Guides & Pathways"
+        description="Comprehensive guides on how to navigate the complex immigration processes for various countries."
+        url="/guides"
+      />
       <div className="bg-primary pt-20 pb-24 text-white text-center px-4 relative overflow-hidden">
          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/connected.png')] opacity-10"></div>
          <div className="relative z-10">

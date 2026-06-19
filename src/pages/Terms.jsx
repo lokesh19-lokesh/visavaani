@@ -1,9 +1,15 @@
 import React from 'react';
-import { Scale, FileText, AlertCircle, ShieldCheck } from 'lucide-react';
+import { Scale, FileText, AlertCircle, ShieldCheck, Database, Megaphone } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const Terms = () => {
   return (
     <div className="bg-gray-50 min-h-screen pb-20 font-sans">
+      <SEO 
+        title="Terms of Use"
+        description="Read the terms of use and conditions for using VisaVaani services and platform."
+        url="/terms"
+      />
       <div className="bg-primary pt-24 pb-32 text-white text-center px-4 relative overflow-hidden">
          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/connected.png')] opacity-5"></div>
          <div className="relative z-10 max-w-4xl mx-auto">
@@ -57,10 +63,30 @@ const Terms = () => {
                 </div>
               </div>
 
+              <div className="flex items-start mb-8">
+                <Database className="w-6 h-6 text-primary mt-1 mr-4 flex-shrink-0" />
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2 mt-0">4. Data Collection and Tracking Consent</h2>
+                  <p className="leading-relaxed">
+                    By using VisaVaani, you expressly consent to our collection, use, and sharing of your data, including the use of cookies and tracking technologies by us and third-party partners (such as Google), as outlined in our <a href="/privacy" className="text-primary hover:underline font-medium">Privacy Policy</a>. This includes data used for remarketing and targeted advertising.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start mb-8">
+                <Megaphone className="w-6 h-6 text-primary mt-1 mr-4 flex-shrink-0" />
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2 mt-0">5. Third-Party Advertisements and Links</h2>
+                  <p className="leading-relaxed">
+                    The Platform may contain links to third-party websites and display advertisements provided by third parties (including Google Ads). We are not responsible for the content, privacy policies, or practices of any third-party websites or advertisers. Your interactions with advertisers found on or through our Platform are solely between you and the advertiser.
+                  </p>
+                </div>
+              </div>
+
               <div className="flex items-start">
                 <FileText className="w-6 h-6 text-primary mt-1 mr-4 flex-shrink-0" />
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2 mt-0">4. Modifications to Service</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2 mt-0">6. Modifications to Service</h2>
                   <p className="leading-relaxed">
                     VisaVaani reserves the right at any time and from time to time to modify or discontinue, temporarily or permanently, the Service (or any part thereof) with or without notice. We shall not be liable to you or to any third party for any modification, suspension or discontinuance of the Service.
                   </p>

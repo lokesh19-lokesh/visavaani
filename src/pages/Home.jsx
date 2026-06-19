@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Bot, Map as MapIcon, FileCheck, UserCheck, User, Cpu, Compass, FileText, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const destinations = [
   { name: 'United States', code: 'us', image: '/destinations/usa.png' },
@@ -14,6 +15,12 @@ const destinations = [
 const Home = () => {
   return (
     <div className="bg-[#F8FAFC]">
+      <SEO 
+        title="India's Trusted Immigration Guidance Platform"
+        description="VisaVaani helps Indians navigate global visas, permanent residency, and study permits with expert guidance and AI assistance."
+        url="/"
+      />
+
       {/* Hero Section */}
       <section className="relative bg-primary overflow-hidden pt-6 pb-16 lg:pt-4 lg:pb-16 xl:pt-10 xl:pb-24">
         <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center justify-between">

@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Bot, Send, User, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import SEO from '../components/SEO';
 
 // Initialize Gemini
 const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY || '');
@@ -112,6 +113,11 @@ const AIAdvisor = () => {
 
   return (
     <div className="bg-[#F8FAFC] min-h-[calc(100vh-72px)] flex flex-col items-center justify-center md:p-4 md:py-8">
+      <SEO 
+        title="AI Immigration Advisor"
+        description="Get instant answers to your visa and immigration questions using VisaVaani's advanced AI Advisor."
+        url="/advisor"
+      />
       <div className="w-full max-w-4xl bg-white md:rounded-3xl shadow-xl overflow-hidden flex flex-col h-[calc(100vh-72px)] md:h-[calc(100vh-140px)] md:max-h-[800px] border border-gray-100">
 
         {/* Header */}

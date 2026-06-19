@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, ArrowRight, TrendingUp } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export const newsItems = [
   {
@@ -32,6 +33,11 @@ export const newsItems = [
 const News = () => {
   return (
     <div className="bg-gray-50 min-h-screen pb-20 font-sans">
+      <SEO 
+        title="Immigration News & Updates"
+        description="Stay updated with the latest immigration news, visa policy changes, and international travel updates."
+        url="/news"
+      />
       <div className="bg-primary pt-20 pb-24 text-white text-center px-4 relative overflow-hidden">
          <div className="absolute top-0 right-0 opacity-10 transform translate-x-1/4 -translate-y-1/4">
             <TrendingUp className="w-96 h-96" />

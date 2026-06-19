@@ -1,10 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, MessageSquare, Video, CheckCircle2, Star, ShieldCheck, Award } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const Expert = () => {
   return (
     <div className="bg-gray-50 min-h-screen font-sans">
+      <SEO 
+        title="Consult Immigration Experts"
+        description="Book a consultation with certified immigration lawyers and experts for personalized advice."
+        url="/expert"
+      />
       {/* Hero Section */}
       <div className="bg-primary pt-20 pb-24 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>

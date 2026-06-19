@@ -1,9 +1,15 @@
 import React from 'react';
 import { Phone, Mail, MapPin, Send, MessageCircle } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const Contact = () => {
   return (
     <div className="bg-gray-50 min-h-screen pb-20 font-sans">
+      <SEO 
+        title="Contact Us"
+        description="Get in touch with VisaVaani for immigration and visa inquiries."
+        url="/contact"
+      />
       <div className="bg-primary pt-24 pb-32 text-white text-center px-4 relative overflow-hidden">
          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/connected.png')] opacity-5"></div>
          <div className="relative z-10 max-w-4xl mx-auto">

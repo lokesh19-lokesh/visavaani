@@ -1,11 +1,18 @@
 import { motion } from 'framer-motion';
 import { Search, MapPin, Briefcase, GraduationCap, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import { countriesData as countries } from '../data/countriesData';
 
 const Countries = () => {
   return (
     <div className="bg-gray-50 min-h-screen pb-20">
+      <SEO 
+        title="Immigration Destinations"
+        description="Explore top countries for immigration, PR, and study abroad including USA, Canada, UK, Australia, and Germany."
+        url="/countries"
+      />
+      
       {/* Header */}
       <div className="bg-primary pt-16 pb-24 text-white text-center px-4">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">Explore Immigration Destinations</h1>

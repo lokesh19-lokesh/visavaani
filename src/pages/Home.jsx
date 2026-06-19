@@ -13,12 +13,39 @@ const destinations = [
 ];
 
 const Home = () => {
+  const homeSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "VisaVaani",
+        "url": "https://visavaani.com",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://visavaani.com/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Organization",
+        "name": "VisaVaani",
+        "url": "https://visavaani.com",
+        "logo": "https://visavaani.com/logo.png",
+        "sameAs": [
+          "https://www.linkedin.com/company/visavaani",
+          "https://twitter.com/visavaani"
+        ]
+      }
+    ]
+  };
+
   return (
-    <div className="bg-[#F8FAFC]">
+    <div className="font-sans text-gray-900 bg-[#F8FAFC]">
       <SEO 
         title="India's Trusted Immigration Guidance Platform"
         description="VisaVaani helps Indians navigate global visas, permanent residency, and study permits with expert guidance and AI assistance."
         url="/"
+        schema={homeSchema}
       />
 
       {/* Hero Section */}

@@ -29,12 +29,26 @@ const faqs = [
 const Faqs = () => {
   const [openIndex, setOpenIndex] = useState(0);
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <div className="bg-gray-50 min-h-screen pb-20 font-sans">
       <SEO 
         title="Frequently Asked Questions (FAQs)"
         description="Find answers to common immigration and visa questions."
         url="/faqs"
+        schema={faqSchema}
       />
       <div className="bg-primary pt-20 pb-24 text-white text-center px-4">
          <h1 className="text-4xl md:text-5xl font-extrabold mb-6">Frequently Asked Questions</h1>

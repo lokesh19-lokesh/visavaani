@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Calendar, ArrowLeft, TrendingUp } from 'lucide-react';
 import { newsItems } from './News';
+import SEO from '../components/SEO';
 
 const NewsArticle = () => {
   const { id } = useParams();
@@ -82,8 +83,32 @@ const NewsArticle = () => {
     );
   }
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": article.title,
+    "image": [
+      `https://visavaani.com${article.image}`
+    ],
+    "datePublished": article.date,
+    "publisher": {
+      "@type": "Organization",
+      "name": "VisaVaani",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://visavaani.com/logo.png"
+      }
+    }
+  };
+
   return (
     <div className="bg-gray-50 min-h-screen pb-20 font-sans">
+      <SEO 
+        title={article.title}
+        description={article.excerpt}
+        url={`/news/${article.id}`}
+        schema={articleSchema}
+      />
       <div className="bg-primary pt-24 pb-32 text-white text-center px-4 relative overflow-hidden">
          <div className="absolute top-0 left-0 opacity-5 transform -translate-x-1/4 -translate-y-1/4">
             <TrendingUp className="w-96 h-96" />

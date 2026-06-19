@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-const SEO = ({ title, description, keywords, url }) => {
+const SEO = ({ title, description, keywords, url, schema }) => {
   const siteName = "VisaVaani";
   const defaultDescription = "India's Trusted Immigration Guidance Platform for global visas, permanent residency, and study permits.";
   const defaultKeywords = "immigration, visa, PR, study abroad, work visa, VisaVaani, immigration consultant India";
@@ -33,6 +33,13 @@ const SEO = ({ title, description, keywords, url }) => {
       <meta name="twitter:url" content={pageUrl} />
       <meta name="twitter:title" content={seoTitle} />
       <meta name="twitter:description" content={seoDescription} />
+      
+      {/* JSON-LD Schema for AEO */}
+      {schema && (
+        <script type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      )}
     </Helmet>
   );
 };

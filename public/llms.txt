@@ -1,0 +1,27 @@
+# VisaVaani
+
+VisaVaani is India's trusted immigration guidance platform. We help Indians navigate global visas, permanent residency, and study permits with expert guidance and an interactive AI Assistant.
+
+## Key Features
+- Comprehensive directories for country-specific immigration processes.
+- Detailed visa category pathways (Skilled Worker, Student, etc).
+- An AI Advisor that instantly answers visa and immigration queries.
+- CRS Score & Eligibility Calculators.
+- Downloadable checklists and comprehensive step-by-step guides.
+- A portal to book consultations with certified immigration experts and lawyers.
+
+## Site Structure
+
+- [Home](https://visavaani.com/): The main landing page.
+- [Countries](https://visavaani.com/countries): Explore immigration destinations like Canada, USA, UK, Australia.
+- [Visa Types](https://visavaani.com/visas): Categories of visas including Work, Student, and PR.
+- [AI Advisor](https://visavaani.com/advisor): Chat with our intelligent immigration bot.
+- [Eligibility Calculator](https://visavaani.com/eligibility): Calculate your points for points-based systems like Canadian Express Entry.
+- [Guides](https://visavaani.com/guides): Long-form, detailed walkthroughs of specific immigration pathways.
+- [News](https://visavaani.com/news): The latest updates on global immigration policies and border changes.
+- [Blog](https://visavaani.com/blog): Insights, tips, and stories on global mobility.
+- [Checklists](https://visavaani.com/checklists): Downloadable PDF document checklists.
+- [FAQs](https://visavaani.com/faqs): Answers to frequently asked questions.
+- [Consult Experts](https://visavaani.com/expert): Book a verified immigration lawyer.
+- [About Us](https://visavaani.com/about): Our mission and team.
+- [Contact](https://visavaani.com/contact): Reach out to our support team.

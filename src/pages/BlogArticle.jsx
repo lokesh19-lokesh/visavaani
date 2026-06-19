@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Calendar, ArrowLeft, User, Share2 } from 'lucide-react';
 import { blogPosts } from './Blog';
 import PlaceholderPage from './PlaceholderPage';
+import SEO from '../components/SEO';
 
 const BlogArticle = () => {
   const { id } = useParams();
@@ -154,8 +155,36 @@ const BlogArticle = () => {
     }
   };
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "image": [
+      `https://visavaani.com${post.image}`
+    ],
+    "datePublished": post.date,
+    "author": [{
+        "@type": "Person",
+        "name": post.author
+    }],
+    "publisher": {
+      "@type": "Organization",
+      "name": "VisaVaani",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://visavaani.com/logo.png"
+      }
+    }
+  };
+
   return (
     <div className="bg-gray-50 min-h-screen pb-20 font-sans">
+      <SEO 
+        title={post.title}
+        description={post.excerpt}
+        url={`/blog/${post.id}`}
+        schema={articleSchema}
+      />
       {/* Hero Section */}
       <div className="bg-primary pt-24 pb-32 text-white relative px-4">
         <div className="max-w-[800px] mx-auto relative z-10">

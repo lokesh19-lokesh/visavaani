@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { BookOpen, ArrowLeft, Star, Download, CheckCircle } from 'lucide-react';
 import { guides } from './Guides';
+import SEO from '../components/SEO';
 
 const GuideArticle = () => {
   const { id } = useParams();
@@ -223,8 +224,29 @@ const GuideArticle = () => {
     );
   }
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": guide.title,
+    "description": guide.description,
+    "publisher": {
+      "@type": "Organization",
+      "name": "VisaVaani",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://visavaani.com/logo.png"
+      }
+    }
+  };
+
   return (
     <div className="bg-gray-50 min-h-screen pb-20 font-sans">
+      <SEO 
+        title={guide.title}
+        description={guide.description}
+        url={`/guides/${guide.id}`}
+        schema={articleSchema}
+      />
       <div className="bg-primary pt-24 pb-32 text-white text-center px-4 relative overflow-hidden">
          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/connected.png')] opacity-10"></div>
          <div className="relative z-10 max-w-4xl mx-auto">

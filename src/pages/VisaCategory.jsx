@@ -99,6 +99,100 @@ const visaData = {
       'Intention and ability to create local jobs'
     ],
     types: ['Golden Visa', 'Startup Visa', 'Entrepreneur Visa', 'Innovator Visa']
+  },
+  'digital-nomad-visas': {
+    title: 'Digital Nomad Visas',
+    icon: Briefcase,
+    color: 'text-teal-600',
+    bg: 'bg-teal-50',
+    gradient: 'from-teal-500 to-emerald-400',
+    description: 'For remote workers and freelancers looking to live abroad while keeping their current job.',
+    requirements: [
+      'Proof of remote employment or freelance contracts outside destination country',
+      'Minimum monthly income threshold',
+      'Comprehensive health insurance coverage',
+      'Clean criminal record',
+      'Accommodation arrangements'
+    ],
+    types: ['Remote Worker Visa', 'Freelance Visa', 'Digital Nomad Residence Permit']
+  },
+  'working-holiday': {
+    title: 'Working Holiday',
+    icon: Compass,
+    color: 'text-indigo-600',
+    bg: 'bg-indigo-50',
+    gradient: 'from-indigo-500 to-blue-500',
+    description: 'Allows young adults to undertake extended holidays and work to fund their travels.',
+    requirements: [
+      'Age limit (typically 18-30 or 18-35)',
+      'Citizenship from an eligible participating country',
+      'Sufficient funds to support initial stay and return flight',
+      'Health and character requirements',
+      'Cannot be accompanied by dependent children'
+    ],
+    types: ['Working Holiday Visa', 'Youth Mobility Scheme', 'Work and Holiday Visa']
+  },
+  'transit-visas': {
+    title: 'Transit Visas',
+    icon: Plane,
+    color: 'text-gray-600',
+    bg: 'bg-gray-50',
+    gradient: 'from-gray-500 to-slate-400',
+    description: 'Short-duration visas required for passing through a country en route to a final destination.',
+    requirements: [
+      'Confirmed onward flight ticket',
+      'Valid visa for final destination',
+      'Must stay within the designated transit area (for some)',
+      'Valid passport',
+      'Short duration stay (usually 24 to 72 hours)'
+    ],
+    types: ['Airport Transit Visa', 'Direct Airside Transit Visa', 'Stopover Visa']
+  },
+  'medical-visas': {
+    title: 'Medical Visas',
+    icon: Heart,
+    color: 'text-rose-600',
+    bg: 'bg-rose-50',
+    gradient: 'from-rose-500 to-pink-500',
+    description: 'For patients needing to travel internationally to receive specialized medical treatment.',
+    requirements: [
+      'Letter from a recognized hospital or doctor in the destination country',
+      'Proof of medical condition requiring treatment abroad',
+      'Proof of sufficient funds to cover medical and living expenses',
+      'Pre-paid medical fees receipt',
+      'Accompanying attendant documentation (if applicable)'
+    ],
+    types: ['Medical Treatment Visa', 'Medical Attendant Visa']
+  },
+  'diplomatic-visas': {
+    title: 'Diplomatic Visas',
+    icon: UserCheck,
+    color: 'text-slate-600',
+    bg: 'bg-slate-50',
+    gradient: 'from-slate-600 to-gray-500',
+    description: 'Issued to foreign government officials, diplomats, and representatives of international organizations.',
+    requirements: [
+      'Diplomatic or Official Passport',
+      'Note Verbale or official letter from government/organization',
+      'Traveling for official duties or representing a government',
+      'Recognized by the host country\'s Ministry of Foreign Affairs'
+    ],
+    types: ['A-1 / A-2 Visa (US)', 'Diplomatic Visa', 'Official Visa', 'UN/International Organization Visa']
+  },
+  'refugee-asylum': {
+    title: 'Refugee/Asylum',
+    icon: Home,
+    color: 'text-amber-600',
+    bg: 'bg-amber-50',
+    gradient: 'from-amber-500 to-yellow-500',
+    description: 'Protection visas for individuals fleeing persecution or danger in their home countries.',
+    requirements: [
+      'Well-founded fear of persecution based on race, religion, nationality, social group, or political opinion',
+      'Cannot or will not return to home country due to this fear',
+      'Physical presence in the destination country or port of entry (for asylum)',
+      'Registered with UNHCR (often required for refugee resettlement)'
+    ],
+    types: ['Asylum Seeker Visa', 'Refugee Resettlement Visa', 'Humanitarian Protection Visa', 'Temporary Protected Status']
   }
 };
 

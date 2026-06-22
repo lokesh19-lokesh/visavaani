@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Briefcase, GraduationCap, Plane, UserCheck, Heart, Home, ArrowRight } from 'lucide-react';
+import { Briefcase, GraduationCap, Plane, UserCheck, Heart, Home, ArrowRight, Laptop, Clock, Compass, Stethoscope, Landmark, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 
@@ -10,6 +10,12 @@ const categories = [
   { icon: Heart, title: 'Family/Dependent', desc: 'Reunite with family members who are permanent residents or citizens.', color: 'text-pink-600', bg: 'bg-pink-50' },
   { icon: Home, title: 'Permanent Residency', desc: 'Long-term settlement options, points-based systems, and direct PR pathways.', color: 'text-purple-600', bg: 'bg-purple-50' },
   { icon: UserCheck, title: 'Investor/Startup', desc: 'Visas for entrepreneurs, investors, and business owners looking to expand globally.', color: 'text-orange-600', bg: 'bg-orange-50' },
+  { icon: Laptop, title: 'Digital Nomad Visas', desc: 'For remote workers and freelancers looking to live abroad while keeping their current job.', color: 'text-teal-600', bg: 'bg-teal-50' },
+  { icon: Compass, title: 'Working Holiday', desc: 'Allows young adults to undertake extended holidays and work to fund their travels.', color: 'text-indigo-600', bg: 'bg-indigo-50' },
+  { icon: Clock, title: 'Transit Visas', desc: 'Short-duration visas required for passing through a country en route to a final destination.', color: 'text-gray-600', bg: 'bg-gray-50' },
+  { icon: Stethoscope, title: 'Medical Visas', desc: 'For patients needing to travel internationally to receive specialized medical treatment.', color: 'text-rose-600', bg: 'bg-rose-50' },
+  { icon: Landmark, title: 'Diplomatic Visas', desc: 'Issued to foreign government officials, diplomats, and representatives of international organizations.', color: 'text-slate-600', bg: 'bg-slate-50' },
+  { icon: Shield, title: 'Refugee/Asylum', desc: 'Protection visas for individuals fleeing persecution or danger in their home countries.', color: 'text-amber-600', bg: 'bg-amber-50' }
 ];
 
 const VisaTypes = () => {

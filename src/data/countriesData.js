@@ -35,6 +35,41 @@ export const countriesData = [
         description: 'For individuals with extraordinary ability in sciences, arts, education, business, or athletics.',
         duration: 'Up to 3 years initially, indefinite extensions possible',
         requirements: ['Extensive documentation of extraordinary achievements']
+      },
+      {
+        name: 'L-1 Visa',
+        type: 'Work (Intra-company)',
+        description: 'For temporary intracompany transferees who work in managerial positions or have specialized knowledge.',
+        duration: 'Up to 7 years for managers/executives, 5 years for specialized knowledge',
+        requirements: ['Must have worked for the company abroad for 1 continuous year within the last 3 years']
+      },
+      {
+        name: 'B-1/B-2 Visa',
+        type: 'Visitor',
+        description: 'Temporary visa for business (B-1) or tourism/medical treatment (B-2).',
+        duration: 'Usually up to 6 months per entry',
+        requirements: ['Proof of intent to return to home country', 'Sufficient funds for the trip']
+      },
+      {
+        name: 'J-1 Visa',
+        type: 'Exchange Visitor',
+        description: 'For individuals approved to participate in work-and study-based exchange visitor programs.',
+        duration: 'Varies by program (weeks to years)',
+        requirements: ['Certificate of Eligibility (DS-2019)', 'Sponsorship by an approved organization']
+      },
+      {
+        name: 'EB-1/EB-2/EB-3',
+        type: 'Permanent Residence',
+        description: 'Employment-based green cards ranging from extraordinary ability (EB-1) to skilled workers (EB-3).',
+        duration: 'Permanent',
+        requirements: ['Labor certification (PERM) usually required for EB-2/EB-3', 'Employer sponsorship for most categories']
+      },
+      {
+        name: 'K-1 Visa',
+        type: 'Family',
+        description: 'For foreign-citizen fiancés of US citizens to enter the US and marry within 90 days.',
+        duration: '90 days (must marry and adjust status)',
+        requirements: ['US citizen sponsor', 'Intention to marry within 90 days of arrival']
       }
     ],
     benefits: [
@@ -80,6 +115,34 @@ export const countriesData = [
         description: 'Open work permit for students who have graduated from an eligible Canadian institution.',
         duration: 'Up to 3 years depending on program length',
         requirements: ['Completed an eligible program in Canada']
+      },
+      {
+        name: 'Start-up Visa Program',
+        type: 'Business',
+        description: 'For immigrant entrepreneurs with the skills and potential to build businesses in Canada.',
+        duration: 'Permanent',
+        requirements: ['Qualifying business', 'Letter of support from a designated organization', 'Language requirements']
+      },
+      {
+        name: 'Global Talent Stream',
+        type: 'Work',
+        description: 'Fast-track work permit processing for highly skilled talent, particularly in tech.',
+        duration: 'Up to 2 years, renewable',
+        requirements: ['Job offer from a designated employer', 'Specific high-demand occupations']
+      },
+      {
+        name: 'Family Sponsorship',
+        type: 'Permanent Residence',
+        description: 'Allows citizens and PRs to sponsor their relatives, including spouses, partners, children, and parents.',
+        duration: 'Permanent',
+        requirements: ['Eligible Canadian sponsor', 'Proof of relationship', 'Financial undertaking']
+      },
+      {
+        name: 'Visitor Visa (Temporary Resident Visa)',
+        type: 'Visitor',
+        description: 'Allows foreign nationals to enter Canada for tourism, visiting family, or business.',
+        duration: 'Usually up to 6 months per entry',
+        requirements: ['Valid travel document', 'Proof of ties to home country']
       }
     ],
     benefits: [
@@ -125,6 +188,34 @@ export const countriesData = [
         description: 'For students aged 16 or over who have been offered a place on a course.',
         duration: 'Length of the course',
         requirements: ['Confirmation of Acceptance for Studies (CAS)', 'Proof of funds']
+      },
+      {
+        name: 'Youth Mobility Scheme Visa',
+        type: 'Work / Travel',
+        description: 'For young people from participating countries to live and work in the UK.',
+        duration: 'Up to 2 years (3 years for some nationalities)',
+        requirements: ['Age 18-30 (or 35 for some countries)', 'Specific nationalities only', 'Savings requirement']
+      },
+      {
+        name: 'Innovator Founder Visa',
+        type: 'Business',
+        description: 'For entrepreneurs looking to set up and run an innovative business in the UK.',
+        duration: 'Up to 3 years, renewable',
+        requirements: ['Innovative, viable, and scalable business idea', 'Endorsement from an approved body']
+      },
+      {
+        name: 'Family Visa',
+        type: 'Family',
+        description: 'To live with a family member (spouse, partner, child, parent) in the UK.',
+        duration: 'Typically 2 years and 9 months initially',
+        requirements: ['Proof of relationship', 'Financial requirements', 'English language proficiency']
+      },
+      {
+        name: 'Standard Visitor Visa',
+        type: 'Visitor',
+        description: 'For tourism, business, study (up to 6 months), and other permitted activities.',
+        duration: 'Up to 6 months',
+        requirements: ['Intention to leave at the end of visit', 'Sufficient funds for the stay']
       }
     ],
     benefits: [
@@ -165,11 +256,39 @@ export const countriesData = [
         requirements: ['Confirmation of Enrolment (CoE)', 'Overseas Student Health Cover']
       },
       {
-        name: 'Working Holiday Visa',
+        name: 'Working Holiday Visa (Subclass 417/462)',
         type: 'Work / Travel',
         description: 'For young adults who want an extended holiday and to work to fund it.',
         duration: '12 months (extensions possible)',
         requirements: ['Age 18-30 (or 35 for some countries)', 'Eligible passport']
+      },
+      {
+        name: 'Temporary Skill Shortage Visa (Subclass 482)',
+        type: 'Work',
+        description: 'Enables employers to address labor shortages by bringing in skilled workers where they cannot source an appropriately skilled Australian.',
+        duration: 'Up to 2 or 4 years depending on the occupation list',
+        requirements: ['Sponsorship by approved employer', 'Nomination for a skilled position', 'Relevant skills and experience']
+      },
+      {
+        name: 'Employer Nomination Scheme (Subclass 186)',
+        type: 'Permanent Residence',
+        description: 'Allows skilled workers, who are nominated by their employer, to live and work in Australia permanently.',
+        duration: 'Permanent',
+        requirements: ['Nomination by an approved Australian employer', 'Age under 45', 'Skills assessment']
+      },
+      {
+        name: 'Partner Visa (Subclasses 820/801 or 309/100)',
+        type: 'Family',
+        description: 'Allows the partner or spouse of an Australian citizen, PR, or eligible New Zealand citizen to live in Australia.',
+        duration: 'Temporary leading to Permanent',
+        requirements: ['Sponsorship by eligible partner', 'Proof of genuine and ongoing relationship']
+      },
+      {
+        name: 'Visitor Visa (Subclass 600)',
+        type: 'Visitor',
+        description: 'For visiting Australia for tourism, business visitor activities, or visiting family.',
+        duration: 'Usually 3, 6, or 12 months',
+        requirements: ['Genuine intention to stay temporarily', 'Sufficient funds for the stay']
       }
     ],
     benefits: [
@@ -215,6 +334,34 @@ export const countriesData = [
         description: 'For international students wishing to study at German universities.',
         duration: 'Duration of studies',
         requirements: ['Admission letter from university', 'Blocked account for financial proof']
+      },
+      {
+        name: 'Freelance Visa (Freiberufler)',
+        type: 'Work',
+        description: 'For self-employed individuals in liberal professions.',
+        duration: 'Up to 3 years, renewable',
+        requirements: ['Proof of professional qualifications', 'Business plan and financing']
+      },
+      {
+        name: 'Family Reunion Visa',
+        type: 'Family',
+        description: 'Allows spouses, children, and other family members to join a resident in Germany.',
+        duration: 'Tied to the primary resident\'s visa',
+        requirements: ['Proof of relationship', 'Basic German language skills (often required)']
+      },
+      {
+        name: 'Schengen Visa',
+        type: 'Visitor',
+        description: 'For tourism, visiting family/friends, or short business trips across the Schengen Area.',
+        duration: 'Up to 90 days within a 180-day period',
+        requirements: ['Travel insurance', 'Proof of accommodation and funds']
+      },
+      {
+        name: 'Opportunity Card (Chancenkarte)',
+        type: 'Work',
+        description: 'A points-based system for job seekers to enter Germany and look for employment.',
+        duration: 'Up to 1 year',
+        requirements: ['Vocational qualification or degree', 'Sufficient points based on language, experience, and age']
       }
     ],
     benefits: [
@@ -260,6 +407,34 @@ export const countriesData = [
         description: 'For eligible foreign entrepreneurs wanting to start and operate a new business in Singapore.',
         duration: '1 year initially, renewable',
         requirements: ['Innovative business idea backed by recognized investors or government grants']
+      },
+      {
+        name: 'Personalised Employment Pass (PEP)',
+        type: 'Work',
+        description: 'For high-earning professionals. It is not tied to an employer.',
+        duration: 'Up to 3 years, non-renewable',
+        requirements: ['Last drawn fixed monthly salary of at least SGD 22,500']
+      },
+      {
+        name: 'Dependent\'s Pass (DP)',
+        type: 'Family',
+        description: 'For spouses and children of EP or S Pass holders.',
+        duration: 'Tied to the validity of the main pass holder',
+        requirements: ['Main pass holder must meet a minimum fixed monthly salary']
+      },
+      {
+        name: 'Student\'s Pass',
+        type: 'Study',
+        description: 'For international students pursuing full-time studies in Singapore.',
+        duration: 'Duration of the course',
+        requirements: ['Acceptance into an approved full-time course']
+      },
+      {
+        name: 'Short-Term Visit Pass',
+        type: 'Visitor',
+        description: 'For tourists, social visits, or short business meetings.',
+        duration: 'Up to 30 or 90 days',
+        requirements: ['Valid passport', 'Onward/return ticket']
       }
     ],
     benefits: [
@@ -293,11 +468,39 @@ export const countriesData = [
         requirements: ['Points-based system', 'Age 55 or under', 'English proficiency']
       },
       {
-        name: 'Essential Skills Work Visa',
+        name: 'Accredited Employer Work Visa',
         type: 'Work',
-        description: 'For workers with a job offer from a New Zealand employer.',
-        duration: 'Up to 3 years depending on the skill level',
-        requirements: ['Job offer', 'Employer must prove no NZ citizen is available']
+        description: 'For workers with a job offer from an accredited New Zealand employer.',
+        duration: 'Up to 3-5 years depending on the role',
+        requirements: ['Job offer from an accredited employer', 'Meet skills and wage thresholds']
+      },
+      {
+        name: 'Student Visa',
+        type: 'Study',
+        description: 'To study full-time in New Zealand.',
+        duration: 'Length of study program',
+        requirements: ['Offer of place from an approved education provider', 'Evidence of funds']
+      },
+      {
+        name: 'Working Holiday Visa',
+        type: 'Work / Travel',
+        description: 'For young people from participating countries to travel and work.',
+        duration: 'Up to 12 or 23 months',
+        requirements: ['Age 18-30 (or 35 for some countries)', 'Meet health and character requirements']
+      },
+      {
+        name: 'Partner of a New Zealander Resident Visa',
+        type: 'Family',
+        description: 'For partners of New Zealand citizens or residents to live permanently.',
+        duration: 'Permanent',
+        requirements: ['Proof of living together in a genuine and stable relationship for at least 12 months']
+      },
+      {
+        name: 'Visitor Visa',
+        type: 'Visitor',
+        description: 'For holidaying, sightseeing, or visiting family and friends.',
+        duration: 'Up to 9 months',
+        requirements: ['Genuine intent to visit temporarily', 'Sufficient funds']
       }
     ],
     benefits: [
@@ -336,6 +539,34 @@ export const countriesData = [
         description: 'Allows individuals to work in occupations that are not on the ineligible list.',
         duration: 'Up to 2 years initially, renewable',
         requirements: ['Job offer of €34,000+', 'Labor market needs test']
+      },
+      {
+        name: 'Student Visa (Stamp 2)',
+        type: 'Study',
+        description: 'For full-time degree-level study.',
+        duration: 'Duration of the course (allows 20 hours/week work)',
+        requirements: ['Letter of acceptance from an Irish institution', 'Proof of fee payment and funds']
+      },
+      {
+        name: 'Working Holiday Visa',
+        type: 'Work / Travel',
+        description: 'For youth from certain countries to work and travel.',
+        duration: 'Up to 1 or 2 years',
+        requirements: ['Specific age ranges and nationalities', 'Sufficient funds']
+      },
+      {
+        name: 'Stamp 4 (Long Term Residency / Spouse)',
+        type: 'Permanent Residence',
+        description: 'Permission to reside and work without an employment permit.',
+        duration: 'Varies, often renewable leading to citizenship',
+        requirements: ['Spouse/partner of an Irish citizen OR held a Critical Skills permit for 2 years']
+      },
+      {
+        name: 'Short Stay \'C\' Visa',
+        type: 'Visitor',
+        description: 'For tourism, business meetings, or visiting family for a short period.',
+        duration: 'Up to 90 days',
+        requirements: ['Strong ties to home country', 'Sufficient funds for the stay']
       }
     ],
     benefits: [
@@ -381,6 +612,34 @@ export const countriesData = [
         description: 'Allows self-employed professionals to live and work in the UAE.',
         duration: '1 to 5 years',
         requirements: ['Freelance permit from a free zone', 'Proof of income']
+      },
+      {
+        name: 'Green Visa',
+        type: 'Work / Residency',
+        description: 'For skilled employees, freelancers, and investors to reside without a sponsor.',
+        duration: '5 years',
+        requirements: ['Bachelor\'s degree', 'Minimum salary threshold']
+      },
+      {
+        name: 'Tourist / Visit Visa',
+        type: 'Visitor',
+        description: 'For short-term tourism, exploring business opportunities, or visiting relatives.',
+        duration: '30 to 60 days',
+        requirements: ['Passport valid for 6 months', 'Confirmed return ticket']
+      },
+      {
+        name: 'Student Visa',
+        type: 'Study',
+        description: 'For international students enrolling in UAE universities or colleges.',
+        duration: '1 year, renewable (Outstanding students may get a 5-year visa)',
+        requirements: ['Admission letter from an accredited institution']
+      },
+      {
+        name: 'Retirement Visa',
+        type: 'Residency',
+        description: 'For retired individuals wishing to live in the UAE.',
+        duration: '5 years, renewable',
+        requirements: ['Over 55 years old', 'Specific financial criteria (savings, property, or income)']
       }
     ],
     benefits: [

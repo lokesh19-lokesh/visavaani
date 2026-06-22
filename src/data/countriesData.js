@@ -344,5 +344,50 @@ export const countriesData = [
       'Fast track to permanent residency for critical skills',
       'Vibrant culture and high quality of life'
     ]
+  },
+  {
+    id: 'ae',
+    name: 'United Arab Emirates (Dubai)',
+    region: 'Middle East',
+    image: '/destinations/dubai.png',
+    tags: ['Golden Visa', 'Work', 'Investor'],
+    description: 'Dubai is a global hub for business, tourism, and innovation. With its tax-free income, modern infrastructure, and diverse expatriate community, it offers excellent opportunities for professionals and entrepreneurs.',
+    quickFacts: {
+      capital: 'Abu Dhabi',
+      currency: 'AED (د.إ)',
+      language: 'Arabic, English',
+      population: '9.4 Million',
+      climate: 'Desert',
+      timeToPR: 'Golden Visa offers long-term residency (up to 10 years)'
+    },
+    keyVisas: [
+      {
+        name: 'Golden Visa',
+        type: 'Long-term Residency',
+        description: 'For investors, entrepreneurs, specialized talents and researchers.',
+        duration: '5 or 10 years, renewable',
+        requirements: ['Significant investment or exceptional talent/qualifications']
+      },
+      {
+        name: 'Standard Work Visa',
+        type: 'Work',
+        description: 'For individuals employed by a company in the UAE.',
+        duration: 'Usually 2 years, renewable',
+        requirements: ['Employment contract', 'Sponsorship from employer']
+      },
+      {
+        name: 'Freelance Visa',
+        type: 'Work',
+        description: 'Allows self-employed professionals to live and work in the UAE.',
+        duration: '1 to 5 years',
+        requirements: ['Freelance permit from a free zone', 'Proof of income']
+      }
+    ],
+    benefits: [
+      'Tax-free personal income',
+      'High standard of living and world-class infrastructure',
+      'Strategic location connecting East and West',
+      'Incredibly safe and multicultural environment'
+    ]
   }
 ];

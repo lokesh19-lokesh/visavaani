@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Briefcase, GraduationCap, Plane, UserCheck, Heart, Home, ArrowLeft, CheckCircle2, ChevronRight } from 'lucide-react';
+import { Briefcase, GraduationCap, Plane, UserCheck, Heart, Home, ArrowLeft, CheckCircle2, ChevronRight, Laptop, Compass, Clock, Stethoscope, Landmark, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const visaData = {
@@ -102,7 +102,7 @@ const visaData = {
   },
   'digital-nomad-visas': {
     title: 'Digital Nomad Visas',
-    icon: Briefcase,
+    icon: Laptop,
     color: 'text-teal-600',
     bg: 'bg-teal-50',
     gradient: 'from-teal-500 to-emerald-400',
@@ -134,7 +134,7 @@ const visaData = {
   },
   'transit-visas': {
     title: 'Transit Visas',
-    icon: Plane,
+    icon: Clock,
     color: 'text-gray-600',
     bg: 'bg-gray-50',
     gradient: 'from-gray-500 to-slate-400',
@@ -150,7 +150,7 @@ const visaData = {
   },
   'medical-visas': {
     title: 'Medical Visas',
-    icon: Heart,
+    icon: Stethoscope,
     color: 'text-rose-600',
     bg: 'bg-rose-50',
     gradient: 'from-rose-500 to-pink-500',
@@ -166,7 +166,7 @@ const visaData = {
   },
   'diplomatic-visas': {
     title: 'Diplomatic Visas',
-    icon: UserCheck,
+    icon: Landmark,
     color: 'text-slate-600',
     bg: 'bg-slate-50',
     gradient: 'from-slate-600 to-gray-500',
@@ -181,7 +181,7 @@ const visaData = {
   },
   'refugee-asylum': {
     title: 'Refugee/Asylum',
-    icon: Home,
+    icon: Shield,
     color: 'text-amber-600',
     bg: 'bg-amber-50',
     gradient: 'from-amber-500 to-yellow-500',

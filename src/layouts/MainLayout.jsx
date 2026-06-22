@@ -1,14 +1,124 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { Facebook, Instagram, YouTube as Youtube, LinkedIn as Linkedin, X as XIcon } from '@mui/icons-material';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe2, ChevronDown } from 'lucide-react';
 
 const MainLayout = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+  const langMenuRef = useRef(null);
+  
+  const languages = [
+    { code: 'en', name: 'English' },
+    { code: 'hi', name: 'हिंदी (Hindi)' },
+    { code: 'bn', name: 'বাংলা (Bengali)' },
+    { code: 'te', name: 'తెలుగు (Telugu)' },
+    { code: 'mr', name: 'मराठी (Marathi)' },
+    { code: 'ta', name: 'தமிழ் (Tamil)' },
+    { code: 'gu', name: 'ગુજરાતી (Gujarati)' },
+    { code: 'kn', name: 'ಕನ್ನಡ (Kannada)' },
+    { code: 'ml', name: 'മലയാളം (Malayalam)' },
+    { code: 'pa', name: 'ਪੰਜਾਬੀ (Punjabi)' }
+  ];
+
+  const handleLanguageChange = (langCode) => {
+    // Set cookie for Google Translate
+    document.cookie = `googtrans=/en/${langCode}; path=/`;
+    document.cookie = `googtrans=/en/${langCode}; domain=.${window.location.hostname}; path=/`;
+    
+    // Find the hidden select element and change its value
+    const selectElement = document.querySelector('.goog-te-combo');
+    if (selectElement) {
+      selectElement.value = langCode;
+      selectElement.dispatchEvent(new Event('change'));
+    } else {
+      // Fallback: reload the page to apply the cookie
+      window.location.reload();
+    }
+    
+    setIsLangMenuOpen(false);
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (langMenuRef.current && !langMenuRef.current.contains(event.target)) {
+        setIsLangMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  useEffect(() => {
+    // Add the callback function to the window object
+    window.googleTranslateElementInit = () => {
+      new window.google.translate.TranslateElement(
+        { 
+          pageLanguage: 'en', 
+          includedLanguages: 'en,hi,bn,te,mr,ta,ur,gu,kn,ml,pa',
+          layout: window.google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+          autoDisplay: false
+        },
+        'google_translate_element'
+      );
+    };
+
+    // Create the script tag if it doesn't already exist
+    if (!document.querySelector('script[src*="translate.google.com/translate_a/element.js"]')) {
+      const script = document.createElement('script');
+      script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
+
+  // Aggressively hide the Google Translate banner using a MutationObserver
+  useEffect(() => {
+    const hideTranslateElements = () => {
+      const banners = document.querySelectorAll('.goog-te-banner-frame');
+      banners.forEach(banner => {
+        if (banner.style.display !== 'none') {
+          banner.style.setProperty('display', 'none', 'important');
+        }
+      });
+      
+      if (document.body.style.top !== '0px' && document.body.style.top !== '') {
+        document.body.style.setProperty('top', '0px', 'important');
+      }
+      
+      if (document.documentElement.style.top !== '0px' && document.documentElement.style.top !== '') {
+        document.documentElement.style.setProperty('top', '0px', 'important');
+      }
+    };
+
+    hideTranslateElements(); // initial check
+
+    const observer = new MutationObserver(() => {
+      hideTranslateElements();
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['style', 'class']
+    });
+
+    // Also run on interval for the first few seconds just to be safe
+    const interval = setInterval(hideTranslateElements, 100);
+    setTimeout(() => clearInterval(interval), 5000);
+
+    return () => {
+      observer.disconnect();
+      clearInterval(interval);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col font-sans">
@@ -38,6 +148,37 @@ const MainLayout = () => {
 
             {/* CTA & Mobile Toggle */}
             <div className="flex items-center gap-4">
+              {/* Hidden Google Translate Element */}
+              <div id="google_translate_element" className="hidden"></div>
+              
+              {/* Custom Language Switcher */}
+              <div className="relative" ref={langMenuRef}>
+                <button 
+                  onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+                  className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 px-3 py-2 rounded-lg text-white text-sm font-medium transition-colors"
+                >
+                  <Globe2 className="w-4 h-4" />
+                  <span className="hidden sm:inline">Language</span>
+                  <ChevronDown className="w-4 h-4" />
+                </button>
+
+                {isLangMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-primary border border-white/10 rounded-xl shadow-2xl py-2 z-50">
+                    <div className="max-h-64 overflow-y-auto custom-scrollbar">
+                      {languages.map((lang) => (
+                        <button
+                          key={lang.code}
+                          onClick={() => handleLanguageChange(lang.code)}
+                          className="w-full text-left px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/10 transition-colors"
+                        >
+                          {lang.name}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
               <Link to="/auth" className="hidden sm:block">
                 <button className="bg-white text-primary hover:bg-gray-100 px-5 py-2 rounded-lg font-semibold text-sm shadow-sm transition-colors">
                   Login / Sign Up

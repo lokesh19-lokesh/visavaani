@@ -1,11 +1,14 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { MapPin, Globe, Banknote, Users, CloudSun, Clock, ArrowLeft, CheckCircle2, ChevronRight, MessageSquare } from 'lucide-react';
+import { MapPin, Globe, Banknote, Users, CloudSun, Clock, ArrowLeft, CheckCircle2, ChevronRight, MessageSquare, Sparkles } from 'lucide-react';
 import { countriesData } from '../data/countriesData';
+import PremiumAIModal from '../components/PremiumAIModal';
+import { useState } from 'react';
 
 const CountryDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [isAIModalOpen, setIsAIModalOpen] = useState(false);
   
   // Find the country data
   const country = countriesData.find(c => c.id === id);
@@ -197,8 +200,12 @@ const CountryDetail = () => {
                     Start AI Assessment
                   </button>
                 </Link>
-                <button className="w-full bg-white border-2 border-gray-200 hover:border-gray-300 text-gray-700 px-4 py-3 rounded-xl font-semibold transition-colors">
-                  Talk to an Expert
+                <button 
+                  onClick={() => setIsAIModalOpen(true)}
+                  className="w-full bg-white border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-700 px-4 py-3 rounded-xl font-semibold transition-all flex items-center justify-center group"
+                >
+                  <Sparkles className="w-4 h-4 mr-2 text-yellow-500 group-hover:scale-110 transition-transform" />
+                  Talk to AI Expert
                 </button>
               </div>
             </motion.div>
@@ -207,6 +214,11 @@ const CountryDetail = () => {
 
         </div>
       </div>
+
+      <PremiumAIModal 
+        isOpen={isAIModalOpen} 
+        onClose={() => setIsAIModalOpen(false)} 
+      />
     </div>
   );
 };

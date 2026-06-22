@@ -1,7 +1,9 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Briefcase, GraduationCap, Plane, UserCheck, Heart, Home, ArrowLeft, CheckCircle2, ChevronRight, Laptop, Compass, Clock, Stethoscope, Landmark, Shield } from 'lucide-react';
+import { Briefcase, GraduationCap, Plane, UserCheck, Heart, Home, ArrowLeft, CheckCircle2, ChevronRight, Laptop, Compass, Clock, Stethoscope, Landmark, Shield, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
+import PremiumAIModal from '../components/PremiumAIModal';
+import { useState } from 'react';
 
 const visaData = {
   'work-visas': {
@@ -198,6 +200,7 @@ const visaData = {
 
 const VisaCategory = () => {
   const { id } = useParams();
+  const [isAIModalOpen, setIsAIModalOpen] = useState(false);
   const data = visaData[id];
 
   if (!data) {
@@ -288,21 +291,30 @@ const VisaCategory = () => {
             </div>
 
             {/* Quick Contact */}
-            <div className="bg-gray-900 rounded-3xl shadow-sm border border-gray-800 p-8 text-white relative overflow-hidden">
+            <div className="bg-gray-900 rounded-3xl shadow-sm border border-gray-800 p-8 text-white relative overflow-hidden group">
               <div className="relative z-10">
-                <h3 className="text-lg font-bold mb-2">Talk to an Expert</h3>
-                <p className="text-gray-400 text-sm mb-6">Get personalized guidance for your specific case.</p>
-                <Link to="/expert">
-                  <button className="w-full bg-white text-gray-900 px-4 py-3 rounded-xl font-bold text-sm hover:bg-gray-100 transition-colors">
-                    Book Consultation
-                  </button>
-                </Link>
+                <h3 className="text-lg font-bold mb-2 flex items-center">
+                  Talk to AI Expert
+                  <Sparkles className="w-4 h-4 ml-2 text-yellow-400" />
+                </h3>
+                <p className="text-gray-400 text-sm mb-6">Get premium, personalized clarification in your native language.</p>
+                <button 
+                  onClick={() => setIsAIModalOpen(true)}
+                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white border border-blue-500 px-4 py-3 rounded-xl font-bold text-sm hover:from-blue-700 hover:to-blue-800 transition-all flex items-center justify-center shadow-lg hover:shadow-blue-500/25"
+                >
+                  Start AI Consultation
+                </button>
               </div>
             </div>
           </motion.div>
 
         </div>
       </div>
+
+      <PremiumAIModal 
+        isOpen={isAIModalOpen} 
+        onClose={() => setIsAIModalOpen(false)} 
+      />
     </div>
   );
 };

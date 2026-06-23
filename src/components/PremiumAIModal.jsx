@@ -4,6 +4,10 @@ import { X, Bot, Sparkles, Globe2, Mic, MicOff, Volume2, ChevronDown, PhoneOff }
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY || '');
+const ELEVENLABS_API_KEY = import.meta.env.VITE_ELEVENLABS_API_KEY || '';
+// Bella - Soft female voice
+const VOICE_ID = "EXAVITQu4vr4xnSDxMaL"; 
+
 
 const LANGUAGES = [
   { code: 'en-US', name: 'English' },
@@ -27,59 +31,59 @@ const getGreeting = (langCode) => {
 
   const greetings = {
     'en-US': {
-      morning: "Good morning! Welcome to VisaVaani, your AI voice assistant. How can I help you today?",
-      afternoon: "Good afternoon! Welcome to VisaVaani, your AI voice assistant. How can I help you today?",
-      evening: "Good evening! Welcome to VisaVaani, your AI voice assistant. How can I help you today?"
+      morning: { display: "Good morning! Welcome to VisaVaani, your AI voice assistant. How can I help you today?", spoken: "Good morning! Welcome to VisaVaani, your AI voice assistant. How can I help you today?" },
+      afternoon: { display: "Good afternoon! Welcome to VisaVaani, your AI voice assistant. How can I help you today?", spoken: "Good afternoon! Welcome to VisaVaani, your AI voice assistant. How can I help you today?" },
+      evening: { display: "Good evening! Welcome to VisaVaani, your AI voice assistant. How can I help you today?", spoken: "Good evening! Welcome to VisaVaani, your AI voice assistant. How can I help you today?" }
     },
     'hi-IN': {
-      morning: "सुप्रभात! वीसावाणी में आपका स्वागत है, मैं आपका एआई वॉयस असिस्टेंट हूं। आज मैं आपकी कैसे मदद कर सकता हूं?",
-      afternoon: "शुभ दोपहर! वीसावाणी में आपका स्वागत है, मैं आपका एआई वॉयस असिस्टेंट हूं। आज मैं आपकी कैसे मदद कर सकता हूं?",
-      evening: "शुभ संध्या! वीसावाणी में आपका स्वागत है, मैं आपका एआई वॉयस असिस्टेंट हूं। आज मैं आपकी कैसे मदद कर सकता हूं?"
+      morning: { display: "सुप्रभात! वीसावाणी में आपका स्वागत है, मैं आपका एआई वॉयस असिस्टेंट हूं। आज मैं आपकी कैसे मदद कर सकता हूं?", spoken: "Suprabhat! VisaVaani mein aapka swagat hai, main aapka AI voice assistant hoon. Aaj main aapki kaise madad kar sakta hoon?" },
+      afternoon: { display: "शुभ दोपहर! वीसावाणी में आपका स्वागत है, मैं आपका एआई वॉयस असिस्टेंट हूं। आज मैं आपकी कैसे मदद कर सकता हूं?", spoken: "Shubh dopahar! VisaVaani mein aapka swagat hai, main aapka AI voice assistant hoon. Aaj main aapki kaise madad kar sakta hoon?" },
+      evening: { display: "शुभ संध्या! वीसावाणी में आपका स्वागत है, मैं आपका एआई वॉयस असिस्टेंट हूं। आज मैं आपकी कैसे मदद कर सकता हूं?", spoken: "Shubh sandhya! VisaVaani mein aapka swagat hai, main aapka AI voice assistant hoon. Aaj main aapki kaise madad kar sakta hoon?" }
     },
     'bn-IN': {
-      morning: "সুপ্রভাত! ভিসাবাণীতে আপনাকে স্বাগত, আমি আপনার এআই ভয়েস অ্যাসিস্ট্যান্ট। আজ আমি আপনাকে কীভাবে সাহায্য করতে পারি?",
-      afternoon: "শুভ বিকাল! ভিসাবাণীতে আপনাকে স্বাগত, আমি আপনার এআই ভয়েস অ্যাসিস্ট্যান্ট। আজ আমি আপনাকে কীভাবে সাহায্য করতে পারি?",
-      evening: "শুভ সন্ধ্যা! ভিসাবাণীতে আপনাকে স্বাগত, আমি আপনার এআই ভয়েস অ্যাসিস্ট্যান্ট। আজ আমি আপনাকে কীভাবে সাহায্য করতে পারি?"
+      morning: { display: "সুপ্রভাত! ভিসাবাণীতে আপনাকে স্বাগত, আমি আপনার এআই ভয়েস অ্যাসিস্ট্যান্ট। আজ আমি আপনাকে কীভাবে সাহায্য করতে পারি?", spoken: "Shuprovat! VisaVaanite apnake swagoto, ami apnar AI voice assistant. Aj ami apnake kibhabe sahajjo korte pari?" },
+      afternoon: { display: "শুভ বিকাল! ভিসাবাণীতে আপনাকে স্বাগত, আমি আপনার এআই ভয়েস অ্যাসিস্ট্যান্ট। আজ আমি আপনাকে কীভাবে সাহায্য করতে পারি?", spoken: "Shuvo bikal! VisaVaanite apnake swagoto, ami apnar AI voice assistant. Aj ami apnake kibhabe sahajjo korte pari?" },
+      evening: { display: "শুভ সন্ধ্যা! ভিসাবাণীতে আপনাকে স্বাগত, আমি আপনার এআই ভয়েস অ্যাসিস্ট্যান্ট। আজ আমি আপনাকে কীভাবে সাহায্য করতে পারি?", spoken: "Shuvo shondha! VisaVaanite apnake swagoto, ami apnar AI voice assistant. Aj ami apnake kibhabe sahajjo korte pari?" }
     },
     'te-IN': {
-      morning: "శుభోదయం! వీసావాణికి స్వాగతం, నేను మీ AI వాయిస్ అసిస్టెంట్. ఈరోజు నేను మీకు ఎలా సహాయం చేయగలను?",
-      afternoon: "శుభ మధ్యాహ్నం! వీసావాణికి స్వాగతం, నేను మీ AI వాయిస్ అసిస్టెంట్. ఈరోజు నేను మీకు ఎలా సహాయం చేయగలను?",
-      evening: "శుభ సాయంత్రం! వీసావాణికి స్వాగతం, నేను మీ AI వాయిస్ అసిస్టెంట్. ఈరోజు నేను మీకు ఎలా సహాయం చేయగలను?"
+      morning: { display: "శుభోదయం! వీసావాణికి స్వాగతం, నేను మీ AI వాయిస్ అసిస్టెంట్. ఈరోజు నేను మీకు ఎలా సహాయం చేయగలను?", spoken: "Shubhodhayam! VisaVaaniki swagatham, nenu mee AI voice assistant. Eeroju nenu meeku elaa sahayam cheyagalanu?" },
+      afternoon: { display: "శుభ మధ్యాహ్నం! వీసావాణికి స్వాగతం, నేను మీ AI వాయిస్ అసిస్టెంట్. ఈరోజు నేను మీకు ఎలా సహాయం చేయగలను?", spoken: "Shubha madhyahnam! VisaVaaniki swagatham, nenu mee AI voice assistant. Eeroju nenu meeku elaa sahayam cheyagalanu?" },
+      evening: { display: "శుభ సాయంత్రం! వీసావాణికి స్వాగతం, నేను మీ AI వాయిస్ అసిస్టెంట్. ఈరోజు నేను మీకు ఎలా సహాయం చేయగలను?", spoken: "Shubha sayantram! VisaVaaniki swagatham, nenu mee AI voice assistant. Eeroju nenu meeku elaa sahayam cheyagalanu?" }
     },
     'mr-IN': {
-      morning: "शुभ प्रभात! विसावाणीमध्ये आपले स्वागत आहे, मी आपला एआय व्हॉइस असिस्टंट आहे. आज मी तुमची कशी मदत करू शकेन?",
-      afternoon: "शुभ दुपार! विसावाणीमध्ये आपले स्वागत आहे, मी आपला एआय व्हॉइस असिस्टंट आहे. आज मी तुमची कशी मदत करू शकेन?",
-      evening: "शुभ संध्याकाळ! विसावाणीमध्ये आपले स्वागत आहे, मी आपला एआय व्हॉइस असिस्टंट आहे. आज मी तुमची कशी मदत करू शकेन?"
+      morning: { display: "शुभ प्रभात! विसावाणीमध्ये आपले स्वागत आहे, मी आपला एआय व्हॉइस असिस्टंट आहे. आज मी तुमची कशी मदत करू शकेन?", spoken: "Shubh prabhat! VisaVaanimadhye aple swagat aahe, mi aapla AI voice assistant aahe. Aaj mi tumchi kashi madat karu shaken?" },
+      afternoon: { display: "शुभ दुपार! विसावाणीमध्ये आपले स्वागत आहे, मी आपला एआय व्हॉइस असिस्टंट आहे. आज मी तुमची कशी मदत करू शकेन?", spoken: "Shubh dupar! VisaVaanimadhye aple swagat aahe, mi aapla AI voice assistant aahe. Aaj mi tumchi kashi madat karu shaken?" },
+      evening: { display: "शुभ संध्याकाळ! विसावाणीमध्ये आपले स्वागत आहे, मी आपला एआय व्हॉइस असिस्टंट आहे. आज मी तुमची कशी मदत करू शकेन?", spoken: "Shubh sandhyakal! VisaVaanimadhye aple swagat aahe, mi aapla AI voice assistant aahe. Aaj mi tumchi kashi madat karu shaken?" }
     },
     'ta-IN': {
-      morning: "காலை வணக்கம்! விஸாவாணிக்கு வரவேற்கிறோம், நான் உங்கள் AI குரல் உதவியாளர். இன்று நான் உங்களுக்கு எப்படி உதவ முடியும்?",
-      afternoon: "மதிய வணக்கம்! விஸாவாணிக்கு வரவேற்கிறோம், நான் உங்கள் AI குரல் உதவியாளர். இன்று நான் உங்களுக்கு எப்படி உதவ முடியும்?",
-      evening: "மாலை வணக்கம்! விஸாவாணிக்கு வரவேற்கிறோம், நான் உங்கள் AI குரல் உதவியாளர். இன்று நான் உங்களுக்கு எப்படி உதவ முடியும்?"
+      morning: { display: "காலை வணக்கம்! விஸாவாணிக்கு வரவேற்கிறோம், நான் உங்கள் AI குரல் உதவியாளர். இன்று நான் உங்களுக்கு எப்படி உதவ முடியும்?", spoken: "Kaalai vanakkam! VisaVaanikku varaverkirom, naan ungal AI kural udhaviyalar. Indru naan ungalukku eppadi udhava mudiyum?" },
+      afternoon: { display: "மதிய வணக்கம்! விஸாவாணிக்கு வரவேற்கிறோம், நான் உங்கள் AI குரல் உதவியாளர். இன்று நான் உங்களுக்கு எப்படி உதவ முடியும்?", spoken: "Madhiya vanakkam! VisaVaanikku varaverkirom, naan ungal AI kural udhaviyalar. Indru naan ungalukku eppadi udhava mudiyum?" },
+      evening: { display: "மாலை வணக்கம்! விஸாவாணிக்கு வரவேற்கிறோம், நான் உங்கள் AI குரல் உதவியாளர். இன்று நான் உங்களுக்கு எப்படி உதவ முடியும்?", spoken: "Maalai vanakkam! VisaVaanikku varaverkirom, naan ungal AI kural udhaviyalar. Indru naan ungalukku eppadi udhava mudiyum?" }
     },
     'ur-IN': {
-      morning: "صبح بخیر! ویزاوانی میں خوش آمدید، میں آپ کا اے آئی وائس اسسٹنٹ ہوں۔ آج میں آپ کی کیسے مدد کر سکتا ہوں؟",
-      afternoon: "دوپہر بخیر! ویزاوانی میں خوش آمدید، میں آپ کا اے آئی وائس اسسٹنٹ ہوں۔ آج میں آپ کی کیسے مدد کر سکتا ہوں؟",
-      evening: "شام بخیر! ویزاوانی میں خوش آمدید، میں آپ کا اے آئی وائس اسسٹنٹ ہوں۔ آج میں آپ کی کیسے مدد کر سکتا ہوں؟"
+      morning: { display: "صبح بخیر! ویزاوانی میں خوش آمدید، میں آپ کا اے آئی وائس اسسٹنٹ ہوں۔ آج میں آپ کی کیسے مدد کر سکتا ہوں؟", spoken: "Subah bakhair! VisaVaani mein khush aamdeed, main aapka AI voice assistant hoon. Aaj main aap ki kaise madad kar sakta hoon?" },
+      afternoon: { display: "دوپہر بخیر! ویزاوانی میں خوش آمدید، میں آپ کا اے آئی وائس اسسٹنٹ ہوں۔ آج میں آپ کی کیسے مدد کر سکتا ہوں؟", spoken: "Dopahar bakhair! VisaVaani mein khush aamdeed, main aapka AI voice assistant hoon. Aaj main aap ki kaise madad kar sakta hoon?" },
+      evening: { display: "شام بخیر! ویزاوانی میں خوش آمدید، میں آپ کا اے آئی وائس اسسٹنٹ ہوں۔ آج میں آپ کی کیسے مدد کر سکتا ہوں؟", spoken: "Shaam bakhair! VisaVaani mein khush aamdeed, main aapka AI voice assistant hoon. Aaj main aap ki kaise madad kar sakta hoon?" }
     },
     'gu-IN': {
-      morning: "સુપ્રભાત! વિસાવાણીમાં તમારું સ્વાગત છે, હું તમારો એઆઈ વોઇસ આસિસ્ટન્ટ છું. આજે હું તમારી કેવી રીતે મદદ કરી શકું?",
-      afternoon: "શુભ બપોર! વિસાવાણીમાં તમારું સ્વાગત છે, હું તમારો એઆઈ વોઇસ આસિસ્ટન્ટ છું. આજે હું તમારી કેવી રીતે મદદ કરી શકું?",
-      evening: "શુભ સાંજ! વિસાવાણીમાં તમારું સ્વાગત છે, હું તમારો એઆઈ વોઇસ આસિસ્ટન્ટ છું. આજે હું તમારી કેવી રીતે મદદ કરી શકું?"
+      morning: { display: "સુપ્રભાત! વિસાવાણીમાં તમારું સ્વાગત છે, હું તમારો એઆઈ વોઇસ આસિસ્ટન્ટ છું. આજે હું તમારી કેવી રીતે મદદ કરી શકું?", spoken: "Suprabhat! VisaVaanima tamaru swagat che, hu tamaro AI voice assistant chu. Aaje hu tamari kevi rite madad kari shaku?" },
+      afternoon: { display: "શુભ બપોર! વિસાવાણીમાં તમારું સ્વાગત છે, હું તમારો એઆઈ વોઇસ આસિસ્ટન્ટ છું. આજે હું તમારી કેવી રીતે મદદ કરી શકું?", spoken: "Shubh bapor! VisaVaanima tamaru swagat che, hu tamaro AI voice assistant chu. Aaje hu tamari kevi rite madad kari shaku?" },
+      evening: { display: "શુભ સાંજ! વિસાવાણીમાં તમારું સ્વાગત છે, હું તમારો એઆઈ વોઇસ આસિસ્ટન્ટ છું. આજે હું તમારી કેવી રીતે મદદ કરી શકું?", spoken: "Shubh saanj! VisaVaanima tamaru swagat che, hu tamaro AI voice assistant chu. Aaje hu tamari kevi rite madad kari shaku?" }
     },
     'kn-IN': {
-      morning: "ಶುಭೋದಯ! ವಿಸಾವಾಣಿಗೆ ಸ್ವಾಗತ, ನಾನು ನಿಮ್ಮ AI ಧ್ವನಿ ಸಹಾಯಕ. ಇಂದು ನಾನು ನಿಮಗೆ ಹೇಗೆ ಸಹಾಯ ಮಾಡಬಹುದು?",
-      afternoon: "ಶುಭ ಮಧ್ಯಾಹ್ನ! ವಿಸಾವಾಣಿಗೆ ಸ್ವಾಗತ, ನಾನು ನಿಮ್ಮ AI ಧ್ವನಿ ಸಹಾಯಕ. ಇಂದು ನಾನು ನಿಮಗೆ ಹೇಗೆ ಸಹಾಯ ಮಾಡಬಹುದು?",
-      evening: "ಶುಭ ಸಂಜೆ! ವಿಸಾವಾಣಿಗೆ ಸ್ವಾಗತ, ನಾನು ನಿಮ್ಮ AI ಧ್ವನಿ ಸಹಾಯಕ. ಇಂದು ನಾನು ನಿಮಗೆ ಹೇಗೆ ಸಹಾಯ ಮಾಡಬಹುದು?"
+      morning: { display: "ಶುಭೋದಯ! ವಿಸಾವಾಣಿಗೆ ಸ್ವಾಗತ, ನಾನು ನಿಮ್ಮ AI ಧ್ವನಿ ಸಹಾಯಕ. ಇಂದು ನಾನು ನಿಮಗೆ ಹೇಗೆ ಸಹಾಯ ಮಾಡಬಹುದು?", spoken: "Shubhodaya! VisaVaanige swagata, naanu nimma AI dhwani sahayaka. Indu naanu nimage hege sahaya madabahudu?" },
+      afternoon: { display: "ಶುಭ ಮಧ್ಯಾಹ್ನ! ವಿಸಾವಾಣಿಗೆ ಸ್ವಾಗತ, ನಾನು ನಿಮ್ಮ AI ಧ್ವನಿ ಸಹಾಯಕ. ಇಂದು ನಾನು ನಿಮಗೆ ಹೇಗೆ ಸಹಾಯ ಮಾಡಬಹುದು?", spoken: "Shubha madhyahna! VisaVaanige swagata, naanu nimma AI dhwani sahayaka. Indu naanu nimage hege sahaya madabahudu?" },
+      evening: { display: "ಶುಭ ಸಂಜೆ! ವಿಸಾವಾಣಿಗೆ ಸ್ವಾಗತ, ನಾನು ನಿಮ್ಮ AI ಧ್ವನಿ ಸಹಾಯಕ. ಇಂದು ನಾನು ನಿಮಗೆ ಹೇಗೆ ಸಹಾಯ ಮಾಡಬಹುದು?", spoken: "Shubha sanje! VisaVaanige swagata, naanu nimma AI dhwani sahayaka. Indu naanu nimage hege sahaya madabahudu?" }
     },
     'ml-IN': {
-      morning: "സുപ്രഭാതം! വിസവാണിയിലേക്ക് സ്വാഗതം, ഞാൻ നിങ്ങളുടെ AI വോയ്‌സ് അസിസ്റ്റന്റാണ്. ഇന്ന് ഞാൻ നിങ്ങളെ എങ്ങനെ സഹായിക്കാം?",
-      afternoon: "ശുഭ ഉച്ചതിരിഞ്ഞ്! വിസവാണിയിലേക്ക് സ്വാഗതം, ഞാൻ നിങ്ങളുടെ AI വോയ്‌സ് അസിസ്റ്റന്റാണ്. ഇന്ന് ഞാൻ നിങ്ങളെ എങ്ങനെ സഹായിക്കാം?",
-      evening: "ശുഭ സായാഹ്നം! വിസവാണിയിലേക്ക് സ്വാഗതം, ഞാൻ നിങ്ങളുടെ AI വോയ്‌സ് അസിസ്റ്റന്റാണ്. ഇന്ന് ഞാൻ നിങ്ങളെ എങ്ങനെ സഹായിക്കാം?"
+      morning: { display: "സുപ്രഭാതം! വിസവാണിയിലേക്ക് സ്വാഗതം, ഞാൻ നിങ്ങളുടെ AI വോയ്‌സ് അസിസ്റ്റന്റാണ്. ഇന്ന് ഞാൻ നിങ്ങളെ എങ്ങനെ സഹായിക്കാം?", spoken: "Suprabhatam! VisaVaaniyilekku swagatam, njan ningalude AI voice assistant aanu. Innu njan ningale engane sahayikkam?" },
+      afternoon: { display: "ശുഭ ഉച്ചതിരിഞ്ഞ്! വിസവാണിയിലേക്ക് സ്വാഗതം, ഞാൻ നിങ്ങളുടെ AI വോയ്‌സ് അസിസ്റ്റന്റാണ്. ഇന്ന് ഞാൻ നിങ്ങളെ എങ്ങനെ സഹായിക്കാം?", spoken: "Shubha uchatirinj! VisaVaaniyilekku swagatam, njan ningalude AI voice assistant aanu. Innu njan ningale engane sahayikkam?" },
+      evening: { display: "ശുഭ സായാഹ്നം! വിസവാണിയിലേക്ക് സ്വാഗതം, ഞാൻ നിങ്ങളുടെ AI വോയ്‌സ് അസിസ്റ്റന്റാണ്. ഇന്ന് ഞാൻ നിങ്ങളെ എങ്ങനെ സഹായിക്കാം?", spoken: "Shubha sayahnam! VisaVaaniyilekku swagatam, njan ningalude AI voice assistant aanu. Innu njan ningale engane sahayikkam?" }
     },
     'pa-IN': {
-      morning: "ਗੁੱਡ ਮੋਰਨਿੰਗ! ਵੀਜ਼ਾਵਾਣੀ ਵਿੱਚ ਤੁਹਾਡਾ ਸਵਾਗਤ ਹੈ, ਮੈਂ ਤੁਹਾਡਾ ਏਆਈ ਵੌਇਸ ਅਸਿਸਟੈਂਟ ਹਾਂ। ਅੱਜ ਮੈਂ ਤੁਹਾਡੀ ਕਿਵੇਂ ਮਦਦ ਕਰ ਸਕਦਾ ਹਾਂ?",
-      afternoon: "ਗੁੱਡ ਆਫਟਰਨੂਨ! ਵੀਜ਼ਾਵਾਣੀ ਵਿੱਚ ਤੁਹਾਡਾ ਸਵਾਗਤ ਹੈ, ਮੈਂ ਤੁਹਾਡਾ ਏਆਈ ਵੌਇਸ ਅਸਿਸਟੈਂਟ ਹਾਂ। ਅੱਜ ਮੈਂ ਤੁਹਾਡੀ ਕਿਵੇਂ ਮਦਦ ਕਰ ਸਕਦਾ ਹਾਂ?",
-      evening: "ਗੁੱਡ ਈਵਨਿੰਗ! ਵੀਜ਼ਾਵਾਣੀ ਵਿੱਚ ਤੁਹਾਡਾ ਸਵਾਗਤ ਹੈ, ਮੈਂ ਤੁਹਾਡਾ ਏਆਈ ਵੌਇਸ ਅਸਿਸਟੈਂਟ ਹਾਂ। ਅੱਜ ਮੈਂ ਤੁਹਾਡੀ ਕਿਵੇਂ ਮਦਦ ਕਰ ਸਕਦਾ ਹਾਂ?"
+      morning: { display: "ਗੁੱਡ ਮੋਰਨਿੰਗ! ਵੀਜ਼ਾਵਾਣੀ ਵਿੱਚ ਤੁਹਾਡਾ ਸਵਾਗਤ ਹੈ, ਮੈਂ ਤੁਹਾਡਾ ਏਆਈ ਵੌਇਸ ਅਸਿਸਟੈਂਟ ਹਾਂ। ਅੱਜ ਮੈਂ ਤੁਹਾਡੀ ਕਿਵੇਂ ਮਦਦ ਕਰ ਸਕਦਾ ਹਾਂ?", spoken: "Good morning! VisaVaani vich tuhada swagat hai, main tuhada AI voice assistant haan. Ajj main tuhadi kiven madad kar sakda haan?" },
+      afternoon: { display: "ਗੁੱਡ ਆਫਟਰਨੂਨ! ਵੀਜ਼ਾਵਾਣੀ ਵਿੱਚ ਤੁਹਾਡਾ ਸਵਾਗਤ ਹੈ, ਮੈਂ ਤੁਹਾਡਾ ਏਆਈ ਵੌਇਸ ਅਸਿਸਟੈਂਟ ਹਾਂ। ਅੱਜ ਮੈਂ ਤੁਹਾਡੀ ਕਿਵੇਂ ਮਦਦ ਕਰ ਸਕਦਾ ਹਾਂ?", spoken: "Good afternoon! VisaVaani vich tuhada swagat hai, main tuhada AI voice assistant haan. Ajj main tuhadi kiven madad kar sakda haan?" },
+      evening: { display: "ਗੁੱਡ ਈਵਨਿੰਗ! ਵੀਜ਼ਾਵਾਣੀ ਵਿੱਚ ਤੁਹਾਡਾ ਸਵਾਗਤ ਹੈ, ਮੈਂ ਤੁਹਾਡਾ ਏਆਈ ਵੌਇਸ ਅਸਿਸਟੈਂਟ ਹਾਂ। ਅੱਜ ਮੈਂ ਤੁਹਾਡੀ ਕਿਵੇਂ ਮਦਦ ਕਰ ਸਕਦਾ ਹਾਂ?", spoken: "Good evening! VisaVaani vich tuhada swagat hai, main tuhada AI voice assistant haan. Ajj main tuhadi kiven madad kar sakda haan?" }
     }
   };
 
@@ -130,6 +134,17 @@ const PremiumAIModal = ({ isOpen, onClose }) => {
   
   const recognitionRef = useRef(null);
   const synthRef = useRef(window.speechSynthesis);
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    audioRef.current = new Audio();
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.src = '';
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -180,34 +195,97 @@ const PremiumAIModal = ({ isOpen, onClose }) => {
     }
   }, []);
 
-  const speakText = useCallback((text, langCode = null) => {
-    if (!synthRef.current) return;
+  const speakText = useCallback(async (displayText, langCode = null, spokenText = null) => {
+    if (!audioRef.current) return;
+    if (synthRef.current) synthRef.current.cancel();
+    if (audioRef.current) {
+      audioRef.current.pause();
+    }
     
-    synthRef.current.cancel();
-    const cleanText = text.replace(/\*\*/g, '').replace(/\*/g, '').replace(/#/g, '');
-    setCurrentSubtitle(cleanText);
+    const cleanDisplay = displayText.replace(/\*\*/g, '').replace(/\*/g, '').replace(/#/g, '');
+    const textToSpeak = spokenText ? spokenText.replace(/\*\*/g, '').replace(/\*/g, '').replace(/#/g, '') : cleanDisplay;
+    
+    setCurrentSubtitle(cleanDisplay);
 
-    const utterance = new SpeechSynthesisUtterance(cleanText);
     const targetLang = langCode || selectedLanguage.code;
     
-    utterance.lang = targetLang;
+    setIsSpeaking(true);
+    let isCancelled = false;
     
-    const preferredVoice = getPreferredVoice(targetLang);
-    if (preferredVoice) {
-      utterance.voice = preferredVoice;
-    }
-
-    utterance.pitch = 1.0; // Normal pitch for clarity
-    utterance.rate = 1.0; // Normal rate for clarity
-    
-    utterance.onstart = () => setIsSpeaking(true);
-    utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = (e) => {
-      console.error("Speech synthesis error", e);
-      setIsSpeaking(false);
+    // Attach a cancel function to the ref so we can stop playback
+    audioRef.current.cancelPlayback = () => {
+      isCancelled = true;
+      audioRef.current.pause();
     };
 
-    synthRef.current.speak(utterance);
+    if (ELEVENLABS_API_KEY) {
+      try {
+        const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}`, {
+          method: 'POST',
+          headers: {
+            'Accept': 'audio/mpeg',
+            'Content-Type': 'application/json',
+            'xi-api-key': ELEVENLABS_API_KEY
+          },
+          body: JSON.stringify({
+            text: textToSpeak,
+            model_id: "eleven_multilingual_v2",
+            voice_settings: {
+              stability: 0.5,
+              similarity_boost: 0.75
+            }
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error('ElevenLabs API error');
+        }
+
+        if (isCancelled) return;
+
+        const audioBlob = await response.blob();
+        const audioUrl = URL.createObjectURL(audioBlob);
+        
+        audioRef.current.src = audioUrl;
+        
+        await new Promise((resolve, reject) => {
+          audioRef.current.onended = resolve;
+          audioRef.current.onerror = reject;
+          audioRef.current.play().catch(reject);
+        });
+        
+        // Cleanup
+        setTimeout(() => URL.revokeObjectURL(audioUrl), 100);
+      } catch (e) {
+        console.error("ElevenLabs TTS failed, trying fallback:", e);
+        if (!isCancelled) {
+          await new Promise((resolve) => {
+             const utterance = new SpeechSynthesisUtterance(cleanDisplay);
+             utterance.lang = targetLang;
+             const voice = getPreferredVoice(targetLang);
+             if (voice) utterance.voice = voice;
+             utterance.onend = resolve;
+             utterance.onerror = resolve;
+             synthRef.current.speak(utterance);
+          });
+        }
+      }
+    } else {
+      // Fallback to window.speechSynthesis if no API key
+      if (!isCancelled) {
+        await new Promise((resolve) => {
+           const utterance = new SpeechSynthesisUtterance(cleanDisplay);
+           utterance.lang = targetLang;
+           const voice = getPreferredVoice(targetLang);
+           if (voice) utterance.voice = voice;
+           utterance.onend = resolve;
+           utterance.onerror = resolve;
+           synthRef.current.speak(utterance);
+        });
+      }
+    }
+    
+    if (!isCancelled) setIsSpeaking(false);
   }, [selectedLanguage]);
 
   useEffect(() => {
@@ -220,13 +298,19 @@ const PremiumAIModal = ({ isOpen, onClose }) => {
       try {
         const model = genAI.getGenerativeModel({
           model: "gemini-2.5-flash",
-          systemInstruction: `You are a highly premium, elite immigration AI expert voice assistant. You MUST communicate with the user exclusively in the following language: ${selectedLanguage.name}. Your role is to clarify any doubts regarding visas, immigration, studying, or working abroad. Maintain a highly professional, reassuring, and clear tone. Always answer strictly in ${selectedLanguage.name}. Keep your answers EXTREMELY concise, conversational, and easy to listen to. Never use long lists, bullet points, or complex formatting. Speak as if you are on a phone call.`,
+          systemInstruction: `You are a highly premium, elite immigration AI expert voice assistant. You MUST communicate with the user exclusively in the following language: ${selectedLanguage.name}. Your role is to clarify any doubts regarding visas, immigration, studying, or working abroad. Maintain a highly professional, reassuring, and clear tone. Always answer strictly in ${selectedLanguage.name}. Keep your answers EXTREMELY concise, conversational, and easy to listen to. Never use long lists, bullet points, or complex formatting. Speak as if you are on a phone call. 
+          
+IMPORTANT FORMATTING RULE:
+You MUST return your response as a valid JSON object with EXACTLY two keys:
+1. "display_text": The response written in the native script of ${selectedLanguage.name}.
+2. "spoken_text": The EXACT SAME response, but transliterated into the Latin alphabet (English characters) so that an English text-to-speech engine can read it with an Indian accent. Do not translate the meaning to English, just transliterate the sounds.`,
         });
         
         const chat = model.startChat({
           history: [],
           generationConfig: {
             temperature: 0.7,
+            responseMimeType: "application/json"
           },
         });
         
@@ -235,7 +319,7 @@ const PremiumAIModal = ({ isOpen, onClose }) => {
         
         // Short delay to ensure modal is fully open before speaking
         setTimeout(() => {
-          speakText(initialGreeting, selectedLanguage.code);
+          speakText(initialGreeting.display, selectedLanguage.code, initialGreeting.spoken);
         }, 500);
         
       } catch (e) {
@@ -274,11 +358,12 @@ const PremiumAIModal = ({ isOpen, onClose }) => {
     try {
       const result = await chatSession.sendMessage(userMessage);
       const responseText = result.response.text();
-      speakText(responseText);
+      const responseJson = JSON.parse(responseText);
+      speakText(responseJson.display_text, null, responseJson.spoken_text);
     } catch (error) {
       console.error("Chat API Error:", error);
       const errorMsg = "I'm sorry, I'm experiencing technical difficulties. Please try again.";
-      speakText(errorMsg);
+      speakText(errorMsg, null, errorMsg);
     } finally {
       setIsLoading(false);
     }
@@ -286,6 +371,11 @@ const PremiumAIModal = ({ isOpen, onClose }) => {
 
   const closeAndStop = () => {
     if (synthRef.current) synthRef.current.cancel();
+    if (audioRef.current) {
+      if (audioRef.current.cancelPlayback) audioRef.current.cancelPlayback();
+      audioRef.current.pause();
+      audioRef.current.src = '';
+    }
     if (isListening && recognitionRef.current) recognitionRef.current.stop();
     setIsSpeaking(false);
     setIsListening(false);
@@ -356,6 +446,11 @@ const PremiumAIModal = ({ isOpen, onClose }) => {
                       const lang = LANGUAGES.find(l => l.code === e.target.value);
                       setSelectedLanguage(lang);
                       if (synthRef.current) synthRef.current.cancel();
+                      if (audioRef.current) {
+                        if (audioRef.current.cancelPlayback) audioRef.current.cancelPlayback();
+                        audioRef.current.pause();
+                      }
+                      setIsSpeaking(false);
                     }}
                     className="bg-transparent text-white/80 text-xs font-medium focus:outline-none cursor-pointer appearance-none pr-4 z-10 relative"
                   >

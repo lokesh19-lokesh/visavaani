@@ -2,8 +2,6 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Briefcase, GraduationCap, Plane, UserCheck, Heart, Home, ArrowLeft, CheckCircle2, ChevronRight, Laptop, Compass, Clock, Stethoscope, Landmark, Shield, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
-import PremiumAIModal from '../components/PremiumAIModal';
-import { useState } from 'react';
 
 const visaData = {
   'work-visas': {
@@ -200,7 +198,6 @@ const visaData = {
 
 const VisaCategory = () => {
   const { id } = useParams();
-  const [isAIModalOpen, setIsAIModalOpen] = useState(false);
   const data = visaData[id];
 
   if (!data) {
@@ -298,23 +295,17 @@ const VisaCategory = () => {
                   <Sparkles className="w-4 h-4 ml-2 text-yellow-400" />
                 </h3>
                 <p className="text-gray-400 text-sm mb-6">Get premium, personalized clarification in your native language.</p>
-                <button 
-                  onClick={() => setIsAIModalOpen(true)}
-                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white border border-blue-500 px-4 py-3 rounded-xl font-bold text-sm hover:from-blue-700 hover:to-blue-800 transition-all flex items-center justify-center shadow-lg hover:shadow-blue-500/25"
-                >
-                  Start AI Consultation
-                </button>
+                <Link to="/contact">
+                  <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white border border-blue-500 px-4 py-3 rounded-xl font-bold text-sm hover:from-blue-700 hover:to-blue-800 transition-all flex items-center justify-center shadow-lg hover:shadow-blue-500/25">
+                    Start AI Consultation
+                  </button>
+                </Link>
               </div>
             </div>
           </motion.div>
 
         </div>
       </div>
-
-      <PremiumAIModal 
-        isOpen={isAIModalOpen} 
-        onClose={() => setIsAIModalOpen(false)} 
-      />
     </div>
   );
 };

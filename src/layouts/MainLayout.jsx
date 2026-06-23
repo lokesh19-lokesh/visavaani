@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { Facebook, Instagram, YouTube as Youtube, LinkedIn as Linkedin, X as XIcon } from '@mui/icons-material';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Bot } from 'lucide-react';
+import PremiumAIModal from '../components/PremiumAIModal';
 
 const MainLayout = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAIModalOpen, setIsAIModalOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -235,6 +237,20 @@ const MainLayout = () => {
           </div>
         </div>
       </footer>
+      
+      {/* Global AI Expert Floating Button */}
+      <button
+        onClick={() => setIsAIModalOpen(true)}
+        className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-40 bg-secondary text-primary p-4 rounded-full shadow-2xl hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 flex items-center justify-center group"
+      >
+        <Bot className="w-7 h-7" />
+        <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs group-hover:ml-3 transition-all duration-300 font-bold text-[15px]">
+          Talk to AI Expert
+        </span>
+      </button>
+
+      {/* Global AI Modal */}
+      <PremiumAIModal isOpen={isAIModalOpen} onClose={() => setIsAIModalOpen(false)} />
     </div>
   );
 };

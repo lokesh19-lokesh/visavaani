@@ -72,6 +72,14 @@ const Home = () => {
               <Link to="/eligibility" className="w-full sm:w-auto px-8 py-3.5 bg-secondary hover:bg-secondary-hover text-white rounded-lg text-[16px] font-semibold transition-colors flex items-center justify-center">
                 Check Eligibility <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
+              <button 
+                onClick={() => window.dispatchEvent(new CustomEvent('open-ai-modal', {
+                  detail: { context: "The user wants to check their general eligibility for immigration. Act as an AI Visa Eligibility Checker. Ask them simple questions one by one (like age, education, experience, destination country) to determine if they qualify." }
+                }))} 
+                className="w-full sm:w-auto px-8 py-3.5 bg-blue-600 hover:bg-blue-700 border border-blue-500 text-white rounded-lg text-[16px] font-semibold transition-colors flex items-center justify-center shadow-lg"
+              >
+                <Bot className="mr-2 w-5 h-5 text-blue-200" /> AI Eligibility Check
+              </button>
               <Link to="/countries" className="w-full sm:w-auto px-8 py-3.5 bg-transparent border-2 border-white/30 hover:bg-white/10 text-white rounded-lg text-[16px] font-semibold transition-colors flex items-center justify-center">
                 Explore Countries
               </Link>

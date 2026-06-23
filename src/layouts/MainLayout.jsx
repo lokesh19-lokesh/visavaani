@@ -7,10 +7,24 @@ import PremiumAIModal from '../components/PremiumAIModal';
 const MainLayout = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAIModalOpen, setIsAIModalOpen] = useState(false);
+  const [aiContext, setAiContext] = useState("");
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  useEffect(() => {
+    const handleOpenAiModal = (e) => {
+      if (e.detail && e.detail.context) {
+        setAiContext(e.detail.context);
+      } else {
+        setAiContext("");
+      }
+      setIsAIModalOpen(true);
+    };
+    window.addEventListener('open-ai-modal', handleOpenAiModal);
+    return () => window.removeEventListener('open-ai-modal', handleOpenAiModal);
+  }, []);
 
   useEffect(() => {
     // Add the callback function to the window object
@@ -250,7 +264,7 @@ const MainLayout = () => {
       </button>
 
       {/* Global AI Modal */}
-      <PremiumAIModal isOpen={isAIModalOpen} onClose={() => setIsAIModalOpen(false)} />
+      <PremiumAIModal isOpen={isAIModalOpen} onClose={() => setIsAIModalOpen(false)} context={aiContext} />
     </div>
   );
 };

@@ -131,9 +131,17 @@ const CountryDetail = () => {
                           {visa.type}
                         </span>
                       </div>
-                      <Link to="/advisor" className="text-primary font-medium flex items-center hover:text-secondary transition-colors text-sm whitespace-nowrap">
-                        Check Eligibility <ChevronRight className="w-4 h-4 ml-1" />
-                      </Link>
+                      <button 
+                        onClick={() => {
+                          window.dispatchEvent(new CustomEvent('open-ai-modal', {
+                            detail: { context: `The user wants to check their eligibility for the ${visa.name} visa in ${country.name}. Act as an AI Visa Eligibility Checker. Ask them simple questions one by one (like age, education, experience, language skills) to determine if they qualify.` }
+                          }));
+                        }}
+                        className="text-primary font-medium flex items-center hover:text-secondary transition-colors text-sm whitespace-nowrap bg-blue-50/50 hover:bg-blue-100 px-3 py-1.5 rounded-lg border border-blue-100"
+                      >
+                        <Sparkles className="w-4 h-4 mr-1.5 text-secondary" />
+                        AI Eligibility Check <ChevronRight className="w-4 h-4 ml-1" />
+                      </button>
                     </div>
                     <p className="text-gray-600 mb-4">{visa.description}</p>
                     

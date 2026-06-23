@@ -240,9 +240,16 @@ export default function Eligibility() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/advisor" className="flex items-center justify-center px-6 py-3.5 bg-secondary hover:bg-secondary-hover text-white rounded-xl font-semibold transition-colors">
+              <button 
+                onClick={() => {
+                  window.dispatchEvent(new CustomEvent('open-ai-modal', {
+                    detail: { context: `The user just completed a basic eligibility assessment for ${result.destination}. They scored ${result.score}/${result.maxScore} points, which gives them a '${result.probability}' probability of success based on our algorithm. Discuss their profile and how they can improve their chances or the next steps to take.` }
+                  }));
+                }}
+                className="flex items-center justify-center px-6 py-3.5 bg-secondary hover:bg-secondary-hover text-white rounded-xl font-semibold transition-colors"
+              >
                 <Sparkles className="w-5 h-5 mr-2" /> Discuss with AI
-              </Link>
+              </button>
               <button 
                 onClick={() => {
                   setResult(null);

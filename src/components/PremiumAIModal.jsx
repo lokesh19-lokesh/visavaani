@@ -124,7 +124,7 @@ const getPreferredVoice = (langCode) => {
   return voices[0];
 };
 
-const PremiumAIModal = ({ isOpen, onClose }) => {
+const PremiumAIModal = ({ isOpen, onClose, context }) => {
   const [selectedLanguage, setSelectedLanguage] = useState(LANGUAGES[0]);
   const [isListening, setIsListening] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);

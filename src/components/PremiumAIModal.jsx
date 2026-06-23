@@ -87,6 +87,39 @@ const getGreeting = (langCode) => {
   return langGreetings[timeOfDay];
 };
 
+const getPreferredVoice = (langCode) => {
+  const voices = window.speechSynthesis.getVoices();
+  if (!voices.length) return null;
+
+  // Try to find matching language first
+  const langVoices = voices.filter(v => v.lang.includes(langCode) || v.lang.includes(langCode.replace('-', '_')));
+  
+  // Prioritize clear, highly understandable female voices
+  const clearFemaleNames = ['Google US English Female', 'Google UK English Female', 'Samantha', 'Victoria', 'Karen', 'Google English (India)', 'Veena', 'Neerja', 'Google हिन्दी', 'Female'];
+  
+  if (langVoices.length > 0) {
+    for (const name of clearFemaleNames) {
+      const found = langVoices.find(v => v.name.includes(name));
+      if (found) return found;
+    }
+    // Fallback: looking for any female or Google voice
+    const fallback = langVoices.find(v => v.name.includes('Female') || v.name.includes('Google') || v.name.includes('Siri'));
+    return fallback || langVoices[0];
+  }
+  
+  // If no match for lang, fallback to clear English female voices
+  const englishVoices = voices.filter(v => v.lang.includes('en'));
+  if (englishVoices.length > 0) {
+    for (const name of clearFemaleNames) {
+      const found = englishVoices.find(v => v.name.includes(name));
+      if (found) return found;
+    }
+    return englishVoices[0];
+  }
+
+  return voices[0];
+};
+
 const PremiumAIModal = ({ isOpen, onClose }) => {
   const [selectedLanguage, setSelectedLanguage] = useState(LANGUAGES[0]);
   const [isListening, setIsListening] = useState(false);
@@ -136,6 +169,17 @@ const PremiumAIModal = ({ isOpen, onClose }) => {
     }
   }, [selectedLanguage]);
 
+  // Preload voices
+  useEffect(() => {
+    const loadVoices = () => {
+      window.speechSynthesis.getVoices();
+    };
+    loadVoices();
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+  }, []);
+
   const speakText = useCallback((text, langCode = null) => {
     if (!synthRef.current) return;
     
@@ -144,7 +188,17 @@ const PremiumAIModal = ({ isOpen, onClose }) => {
     setCurrentSubtitle(cleanText);
 
     const utterance = new SpeechSynthesisUtterance(cleanText);
-    utterance.lang = langCode || selectedLanguage.code;
+    const targetLang = langCode || selectedLanguage.code;
+    
+    utterance.lang = targetLang;
+    
+    const preferredVoice = getPreferredVoice(targetLang);
+    if (preferredVoice) {
+      utterance.voice = preferredVoice;
+    }
+
+    utterance.pitch = 1.0; // Normal pitch for clarity
+    utterance.rate = 1.0; // Normal rate for clarity
     
     utterance.onstart = () => setIsSpeaking(true);
     utterance.onend = () => setIsSpeaking(false);

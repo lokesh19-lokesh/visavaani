@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Bot, Map as MapIcon, FileCheck, UserCheck, User, Cpu, Compass, FileText, Star } from 'lucide-react';
+import { ArrowRight, Bot, Route as RouteIcon, FileCheck, UserCheck, User, Cpu, Compass, FileText, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 
@@ -245,7 +245,7 @@ const Home = () => {
 
           <div tabIndex="0" className="group flex flex-col lg:flex-row items-center bg-white lg:w-auto lg:flex-1 cursor-pointer lg:cursor-default lg:border-r border-gray-100 lg:pr-6 outline-none relative">
             <div className="w-14 h-14 rounded-full bg-orange-50 flex items-center justify-center shrink-0">
-              <MapIcon className="w-7 h-7 text-secondary" />
+              <RouteIcon className="w-7 h-7 text-secondary" />
             </div>
             <div className="hidden group-hover:flex group-focus:flex lg:flex flex-col justify-center absolute lg:static top-[64px] left-1/2 -translate-x-1/2 lg:translate-x-0 lg:pl-4 bg-white lg:bg-transparent shadow-xl lg:shadow-none px-3 py-2 lg:p-0 rounded-xl lg:rounded-none z-50 lg:z-auto min-w-max text-center lg:text-left border border-gray-100 lg:border-none">
               <h3 className="font-bold text-gray-900 text-[13px] lg:text-[16px] mb-0 lg:mb-1">Visa Roadmap</h3>

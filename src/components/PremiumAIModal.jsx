@@ -146,6 +146,8 @@ const PremiumAIModal = ({ isOpen, onClose }) => {
     };
   }, []);
 
+  const handleSendRef = useRef();
+
   useEffect(() => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (SpeechRecognition) {
@@ -156,16 +158,24 @@ const PremiumAIModal = ({ isOpen, onClose }) => {
       recognitionRef.current.onresult = async (event) => {
         const transcript = event.results[0][0].transcript;
         setIsListening(false);
-        await handleSend(transcript);
+        if (handleSendRef.current) {
+          await handleSendRef.current(transcript);
+        }
       };
 
       recognitionRef.current.onerror = (event) => {
         console.error('Speech recognition error', event.error);
         setIsListening(false);
+        if (event.error === 'no-speech') {
+          setCurrentSubtitle("I didn't catch that. Please try again.");
+        } else {
+          setCurrentSubtitle("Microphone error. Please check permissions.");
+        }
       };
 
       recognitionRef.current.onend = () => {
         setIsListening(false);
+        setCurrentSubtitle((prev) => prev === 'Listening to your voice...' ? 'Ready' : prev);
       };
     } else {
       console.error("Speech Recognition API not supported in this browser.");
@@ -288,47 +298,59 @@ const PremiumAIModal = ({ isOpen, onClose }) => {
     if (!isCancelled) setIsSpeaking(false);
   }, [selectedLanguage]);
 
+  const startChat = useCallback(async (langCodeToUse) => {
+    try {
+      const model = genAI.getGenerativeModel({
+        model: "gemini-2.5-flash",
+        systemInstruction: `You are a highly premium, elite immigration AI expert voice assistant. Your role is to clarify any doubts regarding visas, immigration, studying, or working abroad. Maintain a highly professional, reassuring, and clear tone. Keep your answers EXTREMELY concise, conversational, and easy to listen to. Never use long lists, bullet points, or complex formatting. Speak as if you are on a phone call. 
+        
+CRITICAL LANGUAGE INSTRUCTION:
+1. Auto-detect the user's language from their input (which may be transliterated in English characters, e.g. "nenu visa kavali" -> Telugu).
+2. You MUST reply entirely in the detected language.
+
+IMPORTANT FORMATTING RULE:
+You MUST return your response as a valid JSON object with EXACTLY three keys:
+1. "detected_language_code": The BCP-47 language code of the detected language (must be one of: "en-US", "hi-IN", "bn-IN", "te-IN", "mr-IN", "ta-IN", "ur-IN", "gu-IN", "kn-IN", "ml-IN", "pa-IN").
+2. "display_text": Your response written in the NATIVE script of the detected language (e.g., Telugu script for Telugu, Urdu script for Urdu).
+3. "spoken_text": A specially transliterated version of your response designed for the ElevenLabs TTS engine.
+   - If language is English, use English text.
+   - If language is Tamil, use Tamil script.
+   - For ALL OTHER Indian languages (Telugu, Bengali, Marathi, Gujarati, Kannada, Malayalam, Punjabi, Urdu, Hindi), you MUST transliterate and write the 'spoken_text' ENTIRELY in Hindi (Devanagari) script! 
+   - WHY? The TTS engine ONLY officially supports Hindi/Devanagari script. By converting Telugu/Urdu/etc. into Devanagari phonetics (e.g., "मीरु एला उन्नारु" instead of "మీరు ఎలా ఉన్నారు"), the engine will read it flawlessly with an authentic Indian accent!`,
+      });
+      
+      const chat = model.startChat({
+        history: [],
+        generationConfig: {
+          temperature: 0.7,
+          responseMimeType: "application/json"
+        },
+      });
+      
+      setChatSession(chat);
+      const initialGreeting = getGreeting(langCodeToUse);
+      
+      // Short delay to ensure modal is fully open before speaking
+      setTimeout(() => {
+        speakText(initialGreeting.display, langCodeToUse, initialGreeting.spoken);
+      }, 500);
+      
+    } catch (e) {
+      console.error("Failed to initialize chat session", e);
+    }
+  }, [speakText]);
+
   useEffect(() => {
     if (!isOpen) {
       if (synthRef.current) synthRef.current.cancel();
+      setChatSession(null);
       return;
     }
 
-    const startChat = async () => {
-      try {
-        const model = genAI.getGenerativeModel({
-          model: "gemini-2.5-flash",
-          systemInstruction: `You are a highly premium, elite immigration AI expert voice assistant. You MUST communicate with the user exclusively in the following language: ${selectedLanguage.name}. Your role is to clarify any doubts regarding visas, immigration, studying, or working abroad. Maintain a highly professional, reassuring, and clear tone. Always answer strictly in ${selectedLanguage.name}. Keep your answers EXTREMELY concise, conversational, and easy to listen to. Never use long lists, bullet points, or complex formatting. Speak as if you are on a phone call. 
-          
-IMPORTANT FORMATTING RULE:
-You MUST return your response as a valid JSON object with EXACTLY two keys:
-1. "display_text": The response written in the native script of ${selectedLanguage.name}.
-2. "spoken_text": The EXACT SAME response, but transliterated into the Latin alphabet (English characters) so that an English text-to-speech engine can read it with an Indian accent. Do not translate the meaning to English, just transliterate the sounds.`,
-        });
-        
-        const chat = model.startChat({
-          history: [],
-          generationConfig: {
-            temperature: 0.7,
-            responseMimeType: "application/json"
-          },
-        });
-        
-        setChatSession(chat);
-        const initialGreeting = getGreeting(selectedLanguage.code);
-        
-        // Short delay to ensure modal is fully open before speaking
-        setTimeout(() => {
-          speakText(initialGreeting.display, selectedLanguage.code, initialGreeting.spoken);
-        }, 500);
-        
-      } catch (e) {
-        console.error("Failed to initialize chat session", e);
-      }
-    };
-    
-    startChat();
-  }, [isOpen, selectedLanguage, speakText]);
+    if (!chatSession) {
+      startChat(selectedLanguage.code);
+    }
+  }, [isOpen, chatSession, startChat, selectedLanguage.code]);
 
   const toggleListening = () => {
     if (isListening) {
@@ -359,7 +381,16 @@ You MUST return your response as a valid JSON object with EXACTLY two keys:
       const result = await chatSession.sendMessage(userMessage);
       const responseText = result.response.text();
       const responseJson = JSON.parse(responseText);
-      speakText(responseJson.display_text, null, responseJson.spoken_text);
+      
+      // Auto-detect and switch language in UI if it changed
+      if (responseJson.detected_language_code && responseJson.detected_language_code !== selectedLanguage.code) {
+        const detectedLang = LANGUAGES.find(l => l.code === responseJson.detected_language_code);
+        if (detectedLang) {
+          setSelectedLanguage(detectedLang);
+        }
+      }
+
+      speakText(responseJson.display_text, responseJson.detected_language_code, responseJson.spoken_text);
     } catch (error) {
       console.error("Chat API Error:", error);
       const errorMsg = "I'm sorry, I'm experiencing technical difficulties. Please try again.";
@@ -368,6 +399,10 @@ You MUST return your response as a valid JSON object with EXACTLY two keys:
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    handleSendRef.current = handleSend;
+  }, [handleSend]);
 
   const closeAndStop = () => {
     if (synthRef.current) synthRef.current.cancel();
@@ -451,6 +486,7 @@ You MUST return your response as a valid JSON object with EXACTLY two keys:
                         audioRef.current.pause();
                       }
                       setIsSpeaking(false);
+                      setChatSession(null); // Reset chat session so it restarts in the new language
                     }}
                     className="bg-transparent text-white/80 text-xs font-medium focus:outline-none cursor-pointer appearance-none pr-4 z-10 relative"
                   >

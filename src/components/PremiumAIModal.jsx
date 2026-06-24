@@ -301,9 +301,10 @@ const PremiumAIModal = ({ isOpen, onClose, context }) => {
   const startChat = useCallback(async (langCodeToUse) => {
     try {
       const model = genAI.getGenerativeModel({
-        model: "gemini-2.5-flash",
+        model: "gemini-3.1-flash-lite",
         systemInstruction: `You are a highly premium, elite immigration AI expert voice assistant. Your role is to clarify any doubts regarding visas, immigration, studying, or working abroad. Maintain a highly professional, reassuring, and clear tone. Keep your answers EXTREMELY concise, conversational, and easy to listen to. Never use long lists, bullet points, or complex formatting. Speak as if you are on a phone call. 
-        
+
+${context ? `CRITICAL TASK FOR THIS CONVERSATION:\n${context}\n` : ""}
 CRITICAL LANGUAGE INSTRUCTION:
 1. Auto-detect the user's language from their input (which may be transliterated in English characters, e.g. "nenu visa kavali" -> Telugu).
 2. You MUST reply entirely in the detected language.
@@ -338,7 +339,7 @@ You MUST return your response as a valid JSON object with EXACTLY three keys:
     } catch (e) {
       console.error("Failed to initialize chat session", e);
     }
-  }, [speakText]);
+  }, [speakText, context]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -352,7 +353,7 @@ You MUST return your response as a valid JSON object with EXACTLY three keys:
     }
   }, [isOpen, chatSession, startChat, selectedLanguage.code]);
 
-  const toggleListening = () => {
+  const toggleListening = async () => {
     if (isListening) {
       recognitionRef.current?.stop();
       setIsListening(false);
@@ -362,11 +363,16 @@ You MUST return your response as a valid JSON object with EXACTLY three keys:
       setIsSpeaking(false);
       
       try {
+        // Explicitly request microphone permissions first
+        // This forces the browser to show the permission prompt if not already granted
+        await navigator.mediaDevices.getUserMedia({ audio: true });
+
         setCurrentSubtitle('Listening to your voice...');
         recognitionRef.current?.start();
         setIsListening(true);
       } catch (e) {
-        console.error("Failed to start recognition", e);
+        console.error("Failed to start recognition or get mic permission", e);
+        setCurrentSubtitle("Microphone error. Please check permissions.");
       }
     }
   };
@@ -379,7 +385,9 @@ You MUST return your response as a valid JSON object with EXACTLY three keys:
 
     try {
       const result = await chatSession.sendMessage(userMessage);
-      const responseText = result.response.text();
+      let responseText = result.response.text();
+      // Sanitize response to remove potential markdown wrappers
+      responseText = responseText.replace(/```json/gi, '').replace(/```/g, '').trim();
       const responseJson = JSON.parse(responseText);
       
       // Auto-detect and switch language in UI if it changed

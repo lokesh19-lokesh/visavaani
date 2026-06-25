@@ -110,6 +110,7 @@ const MainLayout = () => {
               <Link to="/" className="text-white font-medium text-sm hover:text-secondary transition-colors">Home</Link>
               <Link to="/countries" className="text-gray-300 font-medium text-sm hover:text-white transition-colors">Countries</Link>
               <Link to="/visas" className="text-gray-300 font-medium text-sm hover:text-white transition-colors">Visa Types</Link>
+              <Link to="/compare" className="text-gray-300 font-medium text-sm hover:text-white transition-colors">Compare</Link>
               <Link to="/advisor" className="text-gray-300 font-medium text-sm hover:text-white transition-colors">AI Advisor</Link>
               <Link to="/resources" className="text-gray-300 font-medium text-sm hover:text-white transition-colors">Resources</Link>
               <Link to="/about" className="text-gray-300 font-medium text-sm hover:text-white transition-colors">About Us</Link>
@@ -143,6 +144,7 @@ const MainLayout = () => {
               <Link to="/" onClick={toggleMobileMenu} className="text-white font-medium text-base hover:text-secondary transition-colors block py-2 border-b border-gray-800/50">Home</Link>
               <Link to="/countries" onClick={toggleMobileMenu} className="text-gray-300 font-medium text-base hover:text-white transition-colors block py-2 border-b border-gray-800/50">Countries</Link>
               <Link to="/visas" onClick={toggleMobileMenu} className="text-gray-300 font-medium text-base hover:text-white transition-colors block py-2 border-b border-gray-800/50">Visa Types</Link>
+              <Link to="/compare" onClick={toggleMobileMenu} className="text-gray-300 font-medium text-base hover:text-white transition-colors block py-2 border-b border-gray-800/50">Compare</Link>
               <Link to="/advisor" onClick={toggleMobileMenu} className="text-gray-300 font-medium text-base hover:text-white transition-colors block py-2 border-b border-gray-800/50">AI Advisor</Link>
               <Link to="/resources" onClick={toggleMobileMenu} className="text-gray-300 font-medium text-base hover:text-white transition-colors block py-2 border-b border-gray-800/50">Resources</Link>
               <Link to="/about" onClick={toggleMobileMenu} className="text-gray-300 font-medium text-base hover:text-white transition-colors block py-2 border-b border-gray-800/50">About Us</Link>
@@ -187,6 +189,7 @@ const MainLayout = () => {
                 <li><Link to="/countries" className="text-gray-400 hover:text-white transition-colors">Countries</Link></li>
                 <li><Link to="/visas" className="text-gray-400 hover:text-white transition-colors">Visa Types</Link></li>
                 <li><Link to="/eligibility" className="text-gray-400 hover:text-white transition-colors">Eligibility</Link></li>
+                <li><Link to="/compare" className="text-gray-400 hover:text-white transition-colors">Compare Options</Link></li>
                 <li><Link to="/advisor" className="text-gray-400 hover:text-white transition-colors">AI Advisor</Link></li>
               </ul>
             </div>

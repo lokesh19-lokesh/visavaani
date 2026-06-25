@@ -15,6 +15,7 @@ const AIAdvisor = lazy(() => import('./pages/AIAdvisor'));
 const Auth = lazy(() => import('./pages/Auth'));
 const PlaceholderPage = lazy(() => import('./pages/PlaceholderPage'));
 const Eligibility = lazy(() => import('./pages/Eligibility'));
+const Compare = lazy(() => import('./pages/Compare'));
 const Guides = lazy(() => import('./pages/Guides'));
 const GuideArticle = lazy(() => import('./pages/GuideArticle'));
 const News = lazy(() => import('./pages/News'));
@@ -47,6 +48,7 @@ function App() {
             
             {/* Active Routes */}
             <Route path="eligibility" element={<Eligibility />} />
+            <Route path="compare" element={<Compare />} />
 
             {/* Resource Routes */}
             <Route path="guides" element={<Guides />} />

@@ -260,6 +260,7 @@ const MainLayout = () => {
               <ul className="space-y-4 text-[14px]">
                 <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">Contact Us</Link></li>
                 <li><Link to="/expert" className="text-gray-400 hover:text-white transition-colors">Talk to Expert</Link></li>
+                <li><Link to="/payments" className="text-gray-400 hover:text-white transition-colors">Payments</Link></li>
                 <li><Link to="/feedback" className="text-gray-400 hover:text-white transition-colors">Feedback</Link></li>
                 <li><Link to="/privacy" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</Link></li>
                 <li><Link to="/terms" className="text-gray-400 hover:text-white transition-colors">Terms of Use</Link></li>

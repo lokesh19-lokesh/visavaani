@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Bot, Sparkles, Globe2, Mic, MicOff, Volume2, ChevronDown, PhoneOff } from 'lucide-react';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { canUseAi, incrementAiUsage, checkIsAdmin } from '../utils/paymentManager';
+import PaymentModal from './PaymentModal';
 
 const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY || '');
 const ELEVENLABS_API_KEY = import.meta.env.VITE_ELEVENLABS_API_KEY || '';
@@ -131,6 +133,7 @@ const PremiumAIModal = ({ isOpen, onClose, context }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [chatSession, setChatSession] = useState(null);
   const [currentSubtitle, setCurrentSubtitle] = useState('');
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
   
   const recognitionRef = useRef(null);
   const synthRef = useRef(window.speechSynthesis);
@@ -380,6 +383,12 @@ You MUST return your response as a valid JSON object with EXACTLY three keys:
   const handleSend = async (userMessage) => {
     if (!userMessage.trim() || !chatSession) return;
 
+    const isAdmin = await checkIsAdmin();
+    if (!isAdmin && !canUseAi()) {
+      setShowPaymentModal(true);
+      return;
+    }
+
     setIsLoading(true);
     setCurrentSubtitle(`You: "${userMessage}"`);
 
@@ -399,6 +408,7 @@ You MUST return your response as a valid JSON object with EXACTLY three keys:
       }
 
       speakText(responseJson.display_text, responseJson.detected_language_code, responseJson.spoken_text);
+      incrementAiUsage();
     } catch (error) {
       console.error("Chat API Error:", error);
       const errorMsg = "I'm sorry, I'm experiencing technical difficulties. Please try again.";
@@ -436,8 +446,14 @@ You MUST return your response as a valid JSON object with EXACTLY three keys:
   const theme = getThemeColor();
 
   return (
-    <AnimatePresence>
-      {isOpen && (
+    <>
+      <PaymentModal 
+        isOpen={showPaymentModal} 
+        onClose={() => setShowPaymentModal(false)} 
+        onSuccess={() => setShowPaymentModal(false)}
+      />
+      <AnimatePresence>
+        {isOpen && (
         <>
           {/* Deep Dark Backdrop */}
           <motion.div
@@ -661,6 +677,7 @@ You MUST return your response as a valid JSON object with EXACTLY three keys:
         </>
       )}
     </AnimatePresence>
+    </>
   );
 };
 

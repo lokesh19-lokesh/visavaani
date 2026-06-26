@@ -3,6 +3,8 @@ import { Bot, Send, User, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import SEO from '../components/SEO';
+import { canUseAi, incrementAiUsage, checkIsAdmin } from '../utils/paymentManager';
+import PaymentModal from '../components/PaymentModal';
 
 // Initialize Gemini
 const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY || '');
@@ -18,6 +20,7 @@ const AIAdvisor = () => {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [chatSession, setChatSession] = useState(null);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
 
   const messagesEndRef = useRef(null);
 
@@ -51,6 +54,12 @@ const AIAdvisor = () => {
     e?.preventDefault();
     if (!input.trim() || !chatSession || isLoading) return;
 
+    const isAdmin = await checkIsAdmin();
+    if (!isAdmin && !canUseAi()) {
+      setShowPaymentModal(true);
+      return;
+    }
+
     const userMessage = input;
 
     // Add user message to UI
@@ -65,6 +74,8 @@ const AIAdvisor = () => {
 
       // Add AI response to UI
       setMessages(prev => [...prev, { role: 'assistant', content: responseText }]);
+      
+      incrementAiUsage();
     } catch (error) {
       console.error("Chat API Error:", error);
       setMessages(prev => [...prev, {
@@ -117,6 +128,11 @@ const AIAdvisor = () => {
         title="AI Immigration Advisor"
         description="Get instant answers to your visa and immigration questions using VisaVaani's advanced AI Advisor."
         url="/advisor"
+      />
+      <PaymentModal 
+        isOpen={showPaymentModal} 
+        onClose={() => setShowPaymentModal(false)} 
+        onSuccess={() => setShowPaymentModal(false)}
       />
       <div className="w-full max-w-4xl bg-white md:rounded-3xl shadow-xl overflow-hidden flex flex-col h-[calc(100vh-72px)] md:h-[calc(100vh-140px)] md:max-h-[800px] border border-gray-100">
 

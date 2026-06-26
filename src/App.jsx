@@ -33,6 +33,7 @@ const Feedback = lazy(() => import('./pages/Feedback'));
 const Contact = lazy(() => import('./pages/Contact'));
 const About = lazy(() => import('./pages/About'));
 const Resources = lazy(() => import('./pages/Resources'));
+const Payments = lazy(() => import('./pages/Payments'));
 
 function App() {
   return (
@@ -71,6 +72,7 @@ function App() {
             <Route path="terms" element={<Terms />} />
             <Route path="about" element={<About />} />
             <Route path="resources" element={<Resources />} />
+            <Route path="payments" element={<Payments />} />
             {/* User Dashboard */}
             <Route path="dashboard/*" element={
               <ProtectedRoute requireAdmin={false}>

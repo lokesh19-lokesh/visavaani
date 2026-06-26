@@ -648,5 +648,267 @@ export const countriesData = [
       'Strategic location connecting East and West',
       'Incredibly safe and multicultural environment'
     ]
+  },
+  {
+    id: 'bali',
+    name: 'Bali (Indonesia)',
+    region: 'Asia',
+    image: '/destinations/bali.png',
+    tags: ['Digital Nomad', 'Tourist', 'Retirement'],
+    description: 'Bali is a paradise for digital nomads, tourists, and expats seeking a balanced lifestyle with beautiful beaches, vibrant culture, and affordable living costs.',
+    quickFacts: {
+      capital: 'Denpasar',
+      currency: 'IDR (Rp)',
+      language: 'Indonesian, Balinese',
+      population: '4.3 Million (Bali)',
+      climate: 'Tropical',
+      timeToPR: 'Pathways exist but can be complex'
+    },
+    keyVisas: [
+      {
+        name: 'Tourist Visa (B211A)',
+        type: 'Visitor',
+        description: 'For tourism or social visits.',
+        duration: 'Up to 60 days, renewable',
+        requirements: ['Passport valid for 6 months', 'Proof of funds']
+      },
+      {
+        name: 'Second Home Visa',
+        type: 'Long-term',
+        description: 'For foreigners wishing to stay longer and contribute to the economy.',
+        duration: '5 or 10 years',
+        requirements: ['Proof of funds or property investment']
+      }
+    ],
+    benefits: [
+      'Affordable cost of living',
+      'Vibrant digital nomad community',
+      'Rich culture and stunning natural beauty',
+      'Warm tropical climate year-round'
+    ]
+  },
+  {
+    id: 'maldives',
+    name: 'Maldives',
+    region: 'South Asia',
+    image: '/destinations/maldives.png',
+    tags: ['Tourist', 'Luxury', 'Work'],
+    description: 'The Maldives is famous for its luxurious water villas and pristine beaches. It is primarily a tourist destination but offers opportunities in the hospitality sector.',
+    quickFacts: {
+      capital: 'Malé',
+      currency: 'MVR (Rf)',
+      language: 'Dhivehi, English',
+      population: '540,000',
+      climate: 'Tropical',
+      timeToPR: 'Very difficult, usually requires marriage'
+    },
+    keyVisas: [
+      {
+        name: 'Tourist Visa',
+        type: 'Visitor',
+        description: 'Granted on arrival for all nationalities.',
+        duration: '30 days',
+        requirements: ['Valid passport', 'Return ticket', 'Hotel booking']
+      },
+      {
+        name: 'Work Permit',
+        type: 'Work',
+        description: 'For foreigners employed in the Maldives, usually in tourism.',
+        duration: '1 year, renewable',
+        requirements: ['Employer sponsorship']
+      }
+    ],
+    benefits: [
+      'World-class luxury resorts and beaches',
+      'Excellent diving and marine life',
+      'Peaceful island lifestyle'
+    ]
+  },
+  {
+    id: 'lk',
+    name: 'Sri Lanka',
+    region: 'South Asia',
+    image: '/destinations/srilanka.png',
+    tags: ['Digital Nomad', 'Tourist', 'Study'],
+    description: 'Sri Lanka offers rich history, diverse landscapes, and a growing appeal for digital nomads and tourists looking for affordability and adventure.',
+    quickFacts: {
+      capital: 'Colombo',
+      currency: 'LKR (Rs)',
+      language: 'Sinhala, Tamil, English',
+      population: '22 Million',
+      climate: 'Tropical',
+      timeToPR: 'Difficult, requires long-term investment or marriage'
+    },
+    keyVisas: [
+      {
+        name: 'Electronic Travel Authorization (ETA)',
+        type: 'Visitor',
+        description: 'For short visits for tourism or business.',
+        duration: '30 days, extendable',
+        requirements: ['Valid passport', 'Return ticket']
+      },
+      {
+        name: 'Residence Visa',
+        type: 'Long-term',
+        description: 'For investors, employees, or students.',
+        duration: '1 year, renewable',
+        requirements: ['Relevant sponsorship or investment']
+      }
+    ],
+    benefits: [
+      'Low cost of living',
+      'Beautiful tea gardens and beaches',
+      'Rich cultural heritage',
+      'Welcoming locals'
+    ]
+  },
+  {
+    id: 'th',
+    name: 'Thailand',
+    region: 'Southeast Asia',
+    image: '/destinations/thailand.png',
+    tags: ['Digital Nomad', 'Retirement', 'Work'],
+    description: 'Thailand is a premier hub in Southeast Asia, beloved for its food, affordability, and thriving expat and digital nomad communities.',
+    quickFacts: {
+      capital: 'Bangkok',
+      currency: 'THB (฿)',
+      language: 'Thai',
+      population: '71 Million',
+      climate: 'Tropical',
+      timeToPR: 'Takes several years, requires language proficiency'
+    },
+    keyVisas: [
+      {
+        name: 'Tourist Visa (TR)',
+        type: 'Visitor',
+        description: 'For tourism purposes.',
+        duration: '60 days, extendable by 30 days',
+        requirements: ['Valid passport', 'Proof of funds']
+      },
+      {
+        name: 'Non-Immigrant B Visa',
+        type: 'Work / Business',
+        description: 'For working or conducting business.',
+        duration: '90 days initially, extendable to 1 year',
+        requirements: ['Employer sponsorship', 'Company documents']
+      },
+      {
+        name: 'Destination Thailand Visa (DTV)',
+        type: 'Digital Nomad',
+        description: 'For remote workers, digital nomads, and freelancers.',
+        duration: 'Up to 5 years (180 days per stay)',
+        requirements: ['Proof of remote work', 'Financial requirements']
+      },
+      {
+        name: 'Retirement Visa (Non-O-A)',
+        type: 'Retirement',
+        description: 'For retirees aged 50 and over.',
+        duration: '1 year, renewable',
+        requirements: ['Age 50+', 'Financial proof (pension or bank balance)']
+      }
+    ],
+    benefits: [
+      'Incredible food scene and nightlife',
+      'Very affordable cost of living',
+      'Excellent private healthcare facilities',
+      'Hub for cheap travel across Asia'
+    ]
+  },
+  {
+    id: 'jp',
+    name: 'Japan',
+    region: 'Asia',
+    image: '/destinations/japan.png',
+    tags: ['Work', 'Study', 'Highly Skilled'],
+    description: 'Japan blends ultra-modern technology with deep traditional culture. It is an incredibly safe country offering exceptional public transport, food, and growing opportunities for foreign talent.',
+    quickFacts: {
+      capital: 'Tokyo',
+      currency: 'JPY (¥)',
+      language: 'Japanese',
+      population: '125 Million',
+      climate: 'Temperate',
+      timeToPR: 'Usually 10 years, can be 1-3 years for highly skilled professionals'
+    },
+    keyVisas: [
+      {
+        name: 'Work Visa',
+        type: 'Work',
+        description: 'For various professional categories like engineering, humanities, and international services.',
+        duration: '1, 3, or 5 years',
+        requirements: ['Job offer from a Japanese company', 'Degree or relevant experience']
+      },
+      {
+        name: 'Highly Skilled Professional (HSP)',
+        type: 'Work',
+        description: 'A points-based visa for highly skilled foreign talent offering preferential treatment.',
+        duration: '5 years',
+        requirements: ['Meet point threshold based on salary, education, and age']
+      },
+      {
+        name: 'Student Visa',
+        type: 'Study',
+        description: 'For studying at Japanese universities or language schools.',
+        duration: '6 months to 2 years, renewable',
+        requirements: ['Acceptance by an educational institution']
+      },
+      {
+        name: 'Working Holiday Visa',
+        type: 'Work / Travel',
+        description: 'For youth from participating countries to travel and work.',
+        duration: 'Up to 1 year',
+        requirements: ['Age 18-30', 'Eligible nationality']
+      }
+    ],
+    benefits: [
+      'World-class public transportation system',
+      'Exceptional safety and cleanliness',
+      'Rich cultural heritage and amazing cuisine',
+      'Fast-track to PR for highly skilled workers'
+    ]
+  },
+  {
+    id: 'cn',
+    name: 'China',
+    region: 'Asia',
+    image: '/destinations/china.png',
+    tags: ['Work', 'Business', 'Study'],
+    description: 'China is a global economic powerhouse with rapidly advancing tech sectors. It offers unique opportunities for business, teaching, and experiencing a rapidly modernizing society.',
+    quickFacts: {
+      capital: 'Beijing',
+      currency: 'CNY (¥)',
+      language: 'Mandarin',
+      population: '1.4 Billion',
+      climate: 'Diverse',
+      timeToPR: 'Very difficult, usually reserved for exceptional talent or significant investors'
+    },
+    keyVisas: [
+      {
+        name: 'Z Visa (Work)',
+        type: 'Work',
+        description: 'For foreigners coming to China for employment.',
+        duration: '30 days to enter, must apply for Residence Permit',
+        requirements: ['Work permit from employer']
+      },
+      {
+        name: 'M Visa (Business)',
+        type: 'Business',
+        description: 'For commercial and trade activities.',
+        duration: 'Usually 30-90 days per entry',
+        requirements: ['Invitation letter from a Chinese company']
+      },
+      {
+        name: 'X Visa (Student)',
+        type: 'Study',
+        description: 'For study or fieldwork (X1 for long-term, X2 for short-term).',
+        duration: 'Varies by study duration',
+        requirements: ['Admission notice from a Chinese educational institution']
+      }
+    ],
+    benefits: [
+      'Massive market with significant business opportunities',
+      'Rich history spanning thousands of years',
+      'Modern infrastructure and high-speed rail',
+      'High demand for foreign language teachers and specific technical skills'
+    ]
   }
 ];

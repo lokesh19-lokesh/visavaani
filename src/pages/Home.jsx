@@ -11,6 +11,12 @@ const destinations = [
   { name: 'Germany', code: 'de', image: '/destinations/germany.png' },
   { name: 'Dubai', code: 'ae', image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80' },
   { name: 'Singapore', code: 'sg', image: '/destinations/singapore.png' },
+  { name: 'Bali', code: 'bali', image: '/destinations/bali.png' },
+  { name: 'Maldives', code: 'maldives', image: '/destinations/maldives.png' },
+  { name: 'Sri Lanka', code: 'lk', image: '/destinations/srilanka.png' },
+  { name: 'Thailand', code: 'th', image: '/destinations/thailand.png' },
+  { name: 'Japan', code: 'jp', image: '/destinations/japan.png' },
+  { name: 'China', code: 'cn', image: '/destinations/china.png' },
 ];
 
 const Home = () => {

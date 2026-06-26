@@ -177,12 +177,10 @@ const ManageCountries = () => {
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-bold text-gray-900">Manage Countries</h2>
         <div className="flex gap-3">
-          {countries.length === 0 && (
-             <button onClick={handleMigrate} disabled={isMigrating} className="flex items-center gap-2 px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors">
-               <RefreshCw size={18} className={isMigrating ? "animate-spin" : ""} /> 
-               {isMigrating ? 'Migrating...' : 'Migrate Data'}
-             </button>
-          )}
+          <button onClick={handleMigrate} disabled={isMigrating} className="flex items-center gap-2 px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors">
+            <RefreshCw size={18} className={isMigrating ? "animate-spin" : ""} /> 
+            {isMigrating ? 'Syncing...' : 'Sync Data from Code'}
+          </button>
           <button 
             onClick={() => { setFormData(getEmptyForm()); setIsEditing(true); }}
             className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"

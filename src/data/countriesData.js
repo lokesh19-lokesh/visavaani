@@ -428,5 +428,47 @@ export const countriesData = [
       { name: 'Chinese Permanent Resident Card (Green Card)', type: 'PR', description: 'Permanent residency for high-level experts, significant investors, or family reunion.', duration: 'Permanent (Renewable every 10 years)', requirements: ['Exceptional contribution, massive investment, or long-term marriage'] }
     ],
     benefits: ['Massive market with significant business opportunities', 'Rich history spanning thousands of years', 'Modern infrastructure and high-speed rail', 'High demand for foreign language teachers and specific technical skills']
+  },
+  {
+    id: 'ru',
+    name: 'Russia',
+    region: 'Europe/Asia',
+    image: 'https://images.unsplash.com/photo-1547448415-e9f5b28e570d?auto=format&fit=crop&w=800&q=80',
+    tags: ['Study', 'Work', 'Culture'],
+    description: 'Russia is the largest country in the world, known for its rich history, incredible architecture, and growing opportunities in education and specific work sectors.',
+    quickFacts: {
+      capital: 'Moscow',
+      currency: 'RUB (₽)',
+      language: 'Russian',
+      population: '143 Million',
+      climate: 'Continental',
+      timeToPR: 'Varies, usually 5 years'
+    },
+    keyVisas: [
+      { name: 'Tourist Visa', type: 'Visitor', description: 'For tourism.', duration: '30 days', requirements: ['Invitation letter'] },
+      { name: 'Student Visa', type: 'Study', description: 'To study at a Russian university.', duration: 'Length of study', requirements: ['University acceptance'] }
+    ],
+    benefits: ['Rich culture and history', 'Affordable higher education', 'Unique travel experiences']
+  },
+  {
+    id: 'ch',
+    name: 'Switzerland',
+    region: 'Europe',
+    image: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=800&q=80',
+    tags: ['High Salary', 'Tech', 'Finance'],
+    description: 'Switzerland is globally renowned for its high quality of life, strong economy, and beautiful Alpine landscapes. It is a hub for finance, pharmaceuticals, and technology.',
+    quickFacts: {
+      capital: 'Bern',
+      currency: 'CHF (Fr)',
+      language: 'German, French, Italian',
+      population: '8.7 Million',
+      climate: 'Temperate/Alpine',
+      timeToPR: 'Usually 10 years (5 years for EU/EFTA)'
+    },
+    keyVisas: [
+      { name: 'Schengen Visa (Type C)', type: 'Visitor', description: 'For short stays.', duration: 'Up to 90 days', requirements: ['Proof of funds'] },
+      { name: 'National Visa (Type D)', type: 'Work/Study', description: 'For long-term stays.', duration: 'Varies', requirements: ['Job offer or university acceptance'] }
+    ],
+    benefits: ['Exceptionally high salaries', 'Extremely safe and clean', 'Central European location', 'World-class healthcare and education']
   }
 ];

@@ -17,6 +17,8 @@ const destinations = [
   { name: 'Thailand', code: 'th', image: '/destinations/thailand.png' },
   { name: 'Japan', code: 'jp', image: '/destinations/japan.png' },
   { name: 'China', code: 'cn', image: '/destinations/china.png' },
+  { name: 'Russia', code: 'ru', image: 'https://images.unsplash.com/photo-1547448415-e9f5b28e570d?auto=format&fit=crop&w=800&q=80' },
+  { name: 'Switzerland', code: 'ch', image: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=800&q=80' },
 ];
 
 const Home = () => {

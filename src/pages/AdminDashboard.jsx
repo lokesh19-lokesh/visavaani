@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../services/supabase';
 import { useNavigate } from 'react-router-dom';
-import { Users, Settings, LogOut, FileText, Database, Home } from 'lucide-react';
+import { Users, Settings, LogOut, FileText, Database, Home, CheckCircle2, Clock } from 'lucide-react';
 
 const AdminDashboard = () => {
   const [user, setUser] = useState(null);
-  const [stats, setStats] = useState({ users: 0, forms: 0 });
+  const [stats, setStats] = useState({ users: 0, invoices: 0 });
+  const [activeTab, setActiveTab] = useState('dashboard');
+  const [usersList, setUsersList] = useState([]);
+  const [recentInvoices, setRecentInvoices] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,24 +17,50 @@ const AdminDashboard = () => {
       setUser(user);
     });
 
-    // Call edge function for stats
-    const fetchStats = async () => {
+    const fetchData = async () => {
       try {
-        const { data, error } = await supabase.functions.invoke('admin-stats');
-        if (!error && data) {
-          setStats(data);
+        // Fetch profiles (users)
+        const { data: profiles, error: profileError } = await supabase
+          .from('profiles')
+          .select('*')
+          .order('updated_at', { ascending: false });
+
+        if (!profileError && profiles) {
+          setUsersList(profiles);
+          setStats(prev => ({ ...prev, users: profiles.length }));
         }
+
+        // Fetch invoices
+        const { data: invoices, error: invoiceError } = await supabase
+          .from('invoices')
+          .select('*')
+          .order('date', { ascending: false });
+
+        if (!invoiceError && invoices) {
+          setRecentInvoices(invoices.slice(0, 5)); // Just take 5 for recent activity
+          setStats(prev => ({ ...prev, invoices: invoices.length }));
+        }
+
       } catch (err) {
-        console.error('Error fetching admin stats:', err);
+        console.error('Error fetching admin data:', err);
       }
     };
     
-    fetchStats();
+    fetchData();
   }, []);
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
     navigate('/auth');
+  };
+
+  const formatDate = (dateString) => {
+    if (!dateString) return 'N/A';
+    return new Date(dateString).toLocaleDateString('en-IN', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
   };
 
   return (
@@ -47,7 +76,10 @@ const AdminDashboard = () => {
           </div>
         </div>
         <nav className="flex-1 p-4 space-y-1">
-          <button className="w-full flex items-center gap-3 px-4 py-3 text-primary bg-primary/10 rounded-lg font-medium">
+          <button 
+            onClick={() => setActiveTab('dashboard')}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors ${activeTab === 'dashboard' ? 'text-primary bg-primary/10' : 'text-gray-600 hover:bg-gray-50'}`}
+          >
             <Database className="w-5 h-5" /> Dashboard
           </button>
           <button 
@@ -56,13 +88,22 @@ const AdminDashboard = () => {
           >
             <Home className="w-5 h-5" /> Home
           </button>
-          <button className="w-full flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+          <button 
+            onClick={() => setActiveTab('users')}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors ${activeTab === 'users' ? 'text-primary bg-primary/10' : 'text-gray-600 hover:bg-gray-50'}`}
+          >
             <Users className="w-5 h-5" /> Users
           </button>
-          <button className="w-full flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+          <button 
+            onClick={() => setActiveTab('content')}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors ${activeTab === 'content' ? 'text-primary bg-primary/10' : 'text-gray-600 hover:bg-gray-50'}`}
+          >
             <FileText className="w-5 h-5" /> Content
           </button>
-          <button className="w-full flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
+          <button 
+            onClick={() => setActiveTab('settings')}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors ${activeTab === 'settings' ? 'text-primary bg-primary/10' : 'text-gray-600 hover:bg-gray-50'}`}
+          >
             <Settings className="w-5 h-5" /> Settings
           </button>
         </nav>
@@ -77,10 +118,14 @@ const AdminDashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 p-8">
+      <div className="flex-1 p-8 overflow-y-auto h-screen">
         <header className="flex justify-between items-center mb-8">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Welcome back, Admin</h1>
+            <h1 className="text-2xl font-bold text-gray-900">
+              {activeTab === 'dashboard' ? 'Welcome back, Admin' : 
+               activeTab === 'users' ? 'Manage Users' : 
+               activeTab === 'content' ? 'Manage Content' : 'Settings'}
+            </h1>
             <p className="text-gray-500 mt-1">Here is what's happening today.</p>
           </div>
           <div className="flex items-center gap-4">
@@ -90,46 +135,130 @@ const AdminDashboard = () => {
           </div>
         </header>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-gray-500 font-medium">Total Users</h3>
-              <div className="p-2 bg-blue-50 rounded-lg text-blue-600">
-                <Users className="w-5 h-5" />
+        {activeTab === 'dashboard' && (
+          <>
+            {/* Stats Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-gray-500 font-medium">Total Users</h3>
+                  <div className="p-2 bg-blue-50 rounded-lg text-blue-600">
+                    <Users className="w-5 h-5" />
+                  </div>
+                </div>
+                <p className="text-3xl font-bold text-gray-900">{stats.users}</p>
+              </div>
+              <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-gray-500 font-medium">Total Invoices</h3>
+                  <div className="p-2 bg-green-50 rounded-lg text-green-600">
+                    <FileText className="w-5 h-5" />
+                  </div>
+                </div>
+                <p className="text-3xl font-bold text-gray-900">{stats.invoices}</p>
+              </div>
+              <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-gray-500 font-medium">System Status</h3>
+                  <div className="p-2 bg-purple-50 rounded-lg text-purple-600">
+                    <Database className="w-5 h-5" />
+                  </div>
+                </div>
+                <p className="text-xl font-bold text-green-500">Operational</p>
               </div>
             </div>
-            <p className="text-3xl font-bold text-gray-900">{stats.users || 0}</p>
-          </div>
-          <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-gray-500 font-medium">Active Forms</h3>
-              <div className="p-2 bg-green-50 rounded-lg text-green-600">
-                <FileText className="w-5 h-5" />
-              </div>
-            </div>
-            <p className="text-3xl font-bold text-gray-900">{stats.forms || 0}</p>
-          </div>
-          <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-gray-500 font-medium">System Status</h3>
-              <div className="p-2 bg-purple-50 rounded-lg text-purple-600">
-                <Database className="w-5 h-5" />
-              </div>
-            </div>
-            <p className="text-xl font-bold text-green-500">Operational</p>
-          </div>
-        </div>
 
-        {/* Placeholder for Data Table */}
-        <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-          <div className="px-6 py-4 border-b border-gray-100">
-            <h2 className="text-lg font-semibold text-gray-900">Recent Activity</h2>
+            {/* Recent Activity Table */}
+            <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <div className="px-6 py-4 border-b border-gray-100">
+                <h2 className="text-lg font-semibold text-gray-900">Recent Invoices</h2>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-gray-50 border-b border-gray-200">
+                      <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Invoice ID</th>
+                      <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Date</th>
+                      <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Description</th>
+                      <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Amount</th>
+                      <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {recentInvoices.length === 0 ? (
+                      <tr>
+                        <td colSpan="5" className="px-6 py-8 text-center text-gray-500">No recent invoices found.</td>
+                      </tr>
+                    ) : (
+                      recentInvoices.map((invoice, idx) => (
+                        <tr key={idx} className="hover:bg-gray-50">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">INV-{invoice.id?.substring(0, 8).toUpperCase() || 'N/A'}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatDate(invoice.date)}</td>
+                          <td className="px-6 py-4 text-sm text-gray-900">{invoice.description}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">{invoice.amount}</td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {invoice.status === 'Paid' ? (
+                              <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                <CheckCircle2 size={12} className="mr-1" /> Paid
+                              </span>
+                            ) : (
+                              <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+                                <Clock size={12} className="mr-1" /> Unpaid
+                              </span>
+                            )}
+                          </td>
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </>
+        )}
+
+        {activeTab === 'users' && (
+          <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+            <div className="px-6 py-4 border-b border-gray-100">
+              <h2 className="text-lg font-semibold text-gray-900">All Registered Users</h2>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="bg-gray-50 border-b border-gray-200">
+                    <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Full Name</th>
+                    <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Phone</th>
+                    <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Passport Number</th>
+                    <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Last Updated</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  {usersList.length === 0 ? (
+                    <tr>
+                      <td colSpan="4" className="px-6 py-8 text-center text-gray-500">No users found.</td>
+                    </tr>
+                  ) : (
+                    usersList.map((usr, idx) => (
+                      <tr key={idx} className="hover:bg-gray-50">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{usr.full_name || 'N/A'}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{usr.phone || 'N/A'}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{usr.passport_number || 'N/A'}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatDate(usr.updated_at)}</td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
           </div>
-          <div className="p-6 text-center text-gray-500 py-12">
-            Admin specific data tables will go here. Connect your Supabase Edge Functions to populate this securely.
+        )}
+
+        {(activeTab === 'content' || activeTab === 'settings') && (
+          <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden p-12 text-center text-gray-500">
+            This section is under development.
           </div>
-        </div>
+        )}
+
       </div>
     </div>
   );

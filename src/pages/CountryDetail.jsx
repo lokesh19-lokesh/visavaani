@@ -59,7 +59,7 @@ const CountryDetail = () => {
             className="flex items-center gap-6"
           >
             <div className="w-20 h-14 rounded-lg shadow-2xl overflow-hidden border-2 border-white/20 hidden sm:block">
-              <img src={`https://flagcdn.com/w80/${country.id}.png`} alt={`${country.name} Flag`} className="w-full h-full object-cover" />
+              <img src={`https://flagcdn.com/w80/${country.id === 'bali' ? 'id' : country.id === 'maldives' ? 'mv' : country.id}.png`} alt={`${country.name} Flag`} className="w-full h-full object-cover" />
             </div>
             <div>
               <div className="flex items-center text-secondary font-medium mb-2">

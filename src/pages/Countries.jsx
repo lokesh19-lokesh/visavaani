@@ -43,7 +43,7 @@ const Countries = () => {
               <div className="h-28 sm:h-40 md:h-48 relative">
                 <img src={country.image} alt={country.name} className="w-full h-full object-cover" />
                 <div className="absolute top-2 left-2 md:top-4 md:left-4 w-7 h-5 md:w-10 md:h-7 rounded shadow-sm overflow-hidden border border-white/20">
-                  <img src={`https://flagcdn.com/w40/${country.id}.png`} alt={`${country.name} Flag`} className="w-full h-full object-cover" />
+                  <img src={`https://flagcdn.com/w40/${country.id === 'bali' ? 'id' : country.id === 'maldives' ? 'mv' : country.id}.png`} alt={`${country.name} Flag`} className="w-full h-full object-cover" />
                 </div>
               </div>
               <div className="p-3 sm:p-4 md:p-6 flex-grow flex flex-col">

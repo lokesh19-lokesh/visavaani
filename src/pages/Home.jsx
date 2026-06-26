@@ -305,7 +305,7 @@ const Home = () => {
                   <div className="h-[120px] relative">
                     <img src={dest.image} alt={dest.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                     <div className="absolute top-3 left-3 w-8 h-6 rounded shadow-sm overflow-hidden border border-white/20">
-                      <img src={`https://flagcdn.com/w40/${dest.code}.png`} alt={`${dest.name} Flag`} className="w-full h-full object-cover" />
+                      <img src={`https://flagcdn.com/w40/${dest.code === 'bali' ? 'id' : dest.code === 'maldives' ? 'mv' : dest.code}.png`} alt={`${dest.name} Flag`} className="w-full h-full object-cover" />
                     </div>
                   </div>
                   {/* Content */}

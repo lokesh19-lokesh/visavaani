@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { supabase } from '../services/supabase';
 import { useNavigate } from 'react-router-dom';
 import { Users, Settings, LogOut, FileText, Database, Home, CheckCircle2, Clock } from 'lucide-react';
+import ManageCountries from '../components/admin/ManageCountries';
 
 const AdminDashboard = () => {
   const [user, setUser] = useState(null);
@@ -253,7 +254,11 @@ const AdminDashboard = () => {
           </div>
         )}
 
-        {(activeTab === 'content' || activeTab === 'settings') && (
+        {activeTab === 'content' && (
+          <ManageCountries />
+        )}
+
+        {activeTab === 'settings' && (
           <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden p-12 text-center text-gray-500">
             This section is under development.
           </div>

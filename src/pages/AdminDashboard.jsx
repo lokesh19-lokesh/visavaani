@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../services/supabase';
 import { useNavigate } from 'react-router-dom';
-import { Users, Settings, LogOut, FileText, Database } from 'lucide-react';
+import { Users, Settings, LogOut, FileText, Database, Home } from 'lucide-react';
 
 const AdminDashboard = () => {
   const [user, setUser] = useState(null);
@@ -49,6 +49,12 @@ const AdminDashboard = () => {
         <nav className="flex-1 p-4 space-y-1">
           <button className="w-full flex items-center gap-3 px-4 py-3 text-primary bg-primary/10 rounded-lg font-medium">
             <Database className="w-5 h-5" /> Dashboard
+          </button>
+          <button 
+            onClick={() => navigate('/')}
+            className="w-full flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg font-medium transition-colors"
+          >
+            <Home className="w-5 h-5" /> Home
           </button>
           <button className="w-full flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg font-medium transition-colors">
             <Users className="w-5 h-5" /> Users

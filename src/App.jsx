@@ -13,6 +13,9 @@ const VisaCategory = lazy(() => import('./pages/VisaCategory'));
 const Expert = lazy(() => import('./pages/Expert'));
 const AIAdvisor = lazy(() => import('./pages/AIAdvisor'));
 const Auth = lazy(() => import('./pages/Auth'));
+const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
+const UserDashboard = lazy(() => import('./pages/UserDashboard'));
+const ProtectedRoute = lazy(() => import('./components/ProtectedRoute'));
 const PlaceholderPage = lazy(() => import('./pages/PlaceholderPage'));
 const Eligibility = lazy(() => import('./pages/Eligibility'));
 const Compare = lazy(() => import('./pages/Compare'));
@@ -68,10 +71,23 @@ function App() {
             <Route path="terms" element={<Terms />} />
             <Route path="about" element={<About />} />
             <Route path="resources" element={<Resources />} />
+            {/* User Dashboard */}
+            <Route path="dashboard/*" element={
+              <ProtectedRoute requireAdmin={false}>
+                <UserDashboard />
+              </ProtectedRoute>
+            } />
             
             {/* 404 Route */}
             <Route path="*" element={<PlaceholderPage title="Page Not Found" />} />
           </Route>
+
+          {/* Admin Routes */}
+          <Route path="/admin/*" element={
+            <ProtectedRoute requireAdmin={true}>
+              <AdminDashboard />
+            </ProtectedRoute>
+          } />
         </Routes>
       </Suspense>
     </>

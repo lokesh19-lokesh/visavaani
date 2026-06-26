@@ -3,11 +3,33 @@ import { Outlet, Link } from 'react-router-dom';
 import { Facebook, Instagram, YouTube as Youtube, LinkedIn as Linkedin, X as XIcon } from '@mui/icons-material';
 import { Menu, X, Bot } from 'lucide-react';
 import PremiumAIModal from '../components/PremiumAIModal';
+import { supabase } from '../services/supabase';
 
 const MainLayout = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAIModalOpen, setIsAIModalOpen] = useState(false);
   const [aiContext, setAiContext] = useState("");
+  const [session, setSession] = useState(null);
+
+  const isAdmin = session?.user?.email?.toLowerCase() === 'yestickai@gmail.com';
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+  };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -120,11 +142,24 @@ const MainLayout = () => {
             <div className="flex items-center gap-4">
               <div id="google_translate_element" className="translate-wrapper"></div>
 
-              <Link to="/auth" className="hidden sm:block">
-                <button className="bg-white text-primary hover:bg-gray-100 px-5 py-2 rounded-lg font-semibold text-sm shadow-sm transition-colors">
-                  Login / Sign Up
-                </button>
-              </Link>
+              {session ? (
+                <div className="hidden sm:flex items-center gap-3">
+                  <Link to={isAdmin ? "/admin" : "/dashboard"}>
+                    <button className="bg-gray-800 text-white border border-gray-700 hover:bg-gray-700 px-4 py-2 rounded-lg font-semibold text-sm transition-colors">
+                      Dashboard
+                    </button>
+                  </Link>
+                  <button onClick={handleLogout} className="bg-white text-primary hover:bg-gray-100 px-4 py-2 rounded-lg font-semibold text-sm shadow-sm transition-colors">
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <Link to="/auth" className="hidden sm:block">
+                  <button className="bg-white text-primary hover:bg-gray-100 px-5 py-2 rounded-lg font-semibold text-sm shadow-sm transition-colors">
+                    Login / Sign Up
+                  </button>
+                </Link>
+              )}
               
               {/* Mobile Menu Button */}
               <button 
@@ -149,11 +184,24 @@ const MainLayout = () => {
               <Link to="/resources" onClick={toggleMobileMenu} className="text-gray-300 font-medium text-base hover:text-white transition-colors block py-2 border-b border-gray-800/50">Resources</Link>
               <Link to="/about" onClick={toggleMobileMenu} className="text-gray-300 font-medium text-base hover:text-white transition-colors block py-2 border-b border-gray-800/50">About Us</Link>
               
-              <Link to="/auth" onClick={toggleMobileMenu} className="block sm:hidden pt-4">
-                <button className="w-full bg-white text-primary hover:bg-gray-100 px-5 py-3 rounded-lg font-semibold text-base shadow-sm transition-colors">
-                  Login / Sign Up
-                </button>
-              </Link>
+              {session ? (
+                <div className="flex flex-col gap-3 pt-4 sm:hidden">
+                  <Link to={isAdmin ? "/admin" : "/dashboard"} onClick={toggleMobileMenu}>
+                    <button className="w-full bg-gray-800 text-white border border-gray-700 hover:bg-gray-700 px-5 py-3 rounded-lg font-semibold text-base transition-colors">
+                      Dashboard
+                    </button>
+                  </Link>
+                  <button onClick={() => { handleLogout(); toggleMobileMenu(); }} className="w-full bg-white text-primary hover:bg-gray-100 px-5 py-3 rounded-lg font-semibold text-base shadow-sm transition-colors">
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <Link to="/auth" onClick={toggleMobileMenu} className="block sm:hidden pt-4">
+                  <button className="w-full bg-white text-primary hover:bg-gray-100 px-5 py-3 rounded-lg font-semibold text-base shadow-sm transition-colors">
+                    Login / Sign Up
+                  </button>
+                </Link>
+              )}
             </nav>
           </div>
         )}

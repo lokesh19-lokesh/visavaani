@@ -128,7 +128,7 @@ const Checklists = () => {
           </div>
         </div>
       )}
-    </div>
+    </main>
   );
 };
 

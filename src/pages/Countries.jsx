@@ -91,7 +91,7 @@ const Countries = () => {
           ))}
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

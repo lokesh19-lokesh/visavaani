@@ -13,6 +13,7 @@ const checklists = [
 
 const Checklists = () => {
   const [openCategory, setOpenCategory] = useState(0);
+  const [showConstructionModal, setShowConstructionModal] = useState(false);
 
   return (
     <div className="bg-gray-50 min-h-screen pb-20 font-sans">
@@ -54,7 +55,10 @@ const Checklists = () => {
                   <span>{list.downloads} downloads</span>
                 </div>
               </div>
-              <button className="w-10 h-10 rounded-full bg-gray-50 text-gray-500 flex items-center justify-center hover:bg-primary hover:text-white transition-colors shrink-0 ml-4 group-hover:bg-primary group-hover:text-white">
+              <button 
+                onClick={() => setShowConstructionModal(true)}
+                className="w-10 h-10 rounded-full bg-gray-50 text-gray-500 flex items-center justify-center hover:bg-primary hover:text-white transition-colors shrink-0 ml-4 group-hover:bg-primary group-hover:text-white"
+              >
                 <Download className="w-5 h-5" />
               </button>
             </div>
@@ -70,11 +74,43 @@ const Checklists = () => {
              </div>
              <p className="text-blue-50 max-w-xl text-lg">Create a free account to track your document collection progress online, upload securely, and get AI verification on your files.</p>
            </div>
-           <button className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold whitespace-nowrap hover:bg-gray-50 transition-colors shadow-lg">
+           <button 
+             onClick={() => setShowConstructionModal(true)}
+             className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold whitespace-nowrap hover:bg-gray-50 transition-colors shadow-lg"
+           >
              Create Free Account
            </button>
         </div>
       </div>
+
+      {/* Under Construction Modal */}
+      {showConstructionModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+          <div className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl relative">
+            <button 
+              onClick={() => setShowConstructionModal(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-900 bg-gray-100 hover:bg-gray-200 rounded-full p-2 transition-colors"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Under Construction</h3>
+              <p className="text-gray-600 mb-6">
+                This feature will be available soon! We are working hard to bring you interactive checklists and secure document storage.
+              </p>
+              <button 
+                onClick={() => setShowConstructionModal(false)}
+                className="w-full bg-primary hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl transition-colors"
+              >
+                Got it
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

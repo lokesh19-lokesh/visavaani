@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../services/supabase';
 import { useNavigate } from 'react-router-dom';
-import { Users, Settings, LogOut, FileText, Database, Home, CheckCircle2, Clock } from 'lucide-react';
+import { Users, Settings, LogOut, FileText, Database, Home, CheckCircle2, Clock, BookOpen } from 'lucide-react';
 import ManageCountries from '../components/admin/ManageCountries';
+import ManageBlogs from '../components/admin/ManageBlogs';
 
 const AdminDashboard = () => {
   const [user, setUser] = useState(null);
@@ -102,6 +103,12 @@ const AdminDashboard = () => {
             <FileText className="w-5 h-5" /> Content
           </button>
           <button 
+            onClick={() => setActiveTab('blogs')}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors ${activeTab === 'blogs' ? 'text-primary bg-primary/10' : 'text-gray-600 hover:bg-gray-50'}`}
+          >
+            <BookOpen className="w-5 h-5" /> Blogs
+          </button>
+          <button 
             onClick={() => setActiveTab('settings')}
             className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors ${activeTab === 'settings' ? 'text-primary bg-primary/10' : 'text-gray-600 hover:bg-gray-50'}`}
           >
@@ -125,7 +132,8 @@ const AdminDashboard = () => {
             <h1 className="text-2xl font-bold text-gray-900">
               {activeTab === 'dashboard' ? 'Welcome back, Admin' : 
                activeTab === 'users' ? 'Manage Users' : 
-               activeTab === 'content' ? 'Manage Content' : 'Settings'}
+               activeTab === 'content' ? 'Manage Content' : 
+               activeTab === 'blogs' ? 'Manage Blogs' : 'Settings'}
             </h1>
             <p className="text-gray-500 mt-1">Here is what's happening today.</p>
           </div>
@@ -256,6 +264,10 @@ const AdminDashboard = () => {
 
         {activeTab === 'content' && (
           <ManageCountries />
+        )}
+
+        {activeTab === 'blogs' && (
+          <ManageBlogs />
         )}
 
         {activeTab === 'settings' && (

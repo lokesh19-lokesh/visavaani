@@ -39,7 +39,7 @@ const Auth = () => {
         setMessage('Successfully logged in! Redirecting...');
         setTimeout(() => navigate(isAdmin ? '/admin' : '/'), 1000);
       } else {
-        const { error } = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signUp({
           email: formData.email,
           password: formData.password,
           options: {
@@ -49,10 +49,24 @@ const Auth = () => {
           }
         });
         if (error) throw error;
+        
+        // Supabase returns an empty identities array if the user already exists
+        if (data?.user && data.user.identities && data.user.identities.length === 0) {
+          throw new Error('Email already exists. Please log in instead.');
+        }
+        
         setMessage('Check your email for the login link!');
       }
     } catch (err) {
-      setError(err.message);
+      if (
+        err.message && 
+        (err.message.toLowerCase().includes('already registered') || 
+         err.message.toLowerCase().includes('already exists'))
+      ) {
+        setError('Email already exists. Please log in instead.');
+      } else {
+        setError(err.message);
+      }
     } finally {
       setLoading(false);
     }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, ArrowRight, TrendingUp } from 'lucide-react';
 import SEO from '../components/SEO';
@@ -31,6 +31,57 @@ export const newsItems = [
 ];
 
 const News = () => {
+  const [liveNews, setLiveNews] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const apiKey = import.meta.env.VITE_NEWSDATA_API_KEY;
+        if (!apiKey) throw new Error("No API Key");
+        
+        // Build query string with specific filters requested by user
+        const queryParams = new URLSearchParams({
+          apikey: apiKey,
+          q: 'visa',
+          country: 'au,us,cn,lk,in',
+          language: 'te,en,hi,ta,ml',
+          category: 'breaking,business,education,politics,technology',
+          timezone: 'America/Indiana/Indianapolis',
+          prioritydomain: 'top',
+          image: '1',
+          domainurl: 'bbc.com,news.google.com,thehindu.com,timesofindia.indiatimes.com'
+        });
+        
+        const res = await fetch(`https://newsdata.io/api/1/latest?${queryParams.toString()}`);
+        if (!res.ok) throw new Error("API response not OK");
+        
+        const data = await res.json();
+        if (data.results && data.results.length > 0) {
+          const formattedNews = data.results.map(article => ({
+            id: article.article_id,
+            title: article.title,
+            date: new Date(article.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+            excerpt: article.description || 'Click to read the full article for more details and updates.',
+            tag: 'Global News',
+            image: article.image_url || 'https://images.unsplash.com/photo-1555848962-6e79363ec58f?w=800&auto=format&fit=crop',
+            link: article.link // External link
+          }));
+          setLiveNews(formattedNews);
+        } else {
+          setLiveNews(newsItems);
+        }
+      } catch (err) {
+        console.error("Failed to fetch news:", err);
+        setLiveNews(newsItems); // Fallback to hardcoded items
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNews();
+  }, []);
+
   return (
     <div className="bg-gray-50 min-h-screen pb-20 font-sans">
       <SEO 
@@ -52,26 +103,48 @@ const News = () => {
 
       <div className="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8 -mt-12 relative z-20">
         <div className="space-y-8">
-          {newsItems.map((news, index) => (
-            <div key={index} className="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all flex flex-col md:flex-row group">
-              <div className="md:w-2/5 h-64 md:h-auto overflow-hidden relative">
-                <img src={news.image} alt={news.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-primary uppercase tracking-wider">
-                  {news.tag}
+          {loading ? (
+            // Skeleton Loader
+            [1, 2, 3].map(i => (
+              <div key={i} className="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm flex flex-col md:flex-row animate-pulse">
+                <div className="md:w-2/5 h-64 md:h-auto bg-gray-200"></div>
+                <div className="md:w-3/5 p-8 flex flex-col justify-center">
+                  <div className="w-32 h-4 bg-gray-200 rounded mb-4"></div>
+                  <div className="w-full h-8 bg-gray-200 rounded mb-4"></div>
+                  <div className="w-3/4 h-8 bg-gray-200 rounded mb-6"></div>
+                  <div className="w-full h-20 bg-gray-200 rounded mb-6"></div>
+                  <div className="w-32 h-4 bg-gray-200 rounded"></div>
                 </div>
               </div>
-              <div className="md:w-3/5 p-8 flex flex-col justify-center">
-                <div className="flex items-center text-gray-500 text-sm mb-4 font-medium">
-                  <Calendar className="w-4 h-4 mr-2" /> {news.date}
+            ))
+          ) : (
+            liveNews.map((news, index) => (
+              <div key={index} className="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all flex flex-col md:flex-row group">
+                <div className="md:w-2/5 h-64 md:h-auto overflow-hidden relative">
+                  <img src={news.image} alt={news.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-primary uppercase tracking-wider">
+                    {news.tag}
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-primary transition-colors">{news.title}</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">{news.excerpt}</p>
-                <Link to={`/news/${news.id}`} className="inline-flex items-center text-primary font-bold hover:text-secondary transition-colors w-max">
-                  Read Full Article <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
+                <div className="md:w-3/5 p-8 flex flex-col justify-center">
+                  <div className="flex items-center text-gray-500 text-sm mb-4 font-medium">
+                    <Calendar className="w-4 h-4 mr-2" /> {news.date}
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-primary transition-colors">{news.title}</h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed line-clamp-3">{news.excerpt}</p>
+                  {news.link ? (
+                    <a href={news.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-primary font-bold hover:text-secondary transition-colors w-max">
+                      Read Full Article <ArrowRight className="w-4 h-4 ml-2" />
+                    </a>
+                  ) : (
+                    <Link to={`/news/${news.id}`} className="inline-flex items-center text-primary font-bold hover:text-secondary transition-colors w-max">
+                      Read Full Article <ArrowRight className="w-4 h-4 ml-2" />
+                    </Link>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </div>

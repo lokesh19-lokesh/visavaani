@@ -123,13 +123,18 @@ const CountryDetail = () => {
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Key Visa Pathways</h2>
               <div className="space-y-4">
                 {country.keyVisas.map((visa, idx) => (
-                  <div key={idx} className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 p-6 hover:shadow-lg transition-shadow">
+                  <div key={idx} className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 p-6 hover:shadow-lg transition-shadow relative">
                     <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-4">
                       <div>
-                        <h3 className="text-xl font-bold text-gray-900">{visa.name}</h3>
-                        <span className="inline-block mt-1 px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full">
-                          {visa.type}
-                        </span>
+                        <Link to={`/countries/${country.id}/visa/${visa.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`} className="group inline-flex items-center">
+                          <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors">{visa.name}</h3>
+                          <ChevronRight className="w-5 h-5 ml-1 text-gray-400 opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all transform group-hover:translate-x-1" />
+                        </Link>
+                        <div className="mt-1">
+                          <span className="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full">
+                            {visa.type}
+                          </span>
+                        </div>
                       </div>
                       <button 
                         onClick={() => {
@@ -155,8 +160,13 @@ const CountryDetail = () => {
                           </li>
                         ))}
                       </ul>
-                      <div className="mt-4 pt-4 border-t border-gray-200 text-sm text-gray-500 flex items-center">
-                        <Clock className="w-4 h-4 mr-1.5" /> Duration: {visa.duration}
+                      <div className="mt-4 pt-4 border-t border-gray-200 text-sm text-gray-500 flex items-center justify-between">
+                        <div className="flex items-center">
+                          <Clock className="w-4 h-4 mr-1.5" /> Duration: {visa.duration}
+                        </div>
+                        <Link to={`/countries/${country.id}/visa/${visa.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`} className="text-primary hover:text-primary-light font-medium text-sm flex items-center">
+                          View Details <ArrowLeft className="w-4 h-4 ml-1 transform rotate-180" />
+                        </Link>
                       </div>
                     </div>
                   </div>

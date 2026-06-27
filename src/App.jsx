@@ -10,6 +10,7 @@ const Countries = lazy(() => import('./pages/Countries'));
 const CountryDetail = lazy(() => import('./pages/CountryDetail'));
 const VisaTypes = lazy(() => import('./pages/VisaTypes'));
 const VisaCategory = lazy(() => import('./pages/VisaCategory'));
+const VisaDetail = lazy(() => import('./pages/VisaDetail'));
 const Expert = lazy(() => import('./pages/Expert'));
 const AIAdvisor = lazy(() => import('./pages/AIAdvisor'));
 const Auth = lazy(() => import('./pages/Auth'));
@@ -45,6 +46,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="countries" element={<Countries />} />
             <Route path="countries/:id" element={<CountryDetail />} />
+            <Route path="countries/:countryId/visa/:visaId" element={<VisaDetail />} />
             <Route path="visas" element={<VisaTypes />} />
             <Route path="visas/:id" element={<VisaCategory />} />
             <Route path="advisor" element={<AIAdvisor />} />

@@ -286,7 +286,32 @@ const GuideArticle = () => {
              <ArrowLeft className="w-4 h-4 mr-2" /> Back to all Guides
            </Link>
            <div className="flex space-x-3">
-             <button className="text-gray-400 hover:text-blue-600 transition-colors font-bold text-sm">Share Guide</button>
+             <button 
+               onClick={async () => {
+                 const shareData = {
+                   title: guide.title,
+                   text: guide.description,
+                   url: window.location.href,
+                 };
+                 if (navigator.share) {
+                   try {
+                     await navigator.share(shareData);
+                   } catch (err) {
+                     console.error('Error sharing:', err);
+                   }
+                 } else {
+                   try {
+                     await navigator.clipboard.writeText(window.location.href);
+                     alert('Link copied to clipboard!');
+                   } catch (err) {
+                     console.error('Failed to copy!', err);
+                   }
+                 }
+               }}
+               className="text-gray-400 hover:text-blue-600 transition-colors font-bold text-sm"
+             >
+               Share Guide
+             </button>
            </div>
         </div>
       </div>

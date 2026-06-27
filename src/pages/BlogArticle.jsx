@@ -230,7 +230,30 @@ const BlogArticle = () => {
           <div className="mt-12 pt-8 border-t border-gray-100 flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <span className="font-bold text-gray-900">Share this article:</span>
-              <button className="p-2 bg-gray-50 rounded-full hover:bg-gray-100 transition-colors text-gray-600">
+              <button 
+                onClick={async () => {
+                  const shareData = {
+                    title: post.title,
+                    text: post.excerpt,
+                    url: window.location.href,
+                  };
+                  if (navigator.share) {
+                    try {
+                      await navigator.share(shareData);
+                    } catch (err) {
+                      console.error('Error sharing:', err);
+                    }
+                  } else {
+                    try {
+                      await navigator.clipboard.writeText(window.location.href);
+                      alert('Link copied to clipboard!');
+                    } catch (err) {
+                      console.error('Failed to copy!', err);
+                    }
+                  }
+                }}
+                className="p-2 bg-gray-50 rounded-full hover:bg-gray-100 transition-colors text-gray-600"
+              >
                 <Share2 className="w-5 h-5" />
               </button>
             </div>

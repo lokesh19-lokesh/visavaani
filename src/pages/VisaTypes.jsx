@@ -19,12 +19,30 @@ const categories = [
 ];
 
 const VisaTypes = () => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Global Visa Categories & Types",
+    "description": "Explore different visa types including Skilled Worker, Student, Family, and Business visas for top immigration destinations.",
+    "itemListElement": categories.map((cat, idx) => ({
+      "@type": "ListItem",
+      "position": idx + 1,
+      "item": {
+        "@type": "Service",
+        "name": cat.title,
+        "description": cat.desc,
+        "url": `https://visavaani.com/visas/${cat.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`
+      }
+    }))
+  };
+
   return (
-    <div className="bg-gray-50 min-h-screen pb-20">
+    <main className="bg-gray-50 min-h-screen pb-20 font-sans">
       <SEO 
         title="Visa Categories & Types"
         description="Explore different visa types including Skilled Worker, Student, Family, and Business visas for top immigration destinations."
         url="/visas"
+        schema={schema}
       />
       {/* Header */}
       <div className="bg-primary pt-16 pb-20 text-white text-center px-4">
@@ -55,7 +73,7 @@ const VisaTypes = () => {
           ))}
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

@@ -5,12 +5,29 @@ import SEO from '../components/SEO';
 import { countriesData as countries } from '../data/countriesData';
 
 const Countries = () => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Top Immigration Destinations",
+    "description": "Explore top countries for immigration, PR, and study abroad including USA, Canada, UK, Australia, and Germany.",
+    "itemListElement": countries.map((country, idx) => ({
+      "@type": "ListItem",
+      "position": idx + 1,
+      "item": {
+        "@type": "Place",
+        "name": country.name,
+        "url": `https://visavaani.com/countries/${country.id}`
+      }
+    }))
+  };
+
   return (
-    <div className="bg-gray-50 min-h-screen pb-20">
+    <main className="bg-gray-50 min-h-screen pb-20">
       <SEO 
         title="Immigration Destinations"
         description="Explore top countries for immigration, PR, and study abroad including USA, Canada, UK, Australia, and Germany."
         url="/countries"
+        schema={schema}
       />
       
       {/* Header */}

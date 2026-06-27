@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { MapPin, Clock, ArrowLeft, CheckCircle2, ChevronRight, Sparkles, FileText, Briefcase, GraduationCap, Plane, Shield } from 'lucide-react';
 import { countriesData } from '../data/countriesData';
 import PremiumAIModal from '../components/PremiumAIModal';
+import SEO from '../components/SEO';
 
 // Helper function to create slugs
 const createSlug = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
@@ -21,20 +22,54 @@ const VisaDetail = () => {
 
   if (!country || !visa) {
     return (
-      <div className="min-h-[calc(100vh-72px)] flex flex-col items-center justify-center bg-gray-50 px-4">
+      <main className="min-h-[calc(100vh-72px)] flex flex-col items-center justify-center bg-gray-50 px-4">
+        <SEO title="Visa Not Found" description="The requested visa information could not be found." />
         <div className="text-center max-w-lg">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Visa Not Found</h1>
-          <p className="text-gray-500 mb-8 text-lg">We couldn't find the visa details you're looking for.</p>
+          <p className="text-gray-500 mb-8 text-lg">We couldn't find the visa details you're looking for. It may have been removed or the link is incorrect.</p>
           <button 
-            onClick={() => navigate('/countries')}
+            onClick={() => navigate(`/countries/${countryId}`)}
             className="inline-flex items-center bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-light transition-colors"
           >
-            <ArrowLeft className="w-5 h-5 mr-2" /> Back to Destinations
+            <ArrowLeft className="w-5 h-5 mr-2" /> Back to Country
           </button>
         </div>
-      </div>
+      </main>
     );
   }
+
+  // Schema for AEO/LLMO
+  const visaSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": `How to apply for the ${visa.name} in ${country.name}`,
+    "description": visa.description,
+    "totalTime": "P3M", // 3 months rough estimate
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Check Requirements",
+        "text": "Review all prerequisites including documents and eligibility."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Submit Application",
+        "text": `Submit your application for the ${visa.name}.`
+      }
+    ]
+  };
+
+  const getIcon = (title) => {
+    switch (title.toLowerCase()) {
+      case 'processing time': return <Clock className="w-5 h-5" />;
+      case 'cost': return <FileText className="w-5 h-5" />;
+      case 'validity': return <CheckCircle2 className="w-5 h-5" />;
+      case 'work rights': return <Briefcase className="w-5 h-5" />;
+      case 'study rights': return <GraduationCap className="w-5 h-5" />;
+      case 'pr pathway': return <Plane className="w-5 h-5" />;
+      default: return <Shield className="w-5 h-5" />;
+    }
+  };
 
   // Get icon based on visa type
   const getVisaIcon = (type) => {
@@ -49,8 +84,14 @@ const VisaDetail = () => {
   const Icon = getVisaIcon(visa.type);
 
   return (
-    <div className="bg-gray-50 min-h-screen pb-20 font-sans">
-      {/* Header Banner */}
+    <main className="bg-gray-50 min-h-screen pb-20 font-sans">
+      <SEO 
+        title={`${visa.name} - ${country.name} | Immigration Guide`}
+        description={`Learn about the ${visa.name} for ${country.name}. Get full details on requirements, costs, processing times, and apply step-by-step.`}
+        url={`/countries/${country.id}/visa/${visaId}`}
+        schema={visaSchema}
+      />
+      {/* Hero Section */}
       <div className="bg-gradient-to-r from-slate-900 to-primary pt-16 pb-24 text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 opacity-10 transform translate-x-1/4 -translate-y-1/4">
           <Icon className="w-96 h-96" />
@@ -195,7 +236,7 @@ const VisaDetail = () => {
         isOpen={isAIModalOpen} 
         onClose={() => setIsAIModalOpen(false)} 
       />
-    </div>
+    </main>
   );
 };
 

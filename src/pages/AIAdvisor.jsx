@@ -122,12 +122,27 @@ const AIAdvisor = () => {
     });
   };
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "VisaVaani AI Immigration Advisor",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "description": "An AI-powered immigration advisor that provides instant answers to visa and immigration questions.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  };
+
   return (
-    <div className="bg-[#F8FAFC] min-h-[calc(100vh-72px)] flex flex-col items-center justify-center md:p-4 md:py-8">
+    <main className="bg-[#F8FAFC] min-h-[calc(100vh-72px)] flex flex-col items-center justify-center md:p-4 md:py-8 font-sans">
       <SEO 
         title="AI Immigration Advisor"
         description="Get instant answers to your visa and immigration questions using VisaVaani's advanced AI Advisor."
         url="/advisor"
+        schema={schema}
       />
       <PaymentModal 
         isOpen={showPaymentModal} 
@@ -232,7 +247,7 @@ const AIAdvisor = () => {
           </form>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

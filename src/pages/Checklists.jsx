@@ -15,12 +15,29 @@ const Checklists = () => {
   const [openCategory, setOpenCategory] = useState(0);
   const [showConstructionModal, setShowConstructionModal] = useState(false);
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Immigration Document Checklists",
+    "description": "Download comprehensive document checklists for your visa application process.",
+    "itemListElement": checklists.map((list, idx) => ({
+      "@type": "ListItem",
+      "position": idx + 1,
+      "item": {
+        "@type": "Thing",
+        "name": list.title,
+        "description": `Document checklist for ${list.category} visa.`
+      }
+    }))
+  };
+
   return (
-    <div className="bg-gray-50 min-h-screen pb-20 font-sans">
+    <main className="bg-gray-50 min-h-screen pb-20 font-sans">
       <SEO 
         title="Immigration Document Checklists"
         description="Download comprehensive document checklists for your visa application process."
         url="/checklists"
+        schema={schema}
       />
       <div className="bg-primary pt-20 pb-24 text-white text-center px-4 relative overflow-hidden">
          <div className="relative z-10">

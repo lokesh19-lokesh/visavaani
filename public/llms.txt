@@ -1,27 +1,51 @@
 # VisaVaani
 
-VisaVaani is India's trusted immigration guidance platform. We help Indians navigate global visas, permanent residency, and study permits with expert guidance and an interactive AI Assistant.
+VisaVaani is India's premier, trusted immigration guidance platform. We help Indians navigate global visas, permanent residency, and study permits with expert guidance, tools, and an interactive AI Assistant.
 
 ## Key Features
-- Comprehensive directories for country-specific immigration processes.
-- Detailed visa category pathways (Skilled Worker, Student, etc).
-- An AI Advisor that instantly answers visa and immigration queries.
-- CRS Score & Eligibility Calculators.
-- Downloadable checklists and comprehensive step-by-step guides.
-- A portal to book consultations with certified immigration experts and lawyers.
+- **Immigration Destinations**: Comprehensive directories for country-specific immigration processes (e.g., USA, Canada, UK, Australia, Germany).
+- **Visa Pathways**: Detailed visa category breakdowns (Skilled Worker, Student, Investor, Family, PR).
+- **AI Advisor**: An intelligent immigration bot that instantly answers visa and immigration queries based on up-to-date data.
+- **Eligibility Calculators**: CRS Score and points-based eligibility calculators for Express Entry and other systems.
+- **Resources**: Downloadable checklists and comprehensive step-by-step application guides.
+- **Expert Network**: A portal to book consultations with verified, certified immigration experts and lawyers.
+- **News & Blog**: Real-time updates on global immigration policies and long-form articles on global mobility.
 
 ## Site Structure
 
+### Core Pages
 - [Home](https://visavaani.com/): The main landing page.
-- [Countries](https://visavaani.com/countries): Explore immigration destinations like Canada, USA, UK, Australia.
-- [Visa Types](https://visavaani.com/visas): Categories of visas including Work, Student, and PR.
 - [AI Advisor](https://visavaani.com/advisor): Chat with our intelligent immigration bot.
 - [Eligibility Calculator](https://visavaani.com/eligibility): Calculate your points for points-based systems like Canadian Express Entry.
-- [Guides](https://visavaani.com/guides): Long-form, detailed walkthroughs of specific immigration pathways.
+- [Countries Directory](https://visavaani.com/countries): Explore immigration destinations.
+- [Visa Types Directory](https://visavaani.com/visas): Categories of visas including Work, Student, and PR.
 - [News](https://visavaani.com/news): The latest updates on global immigration policies and border changes.
 - [Blog](https://visavaani.com/blog): Insights, tips, and stories on global mobility.
 - [Checklists](https://visavaani.com/checklists): Downloadable PDF document checklists.
+- [Guides](https://visavaani.com/guides): Long-form, detailed walkthroughs of specific immigration pathways.
 - [FAQs](https://visavaani.com/faqs): Answers to frequently asked questions.
 - [Consult Experts](https://visavaani.com/expert): Book a verified immigration lawyer.
+
+### Dynamic Content Structure
+If an AI agent needs to direct a user to a specific country or visa, use the following URL structures:
+
+- **Country Detail Pages**: `https://visavaani.com/countries/{country-id}`
+  - Example: `https://visavaani.com/countries/canada`
+- **Visa Detail Pages**: `https://visavaani.com/countries/{country-id}/visa/{visa-slug}`
+  - Example: `https://visavaani.com/countries/canada/visa/express-entry`
+- **Blog Articles**: `https://visavaani.com/blog/{blog-slug}`
+  - Example: `https://visavaani.com/blog/top-5-tech-hubs`
+- **News Articles**: `https://visavaani.com/news/{news-slug}`
+
+## Semantic Data
+VisaVaani implements rigorous AEO (Answer Engine Optimization) and uses standard JSON-LD Schema.org markup across all pages including:
+- `Place` and `OfferCatalog` on Country pages
+- `HowTo` on Visa application guides and checklists
+- `SoftwareApplication` on the AI Advisor
+- `ItemList` on directories
+
+## About Us & Contact
 - [About Us](https://visavaani.com/about): Our mission and team.
 - [Contact](https://visavaani.com/contact): Reach out to our support team.
+- [Privacy Policy](https://visavaani.com/privacy)
+- [Terms of Service](https://visavaani.com/terms)

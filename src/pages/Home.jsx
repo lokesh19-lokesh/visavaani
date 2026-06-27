@@ -49,7 +49,7 @@ const Home = () => {
   };
 
   return (
-    <div className="font-sans text-gray-900 bg-[#F8FAFC]">
+    <main className="font-sans text-gray-900 bg-[#F8FAFC]">
       <SEO 
         title="India's Trusted Immigration Guidance Platform"
         description="VisaVaani helps Indians navigate global visas, permanent residency, and study permits with expert guidance and AI assistance."
@@ -428,7 +428,7 @@ const Home = () => {
         </div>
       </section>
 
-    </div>
+    </main>
   );
 };
 

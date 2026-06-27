@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../services/supabase';
 import { User, Receipt, CreditCard, CheckCircle2, Clock } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const UserDashboard = () => {
   const [activeTab, setActiveTab] = useState('profile');
@@ -96,7 +97,12 @@ const UserDashboard = () => {
   };
 
   return (
-    <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <main className="py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto font-sans">
+      <SEO 
+        title="My Dashboard"
+        description="Manage your VisaVaani profile, view immigration documents, and track invoices securely."
+        url="/dashboard"
+      />
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
         <p className="text-gray-500 mt-2">Welcome back, {profileData.fullName || session?.user?.email}</p>
@@ -277,7 +283,7 @@ const UserDashboard = () => {
           </div>
         )}
       </div>
-    </div>
+    </main>
   );
 };
 

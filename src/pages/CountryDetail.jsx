@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { MapPin, Globe, Banknote, Users, CloudSun, Clock, ArrowLeft, CheckCircle2, ChevronRight, MessageSquare, Sparkles } from 'lucide-react';
 import { countriesData } from '../data/countriesData';
 import PremiumAIModal from '../components/PremiumAIModal';
+import SEO from '../components/SEO';
 import { useState } from 'react';
 
 const CountryDetail = () => {
@@ -16,7 +17,8 @@ const CountryDetail = () => {
   // If country not found, show a beautiful error state
   if (!country) {
     return (
-      <div className="min-h-[calc(100vh-72px)] flex flex-col items-center justify-center bg-gray-50 px-4">
+      <main className="min-h-[calc(100vh-72px)] flex flex-col items-center justify-center bg-gray-50 px-4">
+        <SEO title="Destination Not Found" description="The requested immigration destination could not be found." />
         <div className="text-center max-w-lg">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Destination Not Found</h1>
           <p className="text-gray-500 mb-8 text-lg">We couldn't find the immigration destination you're looking for. It may have been removed or the link is incorrect.</p>
@@ -27,13 +29,41 @@ const CountryDetail = () => {
             <ArrowLeft className="w-5 h-5 mr-2" /> Back to Destinations
           </button>
         </div>
-      </div>
+      </main>
     );
   }
 
+  // Schema for AEO/LLMO
+  const countrySchema = {
+    "@context": "https://schema.org",
+    "@type": "Place",
+    "name": country.name,
+    "description": country.description,
+    "image": `https://visavaani.com${country.image}`,
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": `Visa Pathways for ${country.name}`,
+      "itemListElement": country.keyVisas?.map((visa, index) => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": visa.name,
+          "description": visa.description,
+          "url": `https://visavaani.com/countries/${country.id}/visa/${visa.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`
+        },
+        "position": index + 1
+      })) || []
+    }
+  };
+
   return (
-    <div className="bg-gray-50 min-h-screen pb-20">
-      
+    <main className="bg-gray-50 min-h-screen pb-20 font-sans">
+      <SEO 
+        title={`Immigration & Visas for ${country.name}`}
+        description={`Explore PR, work, and study visa options for ${country.name}. Requirements, costs, and processing times.`}
+        url={`/countries/${country.id}`}
+        schema={countrySchema}
+      />
       {/* Hero Section */}
       <div className="relative h-[60vh] min-h-[400px] w-full bg-gray-900">
         <div className="absolute inset-0">
@@ -237,7 +267,7 @@ const CountryDetail = () => {
         isOpen={isAIModalOpen} 
         onClose={() => setIsAIModalOpen(false)} 
       />
-    </div>
+    </main>
   );
 };
 

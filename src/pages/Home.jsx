@@ -118,7 +118,7 @@ const Home = () => {
               {/* India */}
               <div className="absolute top-[55%] left-[69%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-20">
                 <div className="w-12 h-12 sm:w-[48px] sm:h-[48px] rounded-full border-[3px] border-white overflow-hidden shadow-[0_0_15px_rgba(255,255,255,0.4)] bg-white mb-1.5">
-                  <img src="https://flagcdn.com/w160/in.png" alt="India" className="w-full h-full object-cover" />
+                  <img src="https://flagcdn.com/w160/in.png" alt="India" className="w-full h-full object-cover" fetchPriority="high" />
                 </div>
                 <span className="text-white font-bold text-sm sm:text-base">India</span>
               </div>
@@ -126,7 +126,7 @@ const Home = () => {
               {/* Canada */}
               <div className="absolute top-[28%] left-[25%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-20">
                 <div className="w-8 h-8 sm:w-[32px] sm:h-[32px] rounded-full border-2 border-white overflow-hidden mb-1 bg-white shadow-md">
-                  <img src="https://flagcdn.com/w80/ca.png" alt="Canada" className="w-full h-full object-cover" />
+                  <img src="https://flagcdn.com/w80/ca.png" alt="Canada" className="w-full h-full object-cover" fetchPriority="high" />
                 </div>
                 <span className="text-white text-[11px] font-medium tracking-wide">Canada</span>
               </div>
@@ -134,7 +134,7 @@ const Home = () => {
               {/* USA */}
               <div className="absolute top-[45%] left-[21%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-20">
                 <div className="w-8 h-8 sm:w-[32px] sm:h-[32px] rounded-full border-2 border-white overflow-hidden mb-1 bg-white shadow-md">
-                  <img src="https://flagcdn.com/w80/us.png" alt="USA" className="w-full h-full object-cover" />
+                  <img src="https://flagcdn.com/w80/us.png" alt="USA" className="w-full h-full object-cover" fetchPriority="high" />
                 </div>
                 <span className="text-white text-[11px] font-medium tracking-wide">USA</span>
               </div>
@@ -142,7 +142,7 @@ const Home = () => {
               {/* UK */}
               <div className="absolute top-[28%] left-[47%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-20">
                 <div className="w-8 h-8 sm:w-[32px] sm:h-[32px] rounded-full border-2 border-white overflow-hidden mb-1 bg-white shadow-md">
-                  <img src="https://flagcdn.com/w80/gb.png" alt="UK" className="w-full h-full object-cover" />
+                  <img src="https://flagcdn.com/w80/gb.png" alt="UK" className="w-full h-full object-cover" fetchPriority="high" />
                 </div>
                 <span className="text-white text-[11px] font-medium tracking-wide">UK</span>
               </div>
@@ -150,7 +150,7 @@ const Home = () => {
               {/* Germany */}
               <div className="absolute top-[35%] left-[52%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-20">
                 <div className="w-8 h-8 sm:w-[32px] sm:h-[32px] rounded-full border-2 border-white overflow-hidden mb-1 bg-white shadow-md">
-                  <img src="https://flagcdn.com/w80/de.png" alt="Germany" className="w-full h-full object-cover" />
+                  <img src="https://flagcdn.com/w80/de.png" alt="Germany" className="w-full h-full object-cover" fetchPriority="high" />
                 </div>
                 <span className="text-white text-[11px] font-medium tracking-wide">Germany</span>
               </div>
@@ -158,7 +158,7 @@ const Home = () => {
               {/* Australia */}
               <div className="absolute top-[78%] left-[85%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-20">
                 <div className="w-8 h-8 sm:w-[32px] sm:h-[32px] rounded-full border-2 border-white overflow-hidden mb-1 bg-white shadow-md">
-                  <img src="https://flagcdn.com/w80/au.png" alt="Australia" className="w-full h-full object-cover" />
+                  <img src="https://flagcdn.com/w80/au.png" alt="Australia" className="w-full h-full object-cover" fetchPriority="high" />
                 </div>
                 <span className="text-white text-[11px] font-medium tracking-wide">Australia</span>
               </div>
@@ -306,9 +306,9 @@ const Home = () => {
                 <div className="bg-white rounded-2xl shadow-[0_2px_15px_rgb(0,0,0,0.06)] border border-gray-100 overflow-hidden hover:shadow-[0_8px_25px_rgb(0,0,0,0.1)] transition-shadow">
                   {/* Image Header */}
                   <div className="h-[120px] relative">
-                    <img src={dest.image} alt={dest.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                    <img src={dest.image} alt={dest.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
                     <div className="absolute top-3 left-3 w-8 h-6 rounded shadow-sm overflow-hidden border border-white/20">
-                      <img src={`https://flagcdn.com/w40/${dest.code === 'bali' ? 'id' : dest.code === 'maldives' ? 'mv' : dest.code}.png`} alt={`${dest.name} Flag`} className="w-full h-full object-cover" />
+                      <img src={`https://flagcdn.com/w40/${dest.code === 'bali' ? 'id' : dest.code === 'maldives' ? 'mv' : dest.code}.png`} alt={`${dest.name} Flag`} className="w-full h-full object-cover" loading="lazy" />
                     </div>
                   </div>
                   {/* Content */}

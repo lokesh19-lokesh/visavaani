@@ -51,7 +51,7 @@ const Home = () => {
   return (
     <main className="font-sans text-gray-900 bg-[#F8FAFC]">
       <SEO 
-        title="AI Advisor: Compare Countries for Visa, Immigration, Work, Study, PR. Explore"
+        title="Compare Visa & Immigration Options with AI"
         description="VisaVaani AI Advisor helps you compare countries for visa and immigration. Find the best paths for work, study, PR. Explore your global opportunities today."
         keywords="visavaani, ai advisor, compare countries, visa, immigration, work, study, pr, explore, work study, study pr, pr explore, work study pr, study pr explore"
         url="/"

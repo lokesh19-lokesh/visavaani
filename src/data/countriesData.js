@@ -3,7 +3,7 @@ export const countriesData = [
     id: 'us',
     name: 'United States',
     region: 'North America',
-    image: '/destinations/usa.png',
+    image: '/destinations/usa.jpg',
     tags: ['H1B', 'F1', 'O1', 'EB-5'],
     description: 'The United States is a leading global destination for innovation, education, and career growth. Known for its tech hubs, diverse culture, and top-tier universities, it offers unparalleled opportunities for ambitious professionals and students.',
     quickFacts: {
@@ -35,7 +35,7 @@ export const countriesData = [
     id: 'ca',
     name: 'Canada',
     region: 'North America',
-    image: '/destinations/canada.png',
+    image: '/destinations/canada.jpg',
     tags: ['Express Entry', 'Study', 'High PR Chance'],
     description: 'Canada is globally recognized for its high quality of life, excellent public healthcare, and welcoming attitude toward immigrants.',
     quickFacts: {
@@ -64,7 +64,7 @@ export const countriesData = [
     id: 'gb',
     name: 'United Kingdom',
     region: 'Europe',
-    image: '/destinations/uk.png',
+    image: '/destinations/uk.jpg',
     tags: ['Skilled Worker', 'Student', 'Global Talent'],
     description: 'The UK offers a blend of rich history and modern innovation. With a global financial center in London and world-leading universities like Oxford and Cambridge, it is a top choice for ambitious talent.',
     quickFacts: {
@@ -93,7 +93,7 @@ export const countriesData = [
     id: 'au',
     name: 'Australia',
     region: 'Oceania',
-    image: '/destinations/australia.png',
+    image: '/destinations/australia.jpg',
     tags: ['Subclass 189', 'Student', 'Working Holiday'],
     description: 'Famous for its incredible weather, relaxed lifestyle, and strong economy, Australia is highly sought after by skilled professionals and students who want a perfect work-life balance.',
     quickFacts: {
@@ -123,7 +123,7 @@ export const countriesData = [
     id: 'de',
     name: 'Germany',
     region: 'Europe',
-    image: '/destinations/germany.png',
+    image: '/destinations/germany.jpg',
     tags: ['EU Blue Card', 'Job Seeker', 'Study'],
     description: 'As the economic powerhouse of Europe, Germany offers robust engineering, automotive, and tech sectors. It provides an incredible standard of living and acts as a gateway to the entire Schengen Area.',
     quickFacts: {
@@ -152,7 +152,7 @@ export const countriesData = [
     id: 'sg',
     name: 'Singapore',
     region: 'Asia',
-    image: '/destinations/singapore.png',
+    image: '/destinations/singapore.jpg',
     tags: ['Employment Pass', 'S Pass', 'EntrePass'],
     description: 'A global financial hub and one of the safest countries in the world. Singapore is a melting pot of cultures, offering incredibly low tax rates and high-paying roles in finance, tech, and logistics.',
     quickFacts: {
@@ -181,7 +181,7 @@ export const countriesData = [
     id: 'nz',
     name: 'New Zealand',
     region: 'Oceania',
-    image: '/destinations/nz.png',
+    image: '/destinations/nz.jpg',
     tags: ['Skilled Migrant', 'Student', 'Work'],
     description: 'Known for its breathtaking landscapes and friendly locals, New Zealand offers a peaceful lifestyle with strong communities and a growing tech sector.',
     quickFacts: {
@@ -209,7 +209,7 @@ export const countriesData = [
     id: 'ie',
     name: 'Ireland',
     region: 'Europe',
-    image: '/destinations/ireland.png',
+    image: '/destinations/ireland.jpg',
     tags: ['Critical Skills', 'Student', 'General Work'],
     description: 'The European headquarters for many tech giants, Ireland boasts a booming economy, rich culture, and incredible landscapes, making it highly attractive for IT and pharma professionals.',
     quickFacts: {
@@ -265,7 +265,7 @@ export const countriesData = [
     id: 'bali',
     name: 'Bali (Indonesia)',
     region: 'Asia',
-    image: '/destinations/bali.png',
+    image: '/destinations/bali.jpg',
     tags: ['Digital Nomad', 'Tourist', 'Retirement'],
     description: 'Bali is a paradise for digital nomads, tourists, and expats seeking a balanced lifestyle with beautiful beaches, vibrant culture, and affordable living costs.',
     quickFacts: {
@@ -293,7 +293,7 @@ export const countriesData = [
     id: 'maldives',
     name: 'Maldives',
     region: 'South Asia',
-    image: '/destinations/maldives.png',
+    image: '/destinations/maldives.jpg',
     tags: ['Tourist', 'Luxury', 'Work'],
     description: 'The Maldives is famous for its luxurious water villas and pristine beaches. It is primarily a tourist destination but offers opportunities in the hospitality sector.',
     quickFacts: {
@@ -318,7 +318,7 @@ export const countriesData = [
     id: 'lk',
     name: 'Sri Lanka',
     region: 'South Asia',
-    image: '/destinations/srilanka.png',
+    image: '/destinations/srilanka.jpg',
     tags: ['Digital Nomad', 'Tourist', 'Study'],
     description: 'Sri Lanka offers rich history, diverse landscapes, and a growing appeal for digital nomads and tourists looking for affordability and adventure.',
     quickFacts: {
@@ -345,7 +345,7 @@ export const countriesData = [
     id: 'th',
     name: 'Thailand',
     region: 'Southeast Asia',
-    image: '/destinations/thailand.png',
+    image: '/destinations/thailand.jpg',
     tags: ['Digital Nomad', 'Retirement', 'Work'],
     description: 'Thailand is a premier hub in Southeast Asia, beloved for its food, affordability, and thriving expat and digital nomad communities.',
     quickFacts: {
@@ -374,7 +374,7 @@ export const countriesData = [
     id: 'jp',
     name: 'Japan',
     region: 'Asia',
-    image: '/destinations/japan.png',
+    image: '/destinations/japan.jpg',
     tags: ['Work', 'Study', 'Highly Skilled'],
     description: 'Japan blends ultra-modern technology with deep traditional culture. It is an incredibly safe country offering exceptional public transport, food, and growing opportunities for foreign talent.',
     quickFacts: {
@@ -403,7 +403,7 @@ export const countriesData = [
     id: 'cn',
     name: 'China',
     region: 'Asia',
-    image: '/destinations/china.png',
+    image: '/destinations/china.jpg',
     tags: ['Work', 'Business', 'Study'],
     description: 'China is a global economic powerhouse with rapidly advancing tech sectors. It offers unique opportunities for business, teaching, and experiencing a rapidly modernizing society.',
     quickFacts: {

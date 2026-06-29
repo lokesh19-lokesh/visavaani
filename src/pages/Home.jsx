@@ -59,44 +59,44 @@ const Home = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-primary overflow-hidden pt-6 pb-16 lg:pt-4 lg:pb-16 xl:pt-10 xl:pb-24">
+      <section className="relative bg-primary overflow-hidden pt-6 pb-24 lg:pt-4 lg:pb-28 xl:pt-10 xl:pb-32">
         <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center justify-between">
 
           {/* Left Content */}
-          <div className="w-full lg:w-1/2 pr-0 lg:pr-12 text-center lg:text-left z-20">
+          <div className="w-full lg:w-[60%] xl:w-1/2 pr-0 lg:pr-8 xl:pr-12 text-center lg:text-left z-20">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-4 lg:mb-3 xl:mb-6 text-sm font-medium text-white">
               Trusted by Millions of Indians
             </div>
 
-            <h1 className="text-5xl lg:text-[44px] xl:text-[64px] font-bold text-white tracking-tight leading-[1.1] mb-4 lg:mb-4 xl:mb-6">
+            <h1 className="text-3xl sm:text-5xl lg:text-4xl xl:text-[64px] font-bold text-white tracking-tight leading-[1.1] mb-4 lg:mb-4 xl:mb-6">
               Compare Countries for Visa & Immigration. <br />
-              <span className="text-secondary block mt-2 text-4xl lg:text-3xl xl:text-5xl">Work, Study, PR. Explore Options with AI Advisor.</span>
+              <span className="text-secondary block mt-2 text-2xl sm:text-4xl lg:text-3xl xl:text-5xl">Work, Study, PR. Explore Options with AI Advisor.</span>
             </h1>
 
-            <p className="text-lg lg:text-[18px] xl:text-xl text-gray-300 mb-6 lg:mb-5 xl:mb-8 max-w-xl mx-auto lg:mx-0">
+            <p className="text-base sm:text-lg lg:text-[18px] xl:text-xl text-gray-300 mb-6 lg:mb-5 xl:mb-8 max-w-xl mx-auto lg:mx-0">
               VisaVaani provides AI-powered guidance on visas, PR, work permits and study opportunities worldwide. Let our AI advisor help you compare countries today.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4 lg:scale-95 xl:scale-100 origin-left">
-              <Link to="/eligibility" className="w-full sm:w-auto px-8 py-3.5 bg-secondary hover:bg-secondary-hover text-white rounded-lg text-[16px] font-semibold transition-colors flex items-center justify-center">
-                Check Eligibility <ArrowRight className="ml-2 w-5 h-5" />
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 xl:gap-4 lg:scale-95 xl:scale-100 origin-left">
+              <Link to="/eligibility" className="w-full sm:w-auto px-8 lg:px-3 xl:px-8 py-3.5 lg:py-2.5 xl:py-3.5 bg-secondary hover:bg-secondary-hover text-white rounded-lg text-[16px] lg:text-[13px] xl:text-[16px] font-semibold transition-colors flex items-center justify-center whitespace-nowrap">
+                Check Eligibility <ArrowRight className="ml-1.5 w-4 h-4 xl:w-5 xl:h-5" />
               </Link>
               <button 
                 onClick={() => window.dispatchEvent(new CustomEvent('open-ai-modal', {
                   detail: { context: "The user wants to check their general eligibility for immigration. Act as an AI Visa Eligibility Checker. Ask them simple questions one by one (like age, education, experience, destination country) to determine if they qualify." }
                 }))} 
-                className="w-full sm:w-auto px-8 py-3.5 bg-blue-600 hover:bg-blue-700 border border-blue-500 text-white rounded-lg text-[16px] font-semibold transition-colors flex items-center justify-center shadow-lg"
+                className="w-full sm:w-auto px-8 lg:px-3 xl:px-8 py-3.5 lg:py-2.5 xl:py-3.5 bg-blue-600 hover:bg-blue-700 border border-blue-500 text-white rounded-lg text-[16px] lg:text-[13px] xl:text-[16px] font-semibold transition-colors flex items-center justify-center shadow-lg whitespace-nowrap"
               >
-                <Bot className="mr-2 w-5 h-5 text-blue-200" /> AI Eligibility Check
+                <Bot className="mr-1.5 w-4 h-4 xl:w-5 xl:h-5 text-blue-200" /> AI Eligibility Check
               </button>
-              <Link to="/countries" className="w-full sm:w-auto px-8 py-3.5 bg-transparent border-2 border-white/30 hover:bg-white/10 text-white rounded-lg text-[16px] font-semibold transition-colors flex items-center justify-center">
+              <Link to="/countries" className="w-full sm:w-auto px-8 lg:px-3 xl:px-8 py-3.5 lg:py-2.5 xl:py-3.5 bg-transparent border-2 border-white/30 hover:bg-white/10 text-white rounded-lg text-[16px] lg:text-[13px] xl:text-[16px] font-semibold transition-colors flex items-center justify-center whitespace-nowrap">
                 Explore Countries
               </Link>
             </div>
           </div>
 
           {/* Right Content - Map Illustration */}
-          <div className="flex w-full lg:w-1/2 items-center justify-center mt-12 lg:mt-0 opacity-90 lg:opacity-100">
+          <div className="flex w-full lg:w-[40%] xl:w-1/2 items-center justify-center mt-12 lg:mt-0 opacity-90 lg:opacity-100">
             <div className="relative w-full max-w-[650px] aspect-[1.2] sm:aspect-[1.4] xl:aspect-[1.3]">
               {/* Perfect Dotted World Map Background */}
               <div
@@ -240,50 +240,50 @@ const Home = () => {
 
       {/* Floating Features Bar */}
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative -mt-16 z-30 mb-20">
-        <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] py-4 lg:py-8 px-4 lg:px-6 border border-gray-100 flex flex-row justify-between items-center gap-2 lg:gap-8">
+        <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] py-4 lg:py-6 xl:py-8 px-4 lg:px-4 xl:px-6 border border-gray-100 flex flex-row justify-between items-center gap-2 lg:gap-3 xl:gap-8">
 
-          <div tabIndex="0" className="group flex flex-col lg:flex-row items-center bg-white lg:w-auto lg:flex-1 cursor-pointer lg:cursor-default lg:border-r border-gray-100 lg:pr-6 outline-none relative">
-            <div className="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
-              <Bot className="w-7 h-7 text-[#0B2D6B]" />
+          <div tabIndex="0" className="group flex flex-col lg:flex-row items-center bg-white lg:w-auto lg:flex-1 cursor-pointer lg:cursor-default lg:border-r border-gray-100 lg:pr-3 xl:pr-6 outline-none relative">
+            <div className="w-12 h-12 lg:w-14 lg:h-14 xl:w-14 xl:h-14 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
+              <Bot className="w-6 h-6 lg:w-7 lg:h-7 text-[#0B2D6B]" />
             </div>
-            <div className="hidden group-hover:flex group-focus:flex lg:flex flex-col justify-center absolute lg:static top-[64px] left-1/2 -translate-x-1/2 lg:translate-x-0 lg:pl-4 bg-white lg:bg-transparent shadow-xl lg:shadow-none px-3 py-2 lg:p-0 rounded-xl lg:rounded-none z-50 lg:z-auto min-w-max text-center lg:text-left border border-gray-100 lg:border-none">
-              <h3 className="font-bold text-gray-900 text-[13px] lg:text-[16px] mb-0 lg:mb-1">AI Advisor</h3>
-              <p className="text-gray-500 text-[14px] hidden lg:block">Instant answers to your<br/>immigration questions</p>
+            <div className="hidden group-hover:flex group-focus:flex lg:flex flex-col justify-center absolute lg:static top-[64px] left-1/2 -translate-x-1/2 lg:translate-x-0 lg:pl-3 xl:pl-4 bg-white lg:bg-transparent shadow-xl lg:shadow-none px-3 py-2 lg:p-0 rounded-xl lg:rounded-none z-50 lg:z-auto min-w-max lg:min-w-0 text-center lg:text-left border border-gray-100 lg:border-none">
+              <h3 className="font-bold text-gray-900 text-[13px] lg:text-[14px] xl:text-[16px] mb-0 lg:mb-1">AI Advisor</h3>
+              <p className="text-gray-500 text-[12px] xl:text-[14px] hidden lg:block">Instant answers to your<br/>immigration questions</p>
             </div>
           </div>
 
-          <div tabIndex="0" className="group flex flex-col lg:flex-row items-center bg-white lg:w-auto lg:flex-1 cursor-pointer lg:cursor-default lg:border-r border-gray-100 lg:pr-6 outline-none relative">
-            <div className="w-14 h-14 rounded-full bg-orange-50 flex items-center justify-center shrink-0">
-              <RouteIcon className="w-7 h-7 text-secondary" />
+          <div tabIndex="0" className="group flex flex-col lg:flex-row items-center bg-white lg:w-auto lg:flex-1 cursor-pointer lg:cursor-default lg:border-r border-gray-100 lg:pr-3 xl:pr-6 outline-none relative">
+            <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-orange-50 flex items-center justify-center shrink-0">
+              <RouteIcon className="w-6 h-6 lg:w-7 lg:h-7 text-secondary" />
             </div>
-            <div className="hidden group-hover:flex group-focus:flex lg:flex flex-col justify-center absolute lg:static top-[64px] left-1/2 -translate-x-1/2 lg:translate-x-0 lg:pl-4 bg-white lg:bg-transparent shadow-xl lg:shadow-none px-3 py-2 lg:p-0 rounded-xl lg:rounded-none z-50 lg:z-auto min-w-max text-center lg:text-left border border-gray-100 lg:border-none">
-              <h3 className="font-bold text-gray-900 text-[13px] lg:text-[16px] mb-0 lg:mb-1">Visa Roadmap</h3>
-              <p className="text-gray-500 text-[14px] hidden lg:block">Personalized roadmap<br/>for your goals</p>
+            <div className="hidden group-hover:flex group-focus:flex lg:flex flex-col justify-center absolute lg:static top-[64px] left-1/2 -translate-x-1/2 lg:translate-x-0 lg:pl-3 xl:pl-4 bg-white lg:bg-transparent shadow-xl lg:shadow-none px-3 py-2 lg:p-0 rounded-xl lg:rounded-none z-50 lg:z-auto min-w-max lg:min-w-0 text-center lg:text-left border border-gray-100 lg:border-none">
+              <h3 className="font-bold text-gray-900 text-[13px] lg:text-[14px] xl:text-[16px] mb-0 lg:mb-1">Visa Roadmap</h3>
+              <p className="text-gray-500 text-[12px] xl:text-[14px] hidden lg:block">Personalized roadmap<br/>for your goals</p>
             </div>
           </div>
 
-          <div tabIndex="0" className="group flex flex-col lg:flex-row items-center bg-white lg:w-auto lg:flex-1 cursor-pointer lg:cursor-default lg:border-r border-gray-100 lg:pr-6 outline-none relative">
-            <div className="w-14 h-14 rounded-full bg-orange-50/50 flex items-center justify-center shrink-0">
+          <div tabIndex="0" className="group flex flex-col lg:flex-row items-center bg-white lg:w-auto lg:flex-1 cursor-pointer lg:cursor-default lg:border-r border-gray-100 lg:pr-3 xl:pr-6 outline-none relative">
+            <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-orange-50/50 flex items-center justify-center shrink-0">
               <div className="relative">
-                <FileCheck className="w-7 h-7 text-orange-500" />
-                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-orange-500 rounded-full flex items-center justify-center border-2 border-white">
+                <FileCheck className="w-6 h-6 lg:w-7 lg:h-7 text-orange-500" />
+                <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 lg:w-4 lg:h-4 bg-orange-500 rounded-full flex items-center justify-center border-2 border-white">
                   <svg className="w-2 h-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
                 </div>
               </div>
             </div>
-            <div className="hidden group-hover:flex group-focus:flex lg:flex flex-col justify-center absolute lg:static top-[64px] left-1/2 -translate-x-1/2 lg:translate-x-0 lg:pl-4 bg-white lg:bg-transparent shadow-xl lg:shadow-none px-3 py-2 lg:p-0 rounded-xl lg:rounded-none z-50 lg:z-auto min-w-max text-center lg:text-left border border-gray-100 lg:border-none">
-              <h3 className="font-bold text-gray-900 text-[13px] lg:text-[16px] mb-0 lg:mb-1">Doc Check</h3>
-              <p className="text-gray-500 text-[14px] hidden lg:block">AI-powered document<br/>review and verification</p>
+            <div className="hidden group-hover:flex group-focus:flex lg:flex flex-col justify-center absolute lg:static top-[64px] left-1/2 -translate-x-1/2 lg:translate-x-0 lg:pl-3 xl:pl-4 bg-white lg:bg-transparent shadow-xl lg:shadow-none px-3 py-2 lg:p-0 rounded-xl lg:rounded-none z-50 lg:z-auto min-w-max lg:min-w-0 text-center lg:text-left border border-gray-100 lg:border-none">
+              <h3 className="font-bold text-gray-900 text-[13px] lg:text-[14px] xl:text-[16px] mb-0 lg:mb-1">Doc Check</h3>
+              <p className="text-gray-500 text-[12px] xl:text-[14px] hidden lg:block">AI-powered document<br/>review and verification</p>
             </div>
           </div>
 
           <div tabIndex="0" className="group flex flex-col lg:flex-row items-center bg-white lg:w-auto lg:flex-1 cursor-pointer lg:cursor-default outline-none relative">
-            <div className="w-14 h-14 rounded-full bg-red-50 flex items-center justify-center shrink-0 overflow-hidden">
-              <UserCheck className="w-7 h-7 text-red-600" />
+            <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-red-50 flex items-center justify-center shrink-0 overflow-hidden">
+              <UserCheck className="w-6 h-6 lg:w-7 lg:h-7 text-red-600" />
             </div>
-            <div className="hidden group-hover:flex group-focus:flex lg:flex flex-col justify-center absolute lg:static top-[64px] left-1/2 -translate-x-1/2 lg:translate-x-0 lg:pl-4 bg-white lg:bg-transparent shadow-xl lg:shadow-none px-3 py-2 lg:p-0 rounded-xl lg:rounded-none z-50 lg:z-auto min-w-max text-center lg:text-left border border-gray-100 lg:border-none">
-              <h3 className="font-bold text-gray-900 text-[13px] lg:text-[16px] mb-0 lg:mb-1">Consultation</h3>
-              <p className="text-gray-500 text-[14px] hidden lg:block">Connect with verified<br/>immigration experts</p>
+            <div className="hidden group-hover:flex group-focus:flex lg:flex flex-col justify-center absolute lg:static top-[64px] left-1/2 -translate-x-1/2 lg:translate-x-0 lg:pl-3 xl:pl-4 bg-white lg:bg-transparent shadow-xl lg:shadow-none px-3 py-2 lg:p-0 rounded-xl lg:rounded-none z-50 lg:z-auto min-w-max lg:min-w-0 text-center lg:text-left border border-gray-100 lg:border-none">
+              <h3 className="font-bold text-gray-900 text-[13px] lg:text-[14px] xl:text-[16px] mb-0 lg:mb-1">Consultation</h3>
+              <p className="text-gray-500 text-[12px] xl:text-[14px] hidden lg:block">Connect with verified<br/>immigration experts</p>
             </div>
           </div>
 

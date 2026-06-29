@@ -128,7 +128,7 @@ const MainLayout = () => {
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center pt-2">
               <Link to="/" className="flex flex-col" onClick={() => setIsMobileMenuOpen(false)}>
-                <span className="font-extrabold text-[22px] tracking-wider text-white leading-none mb-1">
+                <span className="font-extrabold text-[18px] sm:text-[22px] tracking-wider text-white leading-none mb-1">
                   VISAVAANI
                 </span>
                 <span className="indian-flag-underline h-[4px]"></span>
@@ -136,34 +136,34 @@ const MainLayout = () => {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex space-x-8 items-center">
-              <Link to="/" className="text-white font-medium text-sm hover:text-secondary transition-colors">Home</Link>
-              <Link to="/countries" className="text-gray-300 font-medium text-sm hover:text-white transition-colors">Countries</Link>
-              <Link to="/visas" className="text-gray-300 font-medium text-sm hover:text-white transition-colors">Visa Types</Link>
-              <Link to="/compare" className="text-gray-300 font-medium text-sm hover:text-white transition-colors">Compare</Link>
-              <Link to="/advisor" className="text-gray-300 font-medium text-sm hover:text-white transition-colors">AI Advisor</Link>
-              <Link to="/resources" className="text-gray-300 font-medium text-sm hover:text-white transition-colors">Resources</Link>
-              <Link to="/about" className="text-gray-300 font-medium text-sm hover:text-white transition-colors">About Us</Link>
+            <nav className="hidden lg:flex lg:space-x-3 xl:space-x-8 items-center">
+              <Link to="/" className="text-white font-medium text-[13px] xl:text-sm hover:text-secondary transition-colors">Home</Link>
+              <Link to="/countries" className="text-gray-300 font-medium text-[13px] xl:text-sm hover:text-white transition-colors">Countries</Link>
+              <Link to="/visas" className="text-gray-300 font-medium text-[13px] xl:text-sm hover:text-white transition-colors">Visa Types</Link>
+              <Link to="/compare" className="text-gray-300 font-medium text-[13px] xl:text-sm hover:text-white transition-colors">Compare</Link>
+              <Link to="/advisor" className="text-gray-300 font-medium text-[13px] xl:text-sm hover:text-white transition-colors">AI Advisor</Link>
+              <Link to="/resources" className="text-gray-300 font-medium text-[13px] xl:text-sm hover:text-white transition-colors">Resources</Link>
+              <Link to="/about" className="text-gray-300 font-medium text-[13px] xl:text-sm hover:text-white transition-colors whitespace-nowrap">About Us</Link>
             </nav>
 
             {/* CTA & Mobile Toggle */}
-            <div className="flex items-center gap-4">
-              <div id="google_translate_element" className="translate-wrapper"></div>
+            <div className="flex items-center gap-2 sm:gap-4 lg:gap-2 xl:gap-4">
+              <div id="google_translate_element" className="translate-wrapper scale-90 sm:scale-100 lg:scale-90 xl:scale-100 origin-right"></div>
 
               {session ? (
                 <div className="hidden sm:flex items-center gap-3">
                   <Link to={isAdmin ? "/admin" : "/dashboard"}>
-                    <button className="bg-gray-800 text-white border border-gray-700 hover:bg-gray-700 px-4 py-2 rounded-lg font-semibold text-sm transition-colors">
+                    <button className="bg-gray-800 text-white border border-gray-700 hover:bg-gray-700 px-3 py-1.5 xl:px-4 xl:py-2 rounded-lg font-semibold text-[13px] xl:text-sm transition-colors whitespace-nowrap">
                       Dashboard
                     </button>
                   </Link>
-                  <button onClick={handleLogout} className="bg-white text-primary hover:bg-gray-100 px-4 py-2 rounded-lg font-semibold text-sm shadow-sm transition-colors">
+                  <button onClick={handleLogout} className="bg-white text-primary hover:bg-gray-100 px-3 py-1.5 xl:px-4 xl:py-2 rounded-lg font-semibold text-[13px] xl:text-sm shadow-sm transition-colors whitespace-nowrap">
                     Logout
                   </button>
                 </div>
               ) : (
                 <Link to="/auth" className="hidden sm:block">
-                  <button className="bg-white text-primary hover:bg-gray-100 px-5 py-2 rounded-lg font-semibold text-sm shadow-sm transition-colors">
+                  <button className="bg-white text-primary hover:bg-gray-100 px-4 py-2 xl:px-5 xl:py-2 rounded-lg font-semibold text-[13px] xl:text-sm shadow-sm transition-colors whitespace-nowrap">
                     Login / Sign Up
                   </button>
                 </Link>

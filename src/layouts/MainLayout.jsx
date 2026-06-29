@@ -79,6 +79,14 @@ const MainLayout = () => {
         }
       });
       
+      // Fix missing alt attribute on Google Translate injected images for SEO
+      const translateImages = document.querySelectorAll('img[src*="translate"]');
+      translateImages.forEach(img => {
+        if (!img.hasAttribute('alt') || img.getAttribute('alt') === '') {
+          img.setAttribute('alt', 'Google Translate Icon');
+        }
+      });
+      
       if (document.body.style.top !== '0px' && document.body.style.top !== '') {
         document.body.style.setProperty('top', '0px', 'important');
       }

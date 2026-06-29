@@ -428,6 +428,33 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {/* SEO Content Section to boost word count and keyword relevance */}
+      <section className="py-16 bg-[#F8FAFC]">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-sm border border-gray-100">
+            <h2 className="text-[24px] lg:text-[28px] font-bold text-primary mb-6">Why Use VisaVaani to Navigate Your Global Journey?</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 text-gray-600 leading-relaxed text-[15px] lg:text-[16px]">
+              <div>
+                <p className="mb-4">
+                  Moving abroad for work, study, or permanent residency is a life-changing decision. However, the visa and immigration process can often be complex, overwhelming, and time-consuming. That is exactly where VisaVaani steps in. Our platform is meticulously designed to provide you with the utmost clarity and confidence as you explore various global opportunities. We leverage cutting-edge AI technology to offer personalized insights, ensuring you have the right information tailored specifically to your unique profile and goals.
+                </p>
+                <p className="mb-4">
+                  Whether you are planning to pursue higher education in top-tier international universities, seeking lucrative career opportunities overseas, or looking to secure a permanent residency for you and your family, our AI Advisor is here to assist. You can easily compare countries, evaluate the pros and cons of each destination, and understand the specific visa requirements and timelines involved. Our comprehensive database covers popular destinations including the US, Canada, UK, Australia, Germany, and many more, giving you a holistic view of your options.
+                </p>
+              </div>
+              <div>
+                <p className="mb-4">
+                  Beyond just providing information, VisaVaani acts as your dedicated companion throughout the entire immigration journey. We offer detailed roadmaps, intelligent document checklists, and eligibility assessments to streamline your application process. Our platform demystifies complex immigration jargon and breaks down the steps into manageable, actionable tasks. If you ever need professional assistance, we connect you directly with verified immigration experts who can provide specialized advice and representation.
+                </p>
+                <p>
+                  Start your journey today with VisaVaani. Let our intuitive tools and expert network empower you to make informed decisions. We understand the aspirations of millions of Indians aiming for a global lifestyle, and we are committed to making that dream a reality. Explore pathways, compare countries, and unlock your potential with a trusted immigration guidance platform by your side. Your global future awaits, and we are here to help you navigate every step of the way with precision and ease.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
     </main>
   );

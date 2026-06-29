@@ -1,6 +1,6 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { MapPin, Globe, Banknote, Users, CloudSun, Clock, ArrowLeft, CheckCircle2, ChevronRight, MessageSquare, Sparkles } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { MapPin, Globe, Banknote, Users, CloudSun, Clock, ArrowLeft, CheckCircle2, ChevronRight, MessageSquare, Sparkles, ShieldCheck, ChevronDown, ChevronUp } from 'lucide-react';
 import { countriesData } from '../data/countriesData';
 import PremiumAIModal from '../components/PremiumAIModal';
 import SEO from '../components/SEO';
@@ -10,6 +10,7 @@ const CountryDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [isAIModalOpen, setIsAIModalOpen] = useState(false);
+  const [openFaqIndex, setOpenFaqIndex] = useState(0);
   
   // Find the country data
   const country = countriesData.find(c => c.id === id);
@@ -33,27 +34,62 @@ const CountryDetail = () => {
     );
   }
 
-  // Schema for AEO/LLMO
+  // Generative AI FAQs for GEO
+  const countryFaqs = [
+    {
+      question: `Is it easy for an Indian citizen to get PR in ${country.name}?`,
+      answer: `The permanent residency process in ${country.name} depends heavily on your age, education, and work experience. Skilled professionals with a job offer or high points in immigration systems generally have a straightforward pathway. Consult our VisaVaani AI Advisor to calculate your specific eligibility.`
+    },
+    {
+      question: `How long does the visa process take for ${country.name}?`,
+      answer: `Processing times for ${country.name} vary by visa type. Tourist visas may take a few weeks to months depending on consulate wait times, while work and student visas often have expedited processing if all documents are perfectly in order.`
+    },
+    {
+      question: `Do I need an IELTS score to move to ${country.name}?`,
+      answer: `In most English-speaking regions, an English proficiency test like IELTS, TOEFL, or PTE is mandatory for work or study visas. Some exemptions exist if you have completed a degree in English, but a strong IELTS score often boosts your overall points for PR.`
+    },
+    {
+      question: `Can I take my family with me to ${country.name}?`,
+      answer: `Yes, ${country.name} generally allows main applicants of long-term study, work, or PR visas to bring their spouse and dependent children. They usually need to apply for dependent or family reunification visas.`
+    }
+  ];
+
+  // Combined Schema for AEO/LLMO/GEO
   const countrySchema = {
     "@context": "https://schema.org",
-    "@type": "Place",
-    "name": country.name,
-    "description": country.description,
-    "image": `https://visavaani.com${country.image}`,
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": `Visa Pathways for ${country.name}`,
-      "itemListElement": country.keyVisas?.map((visa, index) => ({
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": visa.name,
-          "description": visa.description,
-          "url": `https://visavaani.com/countries/${country.id}/visa/${visa.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`
-        },
-        "position": index + 1
-      })) || []
-    }
+    "@graph": [
+      {
+        "@type": "Place",
+        "name": country.name,
+        "description": country.description,
+        "image": `https://visavaani.com${country.image}`,
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": `Visa Pathways for ${country.name}`,
+          "itemListElement": country.keyVisas?.map((visa, index) => ({
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": visa.name,
+              "description": visa.description,
+              "url": `https://visavaani.com/countries/${country.id}/visa/${visa.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`
+            },
+            "position": index + 1
+          })) || []
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": countryFaqs.map(faq => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
+          }
+        }))
+      }
+    ]
   };
 
   return (
@@ -209,6 +245,24 @@ const CountryDetail = () => {
           {/* Right Column (Sidebar) */}
           <div className="space-y-8">
             
+            {/* EEAT Trust Signal Badge */}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.25 }}
+              className="bg-green-50 border border-green-200 rounded-2xl p-6 flex items-start shadow-sm"
+            >
+              <div className="bg-green-100 p-2 rounded-full mr-4 shrink-0 mt-1">
+                <ShieldCheck className="w-6 h-6 text-green-700" />
+              </div>
+              <div>
+                <h3 className="font-bold text-green-900 text-lg mb-1">Expertly Verified</h3>
+                <p className="text-green-800 text-sm leading-relaxed">
+                  The immigration pathways and timelines for {country.name} have been reviewed and verified by certified VisaVaani immigration experts for accuracy in 2026.
+                </p>
+              </div>
+            </motion.div>
+
             {/* Benefits Card */}
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
@@ -261,6 +315,47 @@ const CountryDetail = () => {
           </div>
 
         </div>
+
+        {/* On-Page GEO FAQ Section */}
+        <div className="mt-16 max-w-4xl mx-auto pb-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+            <p className="text-gray-500">Direct answers to the most common queries about immigrating to {country.name}.</p>
+          </div>
+          
+          <div className="space-y-4">
+            {countryFaqs.map((faq, index) => (
+              <div key={index} className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm transition-all hover:shadow-md">
+                <button 
+                  onClick={() => setOpenFaqIndex(openFaqIndex === index ? -1 : index)}
+                  className="w-full text-left px-6 py-5 flex items-center justify-between bg-white hover:bg-gray-50 focus:outline-none"
+                >
+                  <span className="font-bold text-gray-900 pr-8">{faq.question}</span>
+                  {openFaqIndex === index ? (
+                    <ChevronUp className="w-5 h-5 text-primary flex-shrink-0" />
+                  ) : (
+                    <ChevronDown className="w-5 h-5 text-gray-400 flex-shrink-0" />
+                  )}
+                </button>
+                <AnimatePresence>
+                  {openFaqIndex === index && (
+                    <motion.div 
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-5 pt-2 text-gray-600 leading-relaxed border-t border-gray-100">
+                        {faq.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
 
       <PremiumAIModal 

@@ -51,8 +51,9 @@ const Home = () => {
   return (
     <main className="font-sans text-gray-900 bg-[#F8FAFC]">
       <SEO 
-        title="India's Trusted Immigration Guidance Platform"
-        description="VisaVaani helps Indians navigate global visas, permanent residency, and study permits with expert guidance and AI assistance."
+        title="AI Advisor: Compare Countries for Visa, Immigration, Work, Study, PR. Explore"
+        description="VisaVaani AI Advisor helps you compare countries for visa and immigration. Find the best paths for work, study, PR. Explore your global opportunities today."
+        keywords="visavaani, ai advisor, compare countries, visa, immigration, work, study, pr, explore, work study, study pr, pr explore, work study pr, study pr explore"
         url="/"
         schema={homeSchema}
       />
@@ -68,12 +69,12 @@ const Home = () => {
             </div>
 
             <h1 className="text-5xl lg:text-[44px] xl:text-[64px] font-bold text-white tracking-tight leading-[1.1] mb-4 lg:mb-4 xl:mb-6">
-              Immigration Clarity. <br />
-              <span className="text-secondary block mt-2">For Every Indian.</span>
+              Compare Countries for Visa & Immigration. <br />
+              <span className="text-secondary block mt-2 text-4xl lg:text-3xl xl:text-5xl">Work, Study, PR. Explore Options with AI Advisor.</span>
             </h1>
 
             <p className="text-lg lg:text-[18px] xl:text-xl text-gray-300 mb-6 lg:mb-5 xl:mb-8 max-w-xl mx-auto lg:mx-0">
-              AI-powered guidance on visas, PR, work permits<br className="hidden md:block" /> and study opportunities worldwide.
+              VisaVaani provides AI-powered guidance on visas, PR, work permits and study opportunities worldwide. Let our AI advisor help you compare countries today.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4 lg:scale-95 xl:scale-100 origin-left">
